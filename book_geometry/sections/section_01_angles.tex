@@ -1,0 +1,312 @@
+% book_geometry/sections/section_01_angles.tex
+\chapter{Кути. Суміжні та вертикальні кути}
+
+\section{Поняття про кут та його елементи}
+
+\begin{definition}
+\textbf{Кутом} називається геометрична фігура, утворена двома променями ($OA$ і $OB$), які виходять з однієї спільної точки (рис.~8).
+\begin{itemize}
+    \item Промені $OA$ і $OB$ називаються \textbf{сторонами кута}.
+    \item Точка $O$ називається \textbf{вершиною кута}.
+\end{itemize}
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    % Промені OA та OB
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (4,2.5);
+    \coordinate (B) at (4.5,0);
+    \coordinate (D) at (3.8,1.6);
+    \coordinate (E) at (4.2,0.8);
+
+    \draw[->, very thick, color=primaryblue] (O) -- (A) node[above right] {$A$};
+    \draw[->, very thick, color=primaryblue] (O) -- (B) node[right] {$B$};
+    
+    % Внутрішні промені
+    \draw[->, thick, dashed, color=gray] (O) -- (D) node[right] {$D$};
+    \draw[->, thick, dashed, color=gray] (O) -- (E) node[right] {$E$};
+
+    \filldraw[black] (O) circle (2pt) node[left] {$O$};
+    \node at (2.2, -0.6) {\small\textbf{Рис. 8.} Кут $AOB$ та внутрішні промені $OD, OE$};
+\end{tikzpicture}
+\label{fig:angle_intro}
+\end{center}
+
+\begin{feynmanbox}[Кут — це міра повороту, а не просто лінії на папері]
+Коли ми дивимося на креслення в зошиті, кут здається застиглим трикутним шматочком паперу. Проте в реальному фізичному світі кут — це \textbf{динамічний процес обертання}.
+
+Уяви стрілку годинника, циркуль чи промінь обертового маяка. Спочатку промінь був спрямований уздовж рейки $OB$. Потім його повернули навколо шарніра $O$ до положення $OA$. 
+
+Величина кута показує, \textbf{наскільки сильно повернувся промінь}. Самі промені нескінченні, тому їхня «довжина» ніяк не впливає на кут!
+\end{feynmanbox}
+
+Позначення кута:
+\begin{itemize}
+    \item Трьома великими літерами: $\angle AOB$ або $\angle BOA$ (вершина $O$ завжди пишеться посередині).
+    \item Однією літерою біля вершини: $\angle O$ (якщо при вершині немає інших кутів).
+    \item Грецькими літерами: $\alpha, \beta, \gamma$ або цифрами $\angle 1, \angle 2$.
+\end{itemize}
+
+\section{Рівність кутів. Бісектриса. Розгорнутий кут}
+
+Два кути називаються \textbf{рівними}, якщо їх можна сумістити способом накладання.
+
+\begin{definition}
+\textbf{Бісектрисою кута} називається внутрішній промінь, що виходить із вершини кута й ділить його на два рівні кути (рис.~11).
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (4,2.4);
+    \coordinate (B) at (4.5,0);
+    \coordinate (L) at (4.4,1.2);
+
+    \draw[->, thick] (O) -- (A) node[above right] {$A$};
+    \draw[->, thick] (O) -- (B) node[right] {$B$};
+    \draw[->, very thick, color=feynmangreen] (O) -- (L) node[right] {\textbf{Бісектриса $OL$}};
+
+    \draw[color=feynmangreen] (0.9,0) arc (0:15.5:0.9);
+    \draw[color=feynmangreen] (0.9,0.25) arc (15.5:31:0.9);
+    \filldraw[black] (O) circle (2pt) node[left] {$O$};
+    \node at (2.2, -0.6) {\small\textbf{Рис. 11.} Бісектриса кута};
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}
+Кут, сторони якого утворюють пряму лінію (є доповняльними променями), називається \textbf{розгорнутим кутом} (рис.~12). Градусна міра розгорнутого кута становить $180^\circ$.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (B) at (3,0);
+
+    \draw[->, very thick, color=primaryblue] (O) -- (A) node[left] {$A$};
+    \draw[->, very thick, color=primaryblue] (O) -- (B) node[right] {$B$};
+    \draw[thick, color=primaryblue] (1,0) arc (0:180:1);
+    \node at (0, 1.3) {$180^\circ$};
+    \filldraw[black] (O) circle (2pt) node[below] {$O$};
+    \node at (0, -0.6) {\small\textbf{Рис. 12.} Розгорнутий кут $\angle AOB = 180^\circ$};
+\end{tikzpicture}
+\end{center}
+
+\begin{warningbox}[Розгорнутий кут — це не просто пряма!]
+Часто семикласники вважають: «Розгорнутий кут — це звичайна пряма».
+
+Це не так: у прямої лінії немає центру. А розгорнутий кут має чітко виділену \textbf{вершину $O$} та два протилежні промені. Кут утворює площину з одного боку від прямої!
+\end{warningbox}
+
+\section{Суміжні кути}
+
+\begin{definition}
+Два кути називаються \textbf{суміжними}, якщо в них одна сторона спільна, а дві інші сторони є доповняльними променями (рис.~19).
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (C) at (3,0);
+    \coordinate (B) at (1.5,2.2);
+
+    \draw[thick] (A) -- (C);
+    \draw[->, very thick, color=primaryblue] (O) -- (B) node[above right] {$B$};
+    
+    \draw[color=primaryblue, thick] (0.7,0) arc (0:56:0.7) node[midway, right=2pt] {$\beta$};
+    \draw[color=warningred, thick] (-0.7,0) arc (180:56:0.7) node[midway, left=2pt] {$\alpha$};
+
+    \filldraw (A) circle (1.5pt) node[below] {$A$};
+    \filldraw (O) circle (2pt) node[below] {$O$};
+    \filldraw (C) circle (1.5pt) node[below] {$C$};
+
+    \node at (0, -0.7) {\small\textbf{Рис. 19.} Суміжні кути $\angle AOB$ ($\alpha$) та $\angle BOC$ ($\beta$)};
+\end{tikzpicture}
+\end{center}
+
+\begin{theorem}[Властивість суміжних кутів]
+Сума двох суміжних кутів завжди дорівнює $180^\circ$:
+\[
+\alpha + \beta = 180^\circ \quad (\text{або } \angle AOB + \angle BOC = 180^\circ).
+\]
+\end{theorem}
+
+\begin{scaffoldbox}[Як доводиться властивість суміжних кутів]
+\begin{enumerate}
+    \item За означенням суміжних кутів, промені $OA$ і $OC$ утворюють пряму лінію, отже кут $\angle AOC$ є розгорнутим.
+    \item За домовленістю про одиниці вимірювання, міра розгорнутого кута становить $180^\circ$.
+    \item Спільний внутрішній промінь $OB$ розбиває розгорнутий кут на дві суміжні частини.
+    \item Оскільки ціле дорівнює сумі своїх частин, маємо:
+    \[
+    \angle AOB + \angle BOC = \angle AOC = 180^\circ.
+    \]
+    Теорему доведено.
+\end{enumerate}
+\end{scaffoldbox}
+
+\begin{warningbox}[Помилка перевірки суміжності]
+Чи правда, що якщо $\angle 1 + \angle 2 = 180^\circ$, то вони обов'язково суміжні?
+
+\textbf{Ні!} Якщо кут $60^\circ$ накреслено на дошці, а кут $120^\circ$ — у зошиті, їхня сума справді $180^\circ$, але вони не мають спільної вершини і спільної сторони. Суміжні кути обов'язково мають бути «сусідами» з однією спільною межею!
+\end{warningbox}
+
+\begin{mediabox}[Інтерактивна анімація суміжних кутів]
+\begin{minipage}{0.72\textwidth}
+Досліди поведінку суміжних кутів наживо: рухай спільний промінь мишкою та спостерігай, як зміна одного кута миттєво компенсується другим, зберігаючи суму $180^\circ$.
+
+\vspace{0.3cm}
+\textbf{Відкрий у браузері:} \\
+\url{https://radchr.github.io/Algebra/geometry-angles.html}
+\end{minipage}
+\hfill
+\begin{minipage}{0.24\textwidth}
+\centering
+\includegraphics[width=2.2cm]{qr_angles.png}
+\end{minipage}
+\end{mediabox}
+
+\section{Перпендикулярність прямих}
+
+Якщо два суміжні кути рівні між собою, то кожен із них дорівнює:
+\[
+\frac{180^\circ}{2} = 90^\circ.
+\]
+Такий кут називають \textbf{прямим кутом}.
+
+\begin{definition}
+Дві прямі, що перетинаються під прямим кутом ($90^\circ$), називаються \textbf{взаємно перпендикулярними}. Позначають:
+\[
+AB \perp CD.
+\]
+\end{definition}
+
+\begin{consequence}
+Якщо при перетині двох прямих один із чотирьох утворених кутів є прямим, то й решта три кути також є прямими (рис.~21).
+\end{consequence}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9, >=Stealth]
+    \draw[thick, <->] (-2.5,0) -- (2.5,0) node[right] {$A$};
+    \draw[thick, <->] (0,-2.5) -- (0,2.5) node[above] {$B$};
+    \node at (-2.7, 0) {$C$};
+    \node at (0, -2.7) {$D$};
+    \filldraw (0,0) circle (2pt) node[below left] {$O$};
+
+    \draw (0.4,0) -- (0.4,0.4) -- (0,0.4);
+    \draw (-0.4,0) -- (-0.4,0.4) -- (0,0.4);
+    \draw (0.4,0) -- (0.4,-0.4) -- (0,-0.4);
+    \draw (-0.4,0) -- (-0.4,-0.4) -- (0,-0.4);
+
+    \node at (0.8,0.8) {$90^\circ$};
+    \node at (-0.8,0.8) {$90^\circ$};
+    \node at (-0.8,-0.8) {$90^\circ$};
+    \node at (0.8,-0.8) {$90^\circ$};
+    \node at (0, -3.2) {\small\textbf{Рис. 21.} Перетин під прямим кутом: $AC \perp BD$};
+\end{tikzpicture}
+\end{center}
+
+\section{Вертикальні кути}
+
+\begin{definition}
+Два кути називаються \textbf{вертикальними}, якщо сторони одного кута є доповняльними променями сторін другого (рис.~24).
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-2.5,-1.2);
+    \coordinate (B) at (2.5,1.2);
+    \coordinate (C) at (-2,1.5);
+    \coordinate (D) at (2,-1.5);
+
+    \draw[thick, <->] (A) -- (B) node[above right] {$AB$};
+    \draw[thick, <->] (C) -- (D) node[below right] {$CD$};
+    \filldraw (O) circle (2pt) node[above=2pt] {$O$};
+
+    \node at (-1.5, 0.2) {$\angle 1$};
+    \node at (1.5, -0.2) {$\angle 2$};
+    \node at (0, 1.0) {$\angle 3$};
+    \node at (0, -1.0) {$\angle 4$};
+
+    \node at (0, -2.0) {\small\textbf{Рис. 24.} Вертикальні кути: $\angle 1 = \angle 2$, $\angle 3 = \angle 4$};
+\end{tikzpicture}
+\end{center}
+
+\begin{theorem}[Властивість вертикальних кутів]
+Вертикальні кути завжди рівні між собою:
+\[
+\angle 1 = \angle 2 \quad \text{та} \quad \angle 3 = \angle 4.
+\]
+\end{theorem}
+
+\begin{feynmanbox}[Модель ножиць]
+Уяви звичайні ножиці. Коли ти розкриваєш леза (кут 1), кільця ножиць з іншого боку гвинтика (кут 2) розкриваються рівно на той самий кут! 
+
+Чому? Кожне лезо разом зі своєю ручкою утворює одну жорстку негнучку пряму лінію. Гвинтик — це точка перетину $O$. Якщо один кут збільшується, його суміжний партнер зменшується рівно на стільки ж, автоматично збільшуючи протилежний кут на ту саму величину.
+\end{feynmanbox}
+
+\begin{scaffoldbox}[Строге алгебраїчне доведення]
+Нехай кути $\angle 1$ та $\angle 2$ — вертикальні, а кут $\angle 3$ — суміжний з кожним із них:
+\begin{align*}
+    \angle 1 + \angle 3 &= 180^\circ \implies \angle 1 = 180^\circ - \angle 3, \\
+    \angle 2 + \angle 3 &= 180^\circ \implies \angle 2 = 180^\circ - \angle 3.
+\end{align*}
+Праві частини рівностей тотожно рівні, отже:
+\[
+\angle 1 = \angle 2.
+\]
+Теорему доведено.
+\end{scaffoldbox}
+
+\section{Вправи та задачі для практичного осмислення}
+
+\begin{problem}
+Один із суміжних кутів дорівнює $38^\circ 29'$. Знайдіть градусну міру другого кута.
+\end{problem}
+\textbf{Розв'язання:}
+Оскільки сума суміжних кутів дорівнює $180^\circ$, шуканий кут дорівнює:
+\[
+180^\circ - 38^\circ 29' = 179^\circ 60' - 38^\circ 29' = 141^\circ 31'.
+\]
+\textbf{Відповідь:} $141^\circ 31'$.
+
+\vspace{0.4cm}
+
+\begin{problem}[Класична теорема Кисельова про бісектриси суміжних кутів]
+Доведіть, що бісектриси двох суміжних кутів взаємно перпендикулярні.
+\end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (C) at (3,0);
+    \coordinate (B) at (1,2.3);
+    \coordinate (L1) at (-1.3,1.6);
+    \coordinate (L2) at (2.2,1.3);
+
+    \draw[thick] (A) -- (C);
+    \draw[thick] (O) -- (B) node[above] {$B$};
+    \draw[very thick, color=feynmangreen, ->] (O) -- (L1) node[above left] {$OK_1$};
+    \draw[very thick, color=feynmangreen, ->] (O) -- (L2) node[above right] {$OK_2$};
+
+    \filldraw (O) circle (2pt) node[below] {$O$};
+    \node at (0, -0.6) {\small Бісектриси $OK_1 \perp OK_2$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Доведення:}
+Нехай дані суміжні кути мають величини $\alpha$ та $\beta$.
+За властивістю суміжних кутів:
+\[
+\alpha + \beta = 180^\circ.
+\]
+Бісектриса $OK_1$ ділить перший кут навпіл: $\frac{\alpha}{2}$.
+Бісектриса $OK_2$ ділить другий кут навпіл: $\frac{\beta}{2}$.
+Кут між бісектрисами дорівнює сумі їхніх половин:
+\[
+\angle K_1OK_2 = \frac{\alpha}{2} + \frac{\beta}{2} = \frac{\alpha + \beta}{2} = \frac{180^\circ}{2} = 90^\circ.
+\]
+Оскільки кут між бісектрисами прямий, то вони взаємно перпендикулярні: $OK_1 \perp OK_2$. Що й треба було довести.

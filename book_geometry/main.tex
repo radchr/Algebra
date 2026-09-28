@@ -1,0 +1,42 @@
+% book_geometry/main.tex
+\documentclass[11pt,a4paper,oneside]{book}
+
+\input{preamble.tex}
+
+\begin{document}
+
+% Титульна сторінка
+\begin{titlepage}
+    \centering
+    \vspace*{1.5cm}
+    
+    {\Huge\bfseries\color{primaryblue} ЕЛЕМЕНТАРНА ГЕОМЕТРІЯ\par}
+    \vspace{0.4cm}
+    {\Large\bfseries Планіметрія $\cdot$ 7 клас\par}
+    
+    \vspace{1.5cm}
+    {\large\itshape Фундаментальний курс А. П. Кисельова у сучасній українській адаптації\par}
+    
+    \vspace{2.5cm}
+    
+    \begin{tcolorbox}[colback=boxbglight, colframe=primaryblue, width=0.85\textwidth, arc=2mm]
+    \centering
+    \textbf{Особливості видання XXI століття:}\\
+    \small
+    $\bullet$ Нормативна математична термінологія програми НУШ\\
+    $\bullet$ Інтуїтивні моделі та пояснення у стилі Річарда Фейнмана\\
+    $\bullet$ Попередження типових когнітивних пасток семикласників\\
+    $\bullet$ QR-коди на живі анімації та динамічні інтерактивні моделі
+    \end{tcolorbox}
+    
+    \vfill
+    
+    {\large\bfseries 2026}\par
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\input{sections/section_01_angles.tex}
+
+\end{document}

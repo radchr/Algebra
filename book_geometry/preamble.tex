@@ -1,0 +1,96 @@
+% book_geometry/preamble.tex
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[ukrainian]{babel}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  top=2.2cm,
+  bottom=2.2cm,
+  left=2.5cm,
+  right=2.2cm
+}
+
+\usepackage{xcolor}
+\definecolor{primaryblue}{RGB}{24, 76, 120}
+\definecolor{feynmangreen}{RGB}{20, 110, 60}
+\definecolor{warningred}{RGB}{180, 40, 30}
+\definecolor{scaffoldnavy}{RGB}{20, 50, 95}
+\definecolor{mediapurple}{RGB}{100, 35, 140}
+\definecolor{boxbglight}{RGB}{248, 250, 252}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% 1. Блок Інтуїція Фейнмана
+\newtcolorbox{feynmanbox}[1][]{
+  colback=boxbglight,
+  colframe=feynmangreen,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={ІНТУЇЦІЯ ФЕЙНМАНА: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  left=12pt, right=12pt, top=10pt, bottom=10pt,
+  breakable
+}
+
+% 2. Блок Пастка мислення
+\newtcolorbox{warningbox}[1][]{
+  colback=boxbglight,
+  colframe=warningred,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={ПАСТКА МИСЛЕННЯ: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  left=12pt, right=12pt, top=10pt, bottom=10pt,
+  breakable
+}
+
+% 3. Блок Дороговказ доведення
+\newtcolorbox{scaffoldbox}[1][]{
+  colback=boxbglight,
+  colframe=scaffoldnavy,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={ДОРОГОВКАЗ ДОВЕДЕННЯ: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  left=12pt, right=12pt, top=10pt, bottom=10pt,
+  breakable
+}
+
+% 4. Блок Побачити в русі (QR-код та відео)
+\newtcolorbox{mediabox}[1][]{
+  colback=boxbglight,
+  colframe=mediapurple,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={ПОБАЧИТИ В РУСІ: #1},
+  arc=3mm,
+  boxrule=1.2pt,
+  left=12pt, right=12pt, top=10pt, bottom=10pt,
+  breakable
+}
+
+% Означення та теореми
+\newtheorem{theorem}{Теорема}[chapter]
+\newtheorem{definition}{Означення}[chapter]
+\newtheorem{consequence}{Наслідок}[theorem]
+\newtheorem{problem}{Задача}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,angles,quotes,calc}
+
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily А. П. Кисельов $\cdot$ Елементарна геометрія (7 клас)}
+\fancyhead[R]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\usepackage[colorlinks=true,linkcolor=primaryblue,urlcolor=mediapurple]{hyperref}

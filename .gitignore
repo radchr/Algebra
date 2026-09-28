@@ -23,3 +23,10 @@ scratch/
 # OS files
 .DS_Store
 Thumbs.db
+
+# LaTeX build artifacts
+*.aux
+*.out
+*.toc
+book_geometry/build/
+book_geometry/preview/
