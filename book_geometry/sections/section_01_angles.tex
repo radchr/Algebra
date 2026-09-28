@@ -489,9 +489,8 @@ AC \perp BD.
     \filldraw (0,0) circle (2pt) node[below] {$C$};
     \filldraw (0,1.8) circle (2pt) node[left] {$D$};
     \node at (0, 3.3) {$E$};
-
-    \node at (0.3, -1.0) {\small\textbf{Рис. 23.} Проведення перпендикуляра за допомогою косинця і лінійки};
-\end{tikzpicture}
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. 23.} Проведення перпендикуляра за допомогою косинця і лінійки}
 \end{center}
 
 \textit{Зауваження.}
@@ -511,17 +510,16 @@ AC \perp BD.
     \coordinate (C) at (-2,1.5);
     \coordinate (D) at (2,-1.5);
 
-    \draw[thick, <->] (A) -- (B) node[above right] {$AB$};
-    \draw[thick, <->] (C) -- (D) node[below right] {$CD$};
+    \draw[thick, <->] (A) node[below left] {$A$} -- (B) node[above right] {$B$};
+    \draw[thick, <->] (C) node[above left] {$C$} -- (D) node[below right] {$D$};
     \filldraw (O) circle (2pt) node[above=2pt] {$O$};
 
     \node at (-1.5, 0.2) {$\angle 1$};
     \node at (1.5, -0.2) {$\angle 2$};
     \node at (0, 1.0) {$\angle 3$};
     \node at (0, -1.0) {$\angle 4$};
-
-    \node at (0, -2.0) {\small\textbf{Рис. 24.} Вертикальні кути: $\angle 1 = \angle 2$, $\angle 3 = \angle 4$};
-\end{tikzpicture}
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. 24.} Вертикальні кути: $\angle 1 = \angle 2$, $\angle 3 = \angle 4$}
 \end{center}
 
 \begin{theorem}[Властивість вертикальних кутів]
@@ -559,8 +557,8 @@ AC \perp BD.
         \draw[thick, ->] (O) -- (0,2.2) node[above] {$C$};
         \draw[thick, ->] (O) -- (2,1.8) node[above right] {$D$};
         \filldraw (O) circle (2pt) node[below] {$O$};
-        \node at (0, -0.6) {\small\textbf{Рис. 25.} Кути по один бік від прямої: сума $= 180^\circ$};
-    \end{tikzpicture}
+    \end{tikzpicture}\\[4pt]
+    {\small\textbf{Рис. 25.} Кути по один бік від прямої: сума $= 180^\circ$}
     \end{center}
 
     \item \textbf{Сума кількох кутів} ($AOB, BOC, COD, DOE, EOA$, рис.~26), що мають спільну вершину й заповнюють увесь простір навколо цієї вершини, \textbf{дорівнює $360^\circ$} (тобто чотирьом прямим кутам, або $4d$), оскільки ця сума утворює повний кут, а такий кут містить $360^\circ$.
@@ -574,8 +572,8 @@ AC \perp BD.
         \draw[thick, ->] (O) -- (-2.2,-0.5) node[left] {$D$};
         \draw[thick, ->] (O) -- (0.3,-2.0) node[below] {$E$};
         \filldraw (O) circle (2pt) node[below left=2pt] {$O$};
-        \node at (0, -2.5) {\small\textbf{Рис. 26.} Кути навколо спільної вершини: сума $= 360^\circ$};
-    \end{tikzpicture}
+    \end{tikzpicture}\\[4pt]
+    {\small\textbf{Рис. 26.} Кути навколо спільної вершини: сума $= 360^\circ$}
     \end{center}
 
     \item \textbf{Якщо два кути} ($AOB$ і $BOC$, рис.~27) мають спільну вершину ($O$) і спільну сторону ($OB$) і в сумі становлять $180^\circ$ (два прямих кути, або $2d$), то їхні дві інші сторони ($OA$ і $OC$) становлять продовження одна одної (тобто такі кути будуть суміжними). Справді, сума вказаних кутів становить кут $AOC$, і якщо цей кут дорівнює $180^\circ$, то це означає, що він є розгорнутим кутом, тобто що $AO$ становить із $OC$ одну пряму.
@@ -590,18 +588,40 @@ AC \perp BD.
         \draw[thick] (A) node[below] {$A$} -- (C) node[below] {$C$};
         \draw[very thick, color=primaryblue, ->] (O) -- (B) node[above right] {$B$};
         \filldraw (O) circle (2pt) node[below] {$O$};
-        \node at (0, -0.6) {\small\textbf{Рис. 27.} Ознака суміжних кутів};
-    \end{tikzpicture}
+    \end{tikzpicture}\\[4pt]
+    {\small\textbf{Рис. 27.} Ознака суміжних кутів}
     \end{center}
 \end{enumerate}
 
----
-
+\clearpage
 \section{Вправи}
 
 \begin{problem}
 Деякий кут дорівнює $38^\circ 29'$. Знайти величину суміжного з ним кута.
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (C) at (3,0);
+    \coordinate (B) at (38.5:2.6);
+    
+    \draw[thick] (A) node[below] {$A$} -- (C) node[below] {$C$};
+    \draw[very thick, color=primaryblue, ->] (O) -- (B) node[above right] {$B$};
+    \filldraw (O) circle (2pt) node[below] {$O$};
+    
+    % Кут 38°29'
+    \draw[thick, color=primaryblue] (0.8,0) arc (0:38.5:0.8);
+    \node[color=primaryblue, right] at (0.9,0.3) {\small $38^\circ 29'$};
+    
+    % Шуканий кут ?
+    \draw[thick, color=warningred] (-0.9,0) arc (180:38.5:0.9);
+    \node[color=warningred, left] at (-0.7,0.7) {\small\textbf{?}};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 1.} Знаходження суміжного кута}
+\end{center}
+
 \textbf{Розв'язання:}
 Оскільки сума двох суміжних кутів дорівнює $180^\circ$, то шуканий кут дорівнює:
 \[
@@ -609,11 +629,34 @@ AC \perp BD.
 \]
 \textbf{Відповідь:} $141^\circ 31'$.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}
 Два кути $ABC$ і $CBD$, маючи спільну вершину $B$ і спільну сторону $BC$, розташовані так, що вони не покривають один одного: кут $ABC = 100^\circ 20'$, а кут $CBD = 79^\circ 40'$. Чи становлять сторони $AB$ і $BD$ пряму чи ламану?
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    \coordinate (B) at (0,0);
+    \coordinate (D) at (2.8,0);
+    \coordinate (A) at (-2.8,0);
+    \coordinate (C) at (79.67:2.4);
+    
+    \draw[dashed, color=gray] (A) -- (D);
+    \draw[thick, ->] (B) -- (A) node[below] {$A$};
+    \draw[thick, ->] (B) -- (D) node[below] {$D$};
+    \draw[very thick, color=primaryblue, ->] (B) -- (C) node[above] {$C$ (спільна сторона)};
+    \filldraw (B) circle (2pt) node[below] {$B$};
+    
+    \draw[thick, color=feynmangreen] (0.8,0) arc (0:79.67:0.8);
+    \node[color=feynmangreen] at (40:1.3) {\small $79^\circ 40'$};
+    
+    \draw[thick, color=primaryblue] (79.67:0.7) arc (79.67:180:0.7);
+    \node[color=primaryblue] at (130:1.2) {\small $100^\circ 20'$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 2.} Сторони $AB$ і $BD$ утворюють розгорнутий кут ($180^\circ$)}
+\end{center}
+
 \textbf{Розв'язання:}
 Знайдемо суму цих кутів:
 \[
@@ -621,18 +664,72 @@ AC \perp BD.
 \]
 Оскільки кути мають спільну вершину $B$, спільну сторону $BC$, не перекриваються і їхня сума дорівнює $180^\circ$, то за властивістю §~26 (пункт 3) кут $\angle ABD$ є розгорнутим, тобто промені $BA$ і $BD$ є доповняльними. Отже, сторони $AB$ і $BD$ становлять \textbf{пряму лінію}.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}
 Побудувати будь-який кут і за допомогою транспортира та лінійки провести його бісектрису.
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (B) at (60:2.8);
+    \coordinate (K) at (30:3.1);
+    
+    \draw[thick, ->] (O) -- (A) node[right] {$A$};
+    \draw[thick, ->] (O) -- (B) node[above right] {$B$};
+    \draw[very thick, color=feynmangreen, ->] (O) -- (K) node[right] {$K$ (бісектриса)};
+    \filldraw (O) circle (2pt) node[left] {$O$};
+    
+    \draw[thick, color=feynmangreen] (1.0,0) arc (0:30:1.0);
+    \node[color=feynmangreen] at (15:1.4) {\small $30^\circ$};
+    
+    \draw[thick, color=feynmangreen] (30:1.2) arc (30:60:1.2);
+    \node[color=feynmangreen] at (45:1.6) {\small $30^\circ$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 3.} Поділ кута $60^\circ$ бісектрисою на два кути по $30^\circ$}
+\end{center}
+
 \textbf{Вказівка:} Виміряйте кут транспортиром, поділіть отримане число градусів на 2, позначте точку на шкалі транспортира, що відповідає половині кута, і через цю точку та вершину проведіть промінь лінійкою.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}[Класична теорема про бісектриси суміжних кутів]
 Довести, що бісектриси двох суміжних кутів взаємно перпендикулярні.
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.05, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (C) at (3,0);
+    \coordinate (B) at (60:2.8);
+    
+    % Бісектриси: 30° та 120°
+    \coordinate (K) at (30:2.9);
+    \coordinate (L) at (120:2.9);
+    
+    \draw[thick] (A) node[below] {$A$} -- (C) node[below] {$C$};
+    \draw[thick, dashed] (O) -- (B) node[above right] {$B$ (спільна сторона)};
+    \draw[very thick, color=primaryblue, ->] (O) -- (K) node[above right] {$OK$ (бісектриса)};
+    \draw[very thick, color=feynmangreen, ->] (O) -- (L) node[above left] {$OL$ (бісектриса)};
+    \filldraw (O) circle (2pt) node[below] {$O$};
+    
+    % Прямий кут між бісектрисами (30° і 120° -> різниця 90°)
+    \draw[thick, color=warningred] (30:0.6) -- ++(120:0.6) -- ++(210:0.6);
+    \node[color=warningred, font=\bfseries] at (75:0.95) {$90^\circ$};
+    
+    % Позначки рівних кутів
+    \draw[color=primaryblue] (0.9,0) arc (0:30:0.9) node[midway, right=1pt] {\tiny $\frac{\alpha}{2}$};
+    \draw[color=primaryblue] (30:1.1) arc (30:60:1.1) node[midway, right=1pt] {\tiny $\frac{\alpha}{2}$};
+    
+    \draw[color=feynmangreen] (60:1.2) arc (60:120:1.2) node[midway, above] {\tiny $\frac{\beta}{2}$};
+    \draw[color=feynmangreen] (120:1.0) arc (120:180:1.0) node[midway, left=1pt] {\tiny $\frac{\beta}{2}$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 4.} Бісектриси $OK \perp OL$, оскільки $\frac{\alpha}{2} + \frac{\beta}{2} = 90^\circ$}
+\end{center}
+
 \textbf{Доведення:}
 Нехай дані суміжні кути мають градусні міри $\alpha$ та $\beta$.
 За теоремою про суму суміжних кутів:
@@ -646,11 +743,41 @@ AC \perp BD.
 \]
 Кут, рівний $90^\circ$, є прямим. Отже, бісектриси взаємно перпендикулярні. Що й треба було довести.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}
 Довести, що бісектриси двох вертикальних кутів становлять продовження одна одної (лежать на одній прямій).
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-2.6,-1.3);
+    \coordinate (B) at (2.6,1.3);
+    \coordinate (C) at (-2.6,1.3);
+    \coordinate (D) at (2.6,-1.3);
+    
+    \draw[thick] (A) node[below left] {$A$} -- (B) node[above right] {$B$};
+    \draw[thick] (C) node[above left] {$C$} -- (D) node[below right] {$D$};
+    \filldraw (O) circle (2pt) node[below=3pt] {$O$};
+    
+    % Бісектриси вертикальних кутів
+    \draw[very thick, color=warningred, dashed, <->] (-3.1,0) node[left] {$L$} -- (3.1,0) node[right] {$K$};
+    
+    % Дужки кутів
+    \draw[color=primaryblue] (0.8,0) arc (0:26.5:0.8);
+    \draw[color=primaryblue] (0.8,0) arc (0:-26.5:0.8);
+    \node at (1.4, 0.25) {\tiny $\frac{\alpha}{2}$};
+    \node at (1.4, -0.25) {\tiny $\frac{\alpha}{2}$};
+    
+    \draw[color=primaryblue] (-0.8,0) arc (180:153.5:0.8);
+    \draw[color=primaryblue] (-0.8,0) arc (180:206.5:0.8);
+    \node at (-1.4, 0.25) {\tiny $\frac{\alpha}{2}$};
+    \node at (-1.4, -0.25) {\tiny $\frac{\alpha}{2}$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 5.} Бісектриси $OK$ та $OL$ утворюють розгорнутий кут $180^\circ$ (пряму лінію)}
+\end{center}
+
 \textbf{Доведення:}
 Нехай при перетині двох прямих утворилися вертикальні кути $\angle 1$ і $\angle 2$, причому $\angle 1 = \angle 2 = \alpha$, а кут $\angle 3$ є суміжним з кожним із них ($\angle 3 = 180^\circ - \alpha$).
 Проведемо бісектриси вертикальних кутів. Бісектриса кута $\angle 1$ ділить його на два кути по $\frac{\alpha}{2}$. Бісектриса кута $\angle 2$ також ділить його на два кути по $\frac{\alpha}{2}$.
@@ -660,11 +787,35 @@ AC \perp BD.
 \]
 Оскільки кут між бісектрисами дорівнює $180^\circ$, він є розгорнутим, отже, його сторони (бісектриси) лежать на одній прямій і є доповняльними променями. Що й треба було довести.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}
 Якщо при точці $O$ прямої $AB$ (рис.~24) побудуємо по різні боки від $AB$ рівні кути $AOD$ і $BOC$, то сторони їх $OD$ і $OC$ становлять одну пряму.
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (35:2.6);
+    \coordinate (D) at (215:2.6);
+    
+    \draw[thick] (A) node[below] {$A$} -- (B) node[below] {$B$};
+    \draw[very thick, color=primaryblue, ->] (O) -- (C) node[above right] {$C$};
+    \draw[very thick, color=primaryblue, ->] (O) -- (D) node[below left] {$D$};
+    \draw[dashed, color=gray] (D) -- (C);
+    \filldraw (O) circle (2pt) node[below right=2pt] {$O$};
+    
+    \draw[color=primaryblue, thick] (0.8,0) arc (0:35:0.8);
+    \node[color=primaryblue] at (17.5:1.2) {\small $\alpha$};
+    
+    \draw[color=primaryblue, thick] (-0.8,0) arc (180:215:0.8);
+    \node[color=primaryblue] at (197.5:1.2) {\small $\alpha$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 6.} $\angle AOD = \angle BOC = \alpha \implies COD$ — пряма лінія}
+\end{center}
+
 \textbf{Доведення:}
 Кути $BOC$ і $AOC$ є суміжними, оскільки точки $A, O, B$ лежать на одній прямій, тому:
 \[
@@ -676,11 +827,37 @@ AC \perp BD.
 \]
 Оскільки кути $AOC$ і $AOD$ мають спільну вершину $O$, спільну сторону $OA$, лежать по різні боки від прямої $CD$ і в сумі дають $180^\circ$, то за ознакою §~26 (пункт 3) промені $OC$ і $OD$ становлять одну пряму лінію. Що й треба було довести.
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 
 \begin{problem}
 Якщо з точки $O$ (рис.~24) проведемо промені $OA, OD, OB, OC$ так, що $\angle AOC = \angle DOB$ і $\angle AOD = \angle COB$, то $OB$ є продовження $OA$, а $OD$ — продовження $OC$.
 \end{problem}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-2.8,0);
+    \coordinate (B) at (2.8,0);
+    \coordinate (C) at (50:2.4);
+    \coordinate (D) at (230:2.4);
+    
+    \draw[thick, ->] (O) -- (A) node[left] {$A$};
+    \draw[thick, ->] (O) -- (B) node[right] {$B$};
+    \draw[thick, ->] (O) -- (C) node[above right] {$C$};
+    \draw[thick, ->] (O) -- (D) node[below left] {$D$};
+    \filldraw (O) circle (2pt) node[below=3pt] {$O$};
+    
+    % Дужки кутів 1 і 2
+    \draw[color=primaryblue, thick] (0.7,0) arc (0:50:0.7) node[midway, right=1pt] {\small $\alpha$};
+    \draw[color=primaryblue, thick] (-0.7,0) arc (180:230:0.7) node[midway, left=1pt] {\small $\alpha$};
+    
+    % Дужки кутів 3 і 4
+    \draw[color=warningred, thick] (50:0.9) arc (50:180:0.9) node[midway, above] {\small $\beta$};
+    \draw[color=warningred, thick] (230:0.9) arc (230:360:0.9) node[midway, below] {\small $\beta$};
+\end{tikzpicture}\\[4pt]
+{\small\textbf{Рис. до вправи 7.} Дві пари рівних протилежних кутів: $\alpha + \beta = 180^\circ$}
+\end{center}
+
 \textbf{Доведення:}
 Сума всіх чотирьох кутів навколо спільної вершини $O$ за §~26 (пункт 2) дорівнює $360^\circ$:
 \[
