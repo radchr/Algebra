@@ -96,7 +96,79 @@ function initGeometry() {
   C.on('drag', updateAngleMetrics);
   updateAngleMetrics();
 
-  // 2. Mini-Quiz Checkers for Geometry
+  // 2. Board for Vertical Angles (Ножиці)
+  const board2 = JXG.JSXGraph.initBoard('jxg-vertical', {
+    boundingbox: [-5, 4, 5, -4],
+    axis: false,
+    showNavigation: false,
+    showCopyright: false,
+    pan: { enabled: false },
+    zoom: { enabled: false }
+  });
+
+  const Ov = board2.create('point', [0, 0], { name: 'O', fixed: true, size: 4, color: '#0f172a' });
+  const Av = board2.create('point', [-4, 0], { name: 'A', fixed: true, size: 3, color: '#475569' });
+  const Bv = board2.create('point', [4, 0], { name: 'B', fixed: true, size: 3, color: '#475569' });
+  board2.create('segment', [Av, Bv], { strokeColor: '#1e293b', strokeWidth: 3 });
+
+  // Movable point D (Upper blade)
+  const Dv = board2.create('glider', [
+    2.8 * Math.cos(Math.PI / 4),
+    2.8 * Math.sin(Math.PI / 4),
+    board2.create('circle', [Ov, 2.8], { visible: false })
+  ], {
+    name: 'D (рухай лезо)',
+    size: 6,
+    color: '#dc2626',
+    fillColor: '#f87171'
+  });
+
+  // Opposite point Cv (Lower handle)
+  const Cv = board2.create('point', [
+    function() { return -Dv.X(); },
+    function() { return -Dv.Y(); }
+  ], {
+    name: 'C (ручка)',
+    size: 4,
+    color: '#9333ea',
+    fixed: true
+  });
+
+  board2.create('segment', [Dv, Cv], { strokeColor: '#dc2626', strokeWidth: 3.5 });
+
+  // Angle 1: DOB
+  board2.create('angle', [Bv, Ov, Dv], {
+    radius: 1.0,
+    fillColor: '#fca5a5',
+    fillOpacity: 0.5,
+    strokeColor: '#dc2626',
+    strokeWidth: 2,
+    name: '∠1'
+  });
+
+  // Angle 2: AOC
+  board2.create('angle', [Av, Ov, Cv], {
+    radius: 1.0,
+    fillColor: '#fca5a5',
+    fillOpacity: 0.5,
+    strokeColor: '#dc2626',
+    strokeWidth: 2,
+    name: '∠2'
+  });
+
+  function updateVerticalMetrics() {
+    let deg = Math.round(JXG.Math.Geometry.trueAngle(Bv, Ov, Dv));
+    if (deg > 180) deg = 360 - deg;
+    const el1 = document.getElementById('val-vert-1');
+    const el2 = document.getElementById('val-vert-2');
+    if (el1) el1.textContent = `${deg}°`;
+    if (el2) el2.textContent = `${deg}°`;
+  }
+
+  Dv.on('drag', updateVerticalMetrics);
+  updateVerticalMetrics();
+
+  // 3. Mini-Quiz Checkers for Geometry
   window.checkGeomQuiz = function(qNum, correctVal) {
     const input = document.getElementById(`geom-q${qNum}`);
     const fb = document.getElementById(`geom-fb${qNum}`);
