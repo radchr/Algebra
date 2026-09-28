@@ -14,18 +14,18 @@ env = os.environ.copy()
 clean_paths = [p for p in env.get("PATH", "").split(";") if not p.lower().endswith(".exe")]
 env["PATH"] = ";".join(clean_paths)
 
-print("Starting LaTeX compilation pass 1...")
+print("Starting XeLaTeX compilation pass 1...")
 res1 = subprocess.run(
-    ["pdflatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
+    ["xelatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
     cwd=BOOK_DIR,
     env=env,
     capture_output=True
 )
 print("Pass 1 finished, exit code:", res1.returncode)
 
-print("Starting LaTeX compilation pass 2 (TOC & cross-refs)...")
+print("Starting XeLaTeX compilation pass 2 (TOC & cross-refs)...")
 res2 = subprocess.run(
-    ["pdflatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
+    ["xelatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
     cwd=BOOK_DIR,
     env=env,
     capture_output=True
