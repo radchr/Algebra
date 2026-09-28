@@ -1,6 +1,10 @@
 # 📐 Інтерактивний Кисельов — Математика 7 клас
 
+[![Deploy to GitHub Pages](https://github.com/radchr/Algebra/actions/workflows/deploy.yml/badge.svg)](https://github.com/radchr/Algebra/actions/workflows/deploy.yml)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-brightgreen?style=flat&logo=github)](https://radchr.github.io/Algebra/)
+
 Сучасна українська інтерактивна освітня платформа на базі класичних підручників **А. П. Кисельова**, адаптована до чинної програми 7 класу (НУШ) та синхронізована зі шкільними підручниками **А. Г. Мерзляка** (Алгебра та Геометрія).
+
 
 ---
 
