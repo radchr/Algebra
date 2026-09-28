@@ -1,0 +1,25 @@
+# Environment and API keys
+.env
+.env.*
+*.env
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+__marimo__/
+*.log
+
+# Scratch and temporary directories
+scratch/
+.scratch/
+
+# Virtual environments
+.venv
+
+# OS files
+.DS_Store
+Thumbs.db

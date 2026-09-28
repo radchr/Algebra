@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 1: Суміжні та вертикальні кути — Геометрія 7 клас</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+  <script defer src="js/geometry.js"></script>
+</head>
+<body>
+
+  <!-- Навігаційна панель -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <span>📐 Інтерактивний Кисельов</span>
+        <span class="brand-badge">7 клас</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Головна</a></li>
+        <li><a href="algebra-expressions.html" class="nav-link">Алгебра</a></li>
+        <li><a href="geometry-angles.html" class="nav-link active">Геометрія</a></li>
+        <li><a href="assets/zadachi_1_29_ukr.pdf" target="_blank" class="nav-link">PDF Задачник</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container lesson-layout">
+    <!-- Хлібні крихти та заголовок уроку -->
+    <div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">
+        <a href="index.html" style="color: var(--primary); text-decoration: none;">Головна</a> / 
+        <span>Геометрія 7 клас (Мерзляк § 1.4)</span>
+      </div>
+      <h1 style="font-size: 26px; font-weight: 800; color: var(--text-main);">
+        § 1. Суміжні та вертикальні кути
+      </h1>
+      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 4px;">
+        Базується на класичному курсі «Элементарная геометрия» А. П. Кисельова (1931 р.). Досліджуємо геометрію експериментально на живому кресленику.
+      </p>
+    </div>
+
+    <!-- БЛОК 1: ТЕОРІЯ ТА ОЗНАЧЕННЯ -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>💡 Крок 1. Теорія: Що таке суміжні кути?</span>
+      </h2>
+
+      <div class="callout callout-didactic">
+        <strong>Означення (Кисельов, Відділ I, § 3):</strong><br>
+        Два кути називаються <strong>суміжними</strong>, якщо в них одна сторона спільна, а дві інші сторони є доповняльними променями (утворюють одну пряму лінію).
+      </div>
+
+      <div class="callout callout-info">
+        <strong>Фундаментальна теорема про суміжні кути:</strong><br>
+        Сума двох суміжних кутів завжди дорівнює розгорнутому куту, тобто <strong>$180^\circ$</strong>:
+        $$\angle AOC + \angle BOC = 180^\circ$$
+        <em>Важливі наслідки:</em>
+        <ul style="margin: 6px 0 0 20px;">
+          <li>Якщо один із суміжних кутів прямий ($90^\circ$), то й інший обов'язково прямий ($180^\circ - 90^\circ = 90^\circ$).</li>
+          <li>Якщо один кут гострий ($< 90^\circ$), то другий завжди тупий ($> 90^\circ$).</li>
+          <li>Два гострих або два тупих кути ніколи не можуть бути суміжними!</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- БЛОК 2: ЖИВЕ ІНТЕРАКТИВНЕ КРЕСЛЕННЯ (JSXGraph) -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>🕹️ Крок 2. Дослід: Порухай кут сам (Експериментальна геометрія)</span>
+      </h2>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px;">
+        <strong>Завдання для учня:</strong> Захопіть мишкою або пальцем синю точку <strong>C</strong> і покрутіть її вліво та вправо. Спостерігайте, як змінюються кути, але їхня сума залишається непохитною!
+      </p>
+
+      <!-- Контейнер для JSXGraph -->
+      <div id="jxg-supplementary" class="jxgbox"></div>
+
+      <!-- Живі показники градусів -->
+      <div class="angle-metric-banner">
+        <div>∠AOC (синій): <span class="metric-highlight" id="val-angle-aoc">60°</span></div>
+        <div>∠BOC (зелений): <span class="metric-highlight" id="val-angle-boc">120°</span></div>
+        <div>Сума: <span class="metric-highlight" id="val-angle-sum" style="color: var(--success);">60° + 120° = 180°</span></div>
+      </div>
+      <div id="angle-type-badge" style="text-align: center; margin-top: 10px; font-size: 13.5px; font-weight: 600;">
+        📐 ∠AOC гострий, а ∠BOC тупий
+      </div>
+    </section>
+
+    <!-- БЛОК 3: ВІДЕО-ПОЯСНЕННЯ (Lite YouTube Embed) -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>🎬 Крок 3. Відео-пояснення: Доведення теореми</span>
+      </h2>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px;">
+        Коротке відео: чому суміжні кути дають $180^\circ$ і чому вертикальні кути завжди рівні.
+      </p>
+
+      <div class="video-facade" onclick="this.innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe>';" style="background: linear-gradient(135deg, #064e3b, #0f172a);">
+        <div class="video-play-btn" style="background: var(--success);">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <div class="video-badge">▶ Відеоурок • Геометрія 7 клас</div>
+      </div>
+    </section>
+
+    <!-- БЛОК 4: МІНІ-ВІКТОРІНА ДЛЯ ЗАКРІПЛЕННЯ -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>🎯 Крок 4. Експрес-перевірка знань</span>
+      </h2>
+
+      <!-- Питання 1 -->
+      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 16px;">
+        <h4 style="margin-bottom: 6px;">Задача 1:</h4>
+        <p style="font-size: 14px; margin-bottom: 10px;">
+          Один із суміжних кутів дорівнює $55^\circ$. Знайдіть градусну міру іншого суміжного кута:
+        </p>
+        <div style="display: flex; gap: 10px; align-items: center; max-width: 320px;">
+          <input type="number" id="geom-q1" class="answer-input" placeholder="Градуси...">
+          <button class="btn btn-primary" onclick="checkGeomQuiz(1, 125)">Відповісти</button>
+        </div>
+        <div id="geom-fb1" class="feedback-box"></div>
+      </div>
+
+      <!-- Питання 2 -->
+      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px;">
+        <h4 style="margin-bottom: 6px;">Задача 2:</h4>
+        <p style="font-size: 14px; margin-bottom: 10px;">
+          Два суміжних кути рівні між собою. Яка градусна міра кожного з них?
+        </p>
+        <div style="display: flex; gap: 10px; align-items: center; max-width: 320px;">
+          <input type="number" id="geom-q2" class="answer-input" placeholder="Градуси...">
+          <button class="btn btn-primary" onclick="checkGeomQuiz(2, 90)">Відповісти</button>
+        </div>
+        <div id="geom-fb2" class="feedback-box"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Проєкт «Інтерактивний Кисельов» • Геометрія 7 клас (за Мерзляком) • Відкритий код</p>
+    </div>
+  </footer>
+
+</body>
+</html>

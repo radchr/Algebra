@@ -1,0 +1,219 @@
+[
+  {
+    "id": 1,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "1. Сторона квадрата равна a м; выразить его периметр, затем его площадь.",
+    "text_uk": "Сторона квадрата дорівнює a м. Виразіть його периметр P, а потім його площу S.",
+    "text_en": "The side of a square is a m. Express its perimeter P, then its area S.",
+    "variables": ["a"],
+    "sub_questions": [
+      {
+        "id": "perimeter",
+        "label_uk": "Периметр квадрата P:",
+        "label_en": "Perimeter P:",
+        "expected_latex": "4a",
+        "sympy_expr": "4*a"
+      },
+      {
+        "id": "area",
+        "label_uk": "Площа квадрата S:",
+        "label_en": "Area S:",
+        "expected_latex": "a^2",
+        "sympy_expr": "a**2"
+      }
+    ],
+    "hints_uk": [
+      "Згадайте геометричне означення периметра: як знайти загальну довжину межі многокутника?",
+      "Квадрат має 4 однакові сторони завдовжки a. А площа квадрата — це добуток двох його вимірів.",
+      "Периметр — це сума довжин усіх чотирьох сторін. Площа — це сторона, помножена сама на себе (використайте степінь)."
+    ],
+    "hints_en": [
+      "Recall the geometric definition of perimeter: how do you find the total boundary length of a polygon?",
+      "A square has 4 equal sides of length a. The area is the product of its two equal dimensions.",
+      "Perimeter is the sum of all 4 sides. Area is the side multiplied by itself (use an exponent)."
+    ]
+  },
+  {
+    "id": 2,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "2. Если ребро куба равно m см, как выразятся его поверхность, его объем?",
+    "text_uk": "Якщо ребро куба дорівнює m см, як виразити площу його повної поверхні S та його об'єм V?",
+    "text_en": "If the edge of a cube is m cm, how are its total surface area S and its volume V expressed?",
+    "variables": ["m"],
+    "sub_questions": [
+      {
+        "id": "surface",
+        "label_uk": "Повна поверхня куба S:",
+        "label_en": "Total surface area S:",
+        "expected_latex": "6m^2",
+        "sympy_expr": "6*m**2"
+      },
+      {
+        "id": "volume",
+        "label_uk": "Об'єм куба V:",
+        "label_en": "Volume V:",
+        "expected_latex": "m^3",
+        "sympy_expr": "m**3"
+      }
+    ],
+    "hints_uk": [
+      "Скільки граней має просторовий куб і яку геометричну форму має кожна окрема грань?",
+      "Знайдіть площу однієї квадратної грані з ребром m, а потім помножте її на загальну кількість граней куба.",
+      "Повна поверхня куба складається з 6 квадратних граней. Об'єм прямокутного просторового тіла дорівнює добутку трьох його вимірів (довжина × ширина × висота)."
+    ],
+    "hints_en": [
+      "How many faces does a 3D cube have, and what shape is each individual face?",
+      "Find the area of a single square face with edge m, then multiply by the total number of faces.",
+      "Total surface consists of 6 square faces. Volume of a rectangular solid is the product of its three dimensions (length × width × height)."
+    ]
+  },
+  {
+    "id": 3,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "3. У прямоугольника основание равно x м, а высота на d м короче основания. Выразить его площадь.",
+    "text_uk": "У прямокутника основа дорівнює x м, а висота на d м коротша за основу. Виразіть його площу S.",
+    "text_en": "The base of a rectangle is x m, and the height is d m shorter than the base. Express its area S.",
+    "variables": ["x", "d"],
+    "sub_questions": [
+      {
+        "id": "area",
+        "label_uk": "Площа прямокутника S:",
+        "label_en": "Rectangle area S:",
+        "expected_latex": "x(x - d)",
+        "sympy_expr": "x*(x - d)"
+      }
+    ],
+    "hints_uk": [
+      "Що означає математично фраза 'висота на d метрів коротша за основу'?",
+      "Виразіть висоту прямокутника за допомогою дії віднімання, знаючи, що основа дорівнює x.",
+      "Площа прямокутника дорівнює основі, помноженій на висоту. Помножте x на отриманий вираз для висоти (дужки можна як розкривати, так і залишати)."
+    ],
+    "hints_en": [
+      "What does 'height is d meters shorter than base' mean mathematically?",
+      "Express the height using subtraction, knowing that the base is x.",
+      "The area is base multiplied by height. Multiply x by your height expression (you may leave parentheses or expand them)."
+    ]
+  },
+  {
+    "id": 5,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "5. Основание прямоугольника равно 2a+b, а его высота есть 2a-b, как выразится площадь этого прямоугольника?",
+    "text_uk": "Основа прямокутника дорівнює 2a + b, а його висота становить 2a - b. Як виразити площу S цього прямокутника?",
+    "text_en": "The base of a rectangle is 2a + b, and its height is 2a - b. How is the area S of this rectangle expressed?",
+    "variables": ["a", "b"],
+    "sub_questions": [
+      {
+        "id": "area",
+        "label_uk": "Площа S:",
+        "label_en": "Area S:",
+        "expected_latex": "(2a + b)(2a - b)",
+        "sympy_expr": "(2*a + b)*(2*a - b)"
+      }
+    ],
+    "hints_uk": [
+      "Пригадайте загальне правило знаходження площі прямокутника за довжинами його суміжних сторін.",
+      "Візьміть кожен із двох заданих виразів у дужки та складіть їхній алгебраїчний добуток.",
+      "Запишіть добуток двох двочленів. Система прийме як форму у вигляді добутку дужок, так і форму після розкриття дужок (різницю квадратів)."
+    ],
+    "hints_en": [
+      "Recall the general formula for finding the area of a rectangle from adjacent sides.",
+      "Enclose each given expression in parentheses and write their algebraic product.",
+      "Write the product of the two binomials. The system accepts both factored form and expanded form."
+    ]
+  },
+  {
+    "id": 11,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "11. Некоторое двузначное число содержит x десятков и y простых единиц; сколько всех единиц в этом числе?",
+    "text_uk": "Деяке двоцифрове число містить x десятків та y одиниць. Скільки всього одиниць у цьому числі (запишіть число формулою)?",
+    "text_en": "A two-digit number contains x tens and y units. How many total units are in this number (write the formula)?",
+    "variables": ["x", "y"],
+    "sub_questions": [
+      {
+        "id": "num",
+        "label_uk": "Значення числа N:",
+        "label_en": "Number value N:",
+        "expected_latex": "10x + y",
+        "sympy_expr": "10*x + y"
+      }
+    ],
+    "hints_uk": [
+      "Подумайте про десяткову позиційну систему числення: яку вагу має розряд десятків порівняно з одиницями?",
+      "Кожен десяток складається з 10 простих одиниць. Скільки одиниць дають x таких десятків?",
+      "Помножте кількість десятків на 10 і додайте до отриманого добутку кількість простих одиниць y."
+    ],
+    "hints_en": [
+      "Think about decimal positional notation: what is the numerical weight of the tens place compared to the units place?",
+      "Every ten consists of 10 single units. How many units do x tens provide?",
+      "Multiply the number of tens by 10 and add the units y."
+    ]
+  },
+  {
+    "id": 12,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "12. В трехзначном числе имеется a сотен, b десятков и c простых единиц. Какой формулой можно выразить все число единиц, содержащееся в этом числе?",
+    "text_uk": "У трицифровому числі є a сотень, b десятків та c одиниць. Якою формулою можна виразити це число?",
+    "text_en": "A three-digit number has a hundreds, b tens, and c units. What formula expresses this number?",
+    "variables": ["a", "b", "c"],
+    "sub_questions": [
+      {
+        "id": "num3",
+        "label_uk": "Трицифрове число N:",
+        "label_en": "Three-digit number N:",
+        "expected_latex": "100a + 10b + c",
+        "sympy_expr": "100*a + 10*b + c"
+      }
+    ],
+    "hints_uk": [
+      "Яку числову вагу мають розряди сотень, десятків та простих одиниць?",
+      "Визначте кількість одиниць, яку дають a сотень і b десятків окремо.",
+      "Складіть суму внесків усіх трьох розрядів: сотні помножте на 100, десятки на 10, та додайте одиниці c."
+    ],
+    "hints_en": [
+      "What numerical weight do hundreds, tens, and units places have?",
+      "Determine the number of units provided by a hundreds and b tens separately.",
+      "Sum the contributions of all three places: hundreds multiplied by 100, tens by 10, plus units c."
+    ]
+  },
+  {
+    "id": 15,
+    "section_id": 1,
+    "section_title_uk": "§§ 1—5. Алгебраїчні вирази та буквені позначення",
+    "section_title_en": "§§ 1–5. Algebraic Notation and Expressions",
+    "original_ru": "15. Некоторое целое число при делении его на 5 дает остаток 2; изобразить это число формулой.",
+    "text_uk": "Деяке ціле число при діленні на 5 дає остачу 2. Запишіть це число у вигляді формули через змінну n (або k).",
+    "text_en": "An integer yields a remainder of 2 when divided by 5. Express this number as a formula with variable n (or k).",
+    "variables": ["n", "k"],
+    "sub_questions": [
+      {
+        "id": "rem",
+        "label_uk": "Число N:",
+        "label_en": "Number N:",
+        "expected_latex": "5n + 2",
+        "sympy_expr": "5*n + 2"
+      }
+    ],
+    "hints_uk": [
+      "Пригадайте формулу ділення з остачею: як пов'язані ділене, дільник, неповна частка та остача?",
+      "Нехай неповна частка дорівнює цілому числу n. Який вигляд має будь-яке число, що ділиться на 5 націло?",
+      "Число, що ділиться на 5 без остачі, дорівнює 5n. Додайте до нього остачу 2, щоб отримати шукане число."
+    ],
+    "hints_en": [
+      "Recall the division-with-remainder theorem: how are dividend, divisor, quotient, and remainder related?",
+      "Let the quotient be integer n. What does any number divisible by 5 without remainder look like?",
+      "A multiple of 5 is 5n. Add the remainder 2 to get the requested number."
+    ]
+  }
+]

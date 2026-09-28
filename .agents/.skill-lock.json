@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "skills": {
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-14T11:09:29.938Z",
+      "updatedAt": "2026-05-14T11:09:29.938Z"
+    }
+  },
+  "dismissed": {}
+}

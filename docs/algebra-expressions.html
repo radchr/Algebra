@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 1: Буквені вирази та формули — Алгебра 7 клас</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/algebra.js"></script>
+</head>
+<body>
+
+  <!-- Навігаційна панель -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <span>📐 Інтерактивний Кисельов</span>
+        <span class="brand-badge">7 клас</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Головна</a></li>
+        <li><a href="algebra-expressions.html" class="nav-link active">Алгебра</a></li>
+        <li><a href="geometry-angles.html" class="nav-link">Геометрія</a></li>
+        <li><a href="assets/zadachi_1_29_ukr.pdf" target="_blank" class="nav-link">PDF Задачник</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container lesson-layout">
+    <!-- Хлібні крихти та заголовок уроку -->
+    <div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">
+        <a href="index.html" style="color: var(--primary); text-decoration: none;">Головна</a> / 
+        <span>Алгебра 7 клас (Мерзляк § 1)</span>
+      </div>
+      <h1 style="font-size: 26px; font-weight: 800; color: var(--text-main);">
+        § 1. Буквені вирази, формули та порядок дій
+      </h1>
+      <p style="color: var(--text-muted); font-size: 14.5px; margin-top: 4px;">
+        Базується на перших розділах класичного курсу А. П. Кисельова (1928/1931 рр.). Вчимося розмовляти мовою алгебри.
+      </p>
+    </div>
+
+    <!-- БЛОК 1: ТЕОРІЯ ТА ІНТУЇЦІЯ -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>💡 Крок 1. Інтуїція та теорія: Навіщо в математиці букви?</span>
+      </h2>
+
+      <div class="callout callout-info">
+        <strong>Чому літери кращі за числа?</strong><br>
+        Число $5 + 3 = 8$ говорить лише про п'ятірку і трійку. А запис $a + b = b + a$ стверджує фундаментальний закон для <em>будь-яких чисел у Всесвіті</em>: від перестановки доданків сума не змінюється! Буква — це універсальна скринька, куди можна покласти будь-яке число.
+      </div>
+
+      <p style="margin-bottom: 12px;">
+        У підручнику Кисельова сформульовано кілька ключових правил, які дитина повинна засвоїти з перших днів:
+      </p>
+
+      <ul style="margin-left: 20px; margin-bottom: 16px; font-size: 14px;">
+        <li style="margin-bottom: 6px;">
+          <strong>Знак множення між буквами не пишуть:</strong> замість $a \times b$ пишуть просто $ab$.
+        </li>
+        <li style="margin-bottom: 6px;">
+          <strong>Позиційний запис чисел:</strong> якщо двоцифрове число має $x$ десятків та $y$ одиниць, ми не можемо написати $xy$ (бо це означало б множення $x \cdot y$). Справжня кількість одиниць у ньому: $\mathbf{10x + y}$.
+        </li>
+        <li style="margin-bottom: 6px;">
+          <strong>Головна пастка 7 класу:</strong> відчуйте різницю!
+          <ul style="margin: 6px 0 6px 20px;">
+            <li>$a^2 + b^2$ — це <em>сума квадратів</em> (головна дія — додавання);</li>
+            <li>$(a + b)^2$ — це <em>квадрат суми</em> (головна дія — піднесення до квадрата). Запам'ятайте: $(a + b)^2 \ne a^2 + b^2$!</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="callout callout-didactic">
+        <strong>📖 Правило старшинства дій Кисельова:</strong><br>
+        Якщо вираз не містить дужок, дії виконуються строго за старшинством:
+        <strong>1. Ступінь</strong> (піднесення до квадрата/куба) $\longrightarrow$ 
+        <strong>2. Множення та ділення</strong> $\longrightarrow$ 
+        <strong>3. Додавання та віднімання</strong>.<br>
+        Дужки потрібні лише тоді, коли ми хочемо порушити це правило і змусити додати або відняти числа раніше!
+      </div>
+    </section>
+
+    <!-- БЛОК 2: ВІДЕО-ПОЯСНЕННЯ (Lite YouTube Embed) -->
+    <section class="lesson-card">
+      <h2 class="section-title">
+        <span>🎬 Крок 2. Відео-пояснення (Анімація Manim)</span>
+      </h2>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px;">
+        Наочна 2-хвилинна геометрична анімація: чому площа прямокутника $(2a+b)(2a-b)$ перетворюється на $4a^2 - b^2$.
+      </p>
+
+      <!-- Легкий фасад YouTube (0 KB трафіку до кліку) -->
+      <div class="video-facade" onclick="this.innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe>';" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+        <div class="video-play-btn">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <div class="video-badge">▶ Відеоурок • 2:45 хв</div>
+      </div>
+    </section>
+
+    <!-- БЛОК 3: ІНТЕРАКТИВНИЙ ТРЕНАЖЕР ЗАДАЧ (1–29) -->
+    <section class="lesson-card" id="solver-section">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+        <h2 class="section-title" style="border: none; margin: 0; padding: 0;">
+          <span>🕹️ Крок 3. Розумний тренажер задач Кисельова</span>
+        </h2>
+        <div style="font-size: 13px; font-weight: 700; color: var(--text-muted);">
+          Розв'язано: <span id="solved-count" style="color: var(--success);">0 / 29</span>
+        </div>
+      </div>
+
+      <p style="font-size: 13.5px; color: var(--text-muted); margin: 8px 0 16px 0;">
+        Оберіть номер задачі, введіть відповідь і перевірте себе. Якщо виникне затримка — відкрийте сократівські підказки.
+      </p>
+
+      <!-- Перемикач номерів задач 1–29 -->
+      <div class="problem-selector" id="prob-selector"></div>
+
+      <!-- Зона відображення поточної задачі -->
+      <div class="problem-box" id="problem-view-area">
+        <span class="problem-num-badge" id="prob-badge">Задача 1 з 29</span>
+        <h3 id="prob-title" style="font-size: 16px; font-weight: 700; margin-bottom: 8px;"></h3>
+        <div class="problem-statement" id="prob-statement"></div>
+
+        <!-- Поле введення відповіді -->
+        <div class="answer-row">
+          <input type="text" id="ans-input" class="answer-input" placeholder="Введіть вашу відповідь..." 
+                 onkeydown="if(event.key==='Enter') checkCurrentAnswer();">
+          <button class="btn btn-primary" onclick="checkCurrentAnswer()">
+            Перевірити ✓
+          </button>
+          <button class="btn btn-outline" onclick="prevProblem()">← Назад</button>
+          <button class="btn btn-outline" onclick="nextProblem()">Вперед →</button>
+        </div>
+
+        <!-- Зворотний зв'язок (Alert) -->
+        <div id="feedback-box" class="feedback-box"></div>
+
+        <!-- 3-рівневі Сократівські підказки -->
+        <div class="hints-container">
+          <div class="hint-step">
+            <div class="hint-trigger" onclick="toggleHint(1)">
+              <span>💡 Підказка 1 (Концептуальний натяк)</span>
+              <span>▾</span>
+            </div>
+            <div class="hint-body" id="hint-body-1">
+              <span id="hint-1-text"></span>
+            </div>
+          </div>
+
+          <div class="hint-step">
+            <div class="hint-trigger" onclick="toggleHint(2)">
+              <span>📐 Підказка 2 (Формульний крок)</span>
+              <span>▾</span>
+            </div>
+            <div class="hint-body" id="hint-body-2">
+              <span id="hint-2-text"></span>
+            </div>
+          </div>
+
+          <div class="hint-step">
+            <div class="hint-trigger" onclick="toggleHint(3)">
+              <span>📖 Підказка 3 (Повний розбір розв'язку)</span>
+              <span>▾</span>
+            </div>
+            <div class="hint-body" id="hint-body-3">
+              <span id="hint-3-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК 4: ЗАВАНТАЖЕННЯ PDF -->
+    <section class="lesson-card" style="background: #f8fafc; text-align: center;">
+      <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">Потрібно потренуватися ручкою в зошиті?</h3>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+        Завантажте чистий задачник або повний збірник покрокових розв'язань для друку:
+      </p>
+      <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+        <a href="assets/zadachi_1_29_ukr.pdf" target="_blank" class="btn btn-primary">
+          📥 Завантажити Задачі 1–29 (PDF)
+        </a>
+        <a href="assets/vidpovidi_1_29_ukr.pdf" target="_blank" class="btn btn-outline">
+          📘 Завантажити Відповіді з розбором (PDF)
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Проєкт «Інтерактивний Кисельов» • Синхронізація з підручником Мерзляка 7 клас • Відкритий код</p>
+    </div>
+  </footer>
+
+</body>
+</html>

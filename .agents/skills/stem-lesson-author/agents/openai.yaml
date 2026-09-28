@@ -1,0 +1,7 @@
+interface:
+  display_name: "STEM Lesson Author"
+  short_description: "Створення інтерактивних STEM-уроків 7 класу"
+  default_prompt: "Use $stem-lesson-author to turn my topic or draft scenario into an approved interactive STEM lesson for grade 7."
+
+policy:
+  allow_implicit_invocation: true
