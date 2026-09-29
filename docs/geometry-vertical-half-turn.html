@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вертикальні кути через поворот - Інтерактивний Кисельов</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <script defer src="js/geometry-motion.js"></script>
+</head>
+<body data-demo="vertical-half-turn">
+  <main class="motion-shell">
+    <a class="motion-back" href="geometry-angles.html">← До розділу «Кути»</a>
+    <article class="motion-card">
+      <header class="motion-header">
+        <div class="motion-kicker">Побачити через рух · § 25</div>
+        <h1>Півоберт суміщає вертикальні кути</h1>
+        <p class="motion-claim">Повертай фіолетову копію синього кута навколо точки O. Після повороту на 180° його сторони ляжуть на протилежні промені.</p>
+      </header>
+      <div class="motion-stage-wrap">
+        <svg id="motion-stage" class="motion-stage" viewBox="0 0 640 400" role="img" aria-label="Копія кута повертається на 180 градусів і суміщається з вертикальним кутом"></svg>
+      </div>
+      <div class="motion-controls">
+        <label class="motion-control-label" for="motion-slider">Кут повороту копії
+          <input id="motion-slider" type="range" min="0" max="180" value="0" step="1">
+        </label>
+        <div class="motion-actions"><button id="motion-play" class="motion-button" type="button">▶ Виконати півоберт</button><output id="motion-value" class="motion-value" for="motion-slider"></output></div>
+      </div>
+      <div class="motion-legend"><span class="legend-blue">початковий кут</span><span class="legend-purple">його рухома копія</span></div>
+      <div class="motion-explanation">
+        <section class="motion-note"><h2>Чому це є доведенням</h2><p>Поворот не змінює величини кутів. За 180° кожен промінь переходить у протилежний, тому початковий кут точно суміщається з вертикальним.</p></section>
+        <aside class="motion-note fact"><h2>Цікавий факт</h2><p>Поворот на 180° називають також центральною симетрією. Два такі повороти повертають фігуру в початкове положення.</p></aside>
+      </div>
+      <noscript><p class="motion-note">Для рухомого креслення потрібен JavaScript. Основне пояснення повністю наведене в PDF.</p></noscript>
+    </article>
+  </main>
+</body>
+</html>

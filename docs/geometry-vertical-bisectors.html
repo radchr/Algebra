@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Бісектриси вертикальних кутів - Інтерактивний Кисельов</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <script defer src="js/geometry-motion.js"></script>
+</head>
+<body data-demo="vertical-bisectors">
+  <main class="motion-shell">
+    <a class="motion-back" href="geometry-angles.html">← До розділу «Кути»</a>
+    <article class="motion-card">
+      <header class="motion-header">
+        <div class="motion-kicker">Побачити через рух · Вправа 5</div>
+        <h1>Бісектриси вертикальних кутів лежать на одній прямій</h1>
+        <p class="motion-claim">Змінюй кут між прямими. Бісектриси протилежних кутів завжди залишаються протилежними променями.</p>
+      </header>
+      <div class="motion-stage-wrap">
+        <svg id="motion-stage" class="motion-stage" viewBox="0 0 640 400" role="img" aria-label="Бісектриси вертикальних кутів утворюють одну пряму"></svg>
+      </div>
+      <div class="motion-controls">
+        <label class="motion-control-label" for="motion-slider">Кут між двома прямими
+          <input id="motion-slider" type="range" min="20" max="160" value="70" step="2">
+        </label>
+        <output id="motion-value" class="motion-value" for="motion-slider"></output>
+      </div>
+      <div class="motion-legend"><span class="legend-purple">вертикальні кути</span><span class="legend-blue">їхні бісектриси</span></div>
+      <div class="motion-explanation">
+        <section class="motion-note"><h2>Чому це працює</h2><p>Півоберт переносить перший вертикальний кут у другий. Разом із кутом він переносить його бісектрису в протилежний промінь.</p></section>
+        <aside class="motion-note fact"><h2>Цікавий факт</h2><p>Бісектриси всіх чотирьох кутів при перетині двох прямих утворюють дві взаємно перпендикулярні прямі.</p></aside>
+      </div>
+      <noscript><p class="motion-note">Для рухомого креслення потрібен JavaScript. Основне пояснення повністю наведене в PDF.</p></noscript>
+    </article>
+  </main>
+</body>
+</html>

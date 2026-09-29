@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кут як поворот - Інтерактивний Кисельов</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <script defer src="js/geometry-motion.js"></script>
+</head>
+<body data-demo="angle-rotation">
+  <main class="motion-shell">
+    <a class="motion-back" href="geometry-angles.html">← До розділу «Кути»</a>
+    <article class="motion-card">
+      <header class="motion-header">
+        <div class="motion-kicker">Побачити через рух · § 13</div>
+        <h1>Кут показує величину повороту</h1>
+        <p class="motion-claim">Змінюй положення променя. Кут визначається поворотом навколо вершини, а не довжиною намальованих сторін.</p>
+      </header>
+      <div class="motion-stage-wrap">
+        <svg id="motion-stage" class="motion-stage" viewBox="0 0 640 400" role="img" aria-label="Промінь обертається навколо вершини й утворює кут"></svg>
+      </div>
+      <div class="motion-controls">
+        <label class="motion-control-label" for="motion-slider">Поворот променя OB
+          <input id="motion-slider" type="range" min="0" max="360" value="60" step="1">
+        </label>
+        <output id="motion-value" class="motion-value" for="motion-slider"></output>
+      </div>
+      <div class="motion-explanation">
+        <section class="motion-note"><h2>Чому це працює</h2><p>Вершина O залишається нерухомою, а промінь OB змінює напрям. Кількість градусів вимірює саме виконаний поворот.</p></section>
+        <aside class="motion-note fact"><h2>Цікавий факт</h2><p>Повний оберт складається з чотирьох прямих кутів: 4 · 90° = 360°.</p></aside>
+      </div>
+      <noscript><p class="motion-note">Для рухомого креслення потрібен JavaScript. Основне пояснення повністю наведене в PDF.</p></noscript>
+    </article>
+  </main>
+</body>
+</html>

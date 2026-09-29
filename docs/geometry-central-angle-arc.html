@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Центральний кут і дуга - Інтерактивний Кисельов</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <script defer src="js/geometry-motion.js"></script>
+</head>
+<body data-demo="central-angle-arc">
+  <main class="motion-shell">
+    <a class="motion-back" href="geometry-angles.html">← До розділу «Кути»</a>
+    <article class="motion-card">
+      <header class="motion-header">
+        <div class="motion-kicker">Побачити через рух · § 17</div>
+        <h1>Рівні центральні кути відтинають рівні дуги</h1>
+        <p class="motion-claim">Змінюй спільну величину кутів у двох рівних колах. Зелені дуги змінюються разом і завжди залишаються рівними.</p>
+      </header>
+      <div class="motion-stage-wrap">
+        <svg id="motion-stage" class="motion-stage" viewBox="0 0 640 400" role="img" aria-label="Два рівні кола з рівними центральними кутами та рівними дугами"></svg>
+      </div>
+      <div class="motion-controls">
+        <label class="motion-control-label" for="motion-slider">Величина обох центральних кутів
+          <input id="motion-slider" type="range" min="15" max="170" value="70" step="1">
+        </label>
+        <output id="motion-value" class="motion-value" for="motion-slider"></output>
+      </div>
+      <div class="motion-legend"><span class="legend-purple">центральний кут</span><span class="legend-green">відповідна дуга</span></div>
+      <div class="motion-explanation">
+        <section class="motion-note"><h2>Чому це працює</h2><p>Якщо сумістити центри та один радіус двох рівних кіл, рівність кутів сумістить і другі радіуси. Тому сумістяться відповідні дуги.</p></section>
+        <aside class="motion-note fact"><h2>Цікавий факт</h2><p>У старших класах це стане формулою s = rθ, де θ виміряно в радіанах.</p></aside>
+      </div>
+      <noscript><p class="motion-note">Для рухомого креслення потрібен JavaScript. Основне пояснення повністю наведене в PDF.</p></noscript>
+    </article>
+  </main>
+</body>
+</html>

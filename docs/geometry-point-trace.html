@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Як рух точки народжує лінію - Інтерактивний Кисельов</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <script type="module" src="js/geometry/point-trace.js"></script>
+</head>
+<body data-demo="point-trace">
+  <main class="motion-shell">
+    <a class="motion-back" href="index.html">← До матеріалів з геометрії</a>
+    <article class="motion-card">
+      <header class="motion-header">
+        <div class="motion-kicker">Побачити через рух · Вступ</div>
+        <h1>Рухома точка залишає лінію</h1>
+        <p class="motion-claim">Форма сліду залежить не від самої точки, а від того, чи змінюється напрям її руху.</p>
+      </header>
+
+      <form id="prediction-form" class="motion-predict">
+        <h2>Передбач</h2>
+        <p>За якої умови слід точки буде прямим?</p>
+        <div class="motion-options">
+          <label class="motion-option"><input type="radio" name="prediction" value="straight"> Напрям руху весь час сталий</label>
+          <label class="motion-option"><input type="radio" name="prediction" value="speed"> Точка весь час рухається швидко</label>
+          <label class="motion-option"><input type="radio" name="prediction" value="size"> Точку намальовано дуже малою</label>
+        </div>
+        <button class="motion-button" type="submit">Перевірити прогноз</button>
+        <p id="prediction-feedback" class="motion-feedback" aria-live="polite"></p>
+      </form>
+
+      <div class="motion-stage-wrap">
+        <svg id="motion-stage" class="motion-stage" viewBox="0 0 640 400" role="img" aria-label="Точка рухається і залишає прямий або кривий слід"></svg>
+      </div>
+      <div class="motion-controls">
+        <fieldset id="motion-control-fieldset" disabled>
+          <div class="motion-options">
+            <label class="motion-option"><input type="radio" name="trace-mode" value="straight" checked> Сталий напрям</label>
+            <label class="motion-option"><input type="radio" name="trace-mode" value="curve"> Напрям змінюється</label>
+          </div>
+          <label class="motion-control-label" for="motion-slider">Просунь точку вздовж шляху
+            <input id="motion-slider" type="range" min="0" max="100" value="65" step="1">
+          </label>
+        </fieldset>
+        <output id="motion-value" class="motion-value" for="motion-slider"></output>
+      </div>
+
+      <div class="motion-explanation">
+        <section class="motion-note"><h2>Що залишається незмінним</h2><p>Для прямої незмінним є <span class="motion-invariant">напрям руху</span>. Якщо напрям повільно змінюється, слід стає кривим.</p></section>
+        <aside class="motion-note fact"><h2>Місток до книги</h2><p>Це наочна модель виникнення лінії. Строге поняття прямої задається її геометричними властивостями.</p></aside>
+      </div>
+
+      <section class="motion-mission">
+        <h2>Місія</h2>
+        <p>На кресленні залишився вигнутий слід. Що відбувалося під час руху?</p>
+        <div class="motion-choice-grid">
+          <button class="motion-button secondary" type="button" data-mission-answer="constant">Напрям був сталим</button>
+          <button class="motion-button secondary" type="button" data-mission-answer="changing">Напрям змінювався</button>
+        </div>
+        <p id="mission-feedback" class="motion-feedback" aria-live="polite"></p>
+      </section>
+      <noscript><p class="motion-note">Для рухомого креслення потрібен JavaScript. Основне пояснення повністю наведене в PDF.</p></noscript>
+    </article>
+  </main>
+</body>
+</html>
