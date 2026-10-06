@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p019.ex03.construct-bisector",
+  "kind": "exercise",
+  "ordinal": "3",
+  "title_uk": "Вправа 3",
+  "title_ru": "Упражнение 3",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 20,
+      "printed_page": 19,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_020_300dpi.png",
+      "image_sha256": "5e1563061b0aafc138578cae4158df544e8eaea31258714c5f9b695dd7587ebf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Построить какой-нибудь угол и при помощи транспортира и линейки провести его биссектрису.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Побудуйте довільний кут і за допомогою транспортира та лінійки проведіть його бісектрису.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Розв'язання:*\n1. Накреслити довільний кут $\\angle AOB$.\n2. Прикласти транспортир центром до вершини $O$ і виміряти градусну міру кута $\\alpha$.\n3. Обчислити положення бісектриси: $\\frac{\\alpha}{2}$.\n4. Поставити точку на шкалі транспортира навпроти значення $\\frac{\\alpha}{2}$ і за допомогою лінійки сполучити вершину $O$ з цією точкою променем. Цей промінь і є бісектрисою.",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

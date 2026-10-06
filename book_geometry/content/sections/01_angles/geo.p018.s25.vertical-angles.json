@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p018.s25.vertical-angles",
+  "kind": "theorem",
+  "ordinal": "25",
+  "title_uk": "Вертикальні кути",
+  "title_ru": "Вертикальные углы",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 19,
+      "printed_page": 18,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_019_300dpi.png",
+      "image_sha256": "816a114a696c1634edb83bff74301adf99718e08122365f385d37c265f9d53f6",
+      "bbox": null
+    },
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 20,
+      "printed_page": 19,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_020_300dpi.png",
+      "image_sha256": "5e1563061b0aafc138578cae4158df544e8eaea31258714c5f9b695dd7587ebf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Два угла называются **вертикальными**, если стороны одного составляют продолжение сторон другого. Так, при пересечении двух прямых $AB$ и $CD$ (черт. 24) образуются две пары вертикальных углов: $AOD$ и $COB$, $AOC$ и $DOB$ (и 4 пары смежных углов).\n\n**Два вертикальных угла равны между собою** (например $\\angle AOD = \\angle BOC$), так как каждый из них есть смежный с одним и тем же углом (с $\\angle DOB$ или с $\\angle AOC$), а такие углы, как мы видели (22), равны друг другу.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Два кути називаються **вертикальними**, якщо сторони одного кута є доповняльними променями сторін другого. При перетині двох прямих $AB$ і $CD$ (рис. 24) утворюються дві пари вертикальних кутів ($AOD$ і $COB$, $AOC$ і $DOB$).\n\n$$\\mathbf{Вертикальні\\ кути\\ рівні\\ між\\ собою:}\\quad \\angle AOD = \\angle BOC.$$",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "editorial_explanation",
+      "title_uk": "Модель ножиць",
+      "text_uk": "Візьми канцелярські ножиці. Коли розкриваються леза (кут 1), ручки ножиць позаду гвинтика (кут 2) розходяться на такий самий кут!\nЧому? Бо лезо і ручка — це єдина суцільна пряма лінія. Обидві лінії перетинаються в точці $O$. Якщо один кут збільшується на $10^\\circ$, його суміжний сусід зменшується на $10^\\circ$, що змушує вертикальний кут збільшитися на ті самі $10^\\circ$!",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "proof_guide",
+      "title_uk": "Властивість вертикальних кутів",
+      "text_uk": "Нехай при перетині прямих $AB$ і $CD$ утворилися вертикальні кути $\\angle AOD$ та $\\angle BOC$. Обидва ці кути є суміжними з одним і тим самим кутом $\\angle DOB$.\n1. $\\angle AOD + \\angle DOB = 180^\\circ \\implies \\angle AOD = 180^\\circ - \\angle DOB$.\n2. $\\angle BOC + \\angle DOB = 180^\\circ \\implies \\angle BOC = 180^\\circ - \\angle DOB$.\n3. Праві частини однакові, тому й ліві частини рівні: $\\angle AOD = \\angle BOC$. Теорему доведено!",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "interactive_link",
+      "title_uk": "Побачити через рух: вертикальні кути",
+      "text_uk": "Поверни копію кута навколо точки перетину на $180^\\circ$ і побач, як вона суміщається з вертикальним кутом:\n[https://radchr.github.io/Algebra/geometry-vertical-half-turn.html](https://radchr.github.io/Algebra/geometry-vertical-half-turn.html)",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-vertical-half-turn.html"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-024",
+      "source_number": 24,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-024.tex",
+      "alt_uk": "Вертикальні кути при перетині двох прямих",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 446 символів."
+    ]
+  }
+}

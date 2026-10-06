@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p010.s05.segment-equality",
+  "kind": "paragraph",
+  "ordinal": "5",
+  "title_uk": "Рівність і нерівність відрізків",
+  "title_ru": "Равенство и неравенство отрезков",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 11,
+      "printed_page": 10,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_011_300dpi.png",
+      "image_sha256": "a84299774015fe96593799fb513c03f6df66865d11038c8c76a007f16dea1b84",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Два отрезка считаются равными, если они могут быть наложены друг на друга так, что совмещаются. Положим, например, что мы накладываем отрезок $AB$ на отрезок $CD$ (черт. 4) так, чтобы точка $A$ упала на $C$ и чтобы прямая $AB$ пошла по $CD$; если при этом концы $B$ и $D$ совпадут, то отрезки $AB$ и $CD$ считаются равными; в противном случае отрезки будут неравны, причем меньшим считается тот, который составляет часть другого.\n\nЧтобы на какой-нибудь прямой отложить отрезок, равный данному отрезку, употребляют циркуль — прибор, известный учащимся из опыта.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Два відрізки вважають рівними, якщо їх можна накласти один на один так, щоб збіглися обидва кінці. Наприклад, відрізок $AB$ накладають на $CD$ (рис. 4), суміщаючи $A$ з $C$. Якщо при цьому $B$ збігається з $D$, то $AB=CD$. Якщо ні, меншим вважають той відрізок, який становить частину іншого.\n\nЩоб відкласти на прямій відрізок, рівний даному, використовують циркуль.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-004",
+      "source_number": 4,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-004.tex",
+      "alt_uk": "Порівняння відрізків AB і CD",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

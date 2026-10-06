@@ -1,0 +1,12 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=0.9, >=Stealth]
+        \coordinate (O) at (0,0);
+        \draw[->, thick] (O) -- (2.5,0) node[right] {$A$};
+        \draw[->, thick] (O) -- (1.5,2.0) node[above right] {$B$};
+        \draw[->, thick] (O) -- (-1.2,2.0) node[above left] {$C$};
+        \draw[->, thick] (O) -- (-2.0,-0.8) node[left] {$D$};
+        \draw[->, thick] (O) -- (0.5,-2.0) node[below] {$E$};
+
+        \draw[color=primaryblue, thick, ->] (0.6,0) arc (0:350:0.6);
+        \filldraw (O) circle (2pt) node[below left=2pt] {$O$};
+    \end{tikzpicture}

@@ -1,0 +1,29 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=0.9, >=Stealth]
+    % Прямий кут
+    \begin{scope}[xshift=0cm]
+        \draw[thick] (0,0) -- (2.2,0);
+        \draw[thick] (0,0) -- (0,2.2);
+        \draw (0.4,0) -- (0.4,0.4) -- (0,0.4);
+        \draw[dashed] (1.5,0) arc (0:90:1.5);
+        \node at (0.9,0.9) {$90^\circ$};
+        \node at (1.0, -0.5) {\small\textbf{прямий}};
+    \end{scope}
+
+    % Гострий кут
+    \begin{scope}[xshift=4.5cm]
+        \draw[thick] (0,0) -- (2.2,0);
+        \draw[thick] (0,0) -- (1.5,2.0);
+        \draw[color=primaryblue, thick] (0.8,0) arc (0:53:0.8);
+        \node at (1.0, -0.5) {\small\textbf{гострий}};
+    \end{scope}
+
+    % Тупий кут
+    \begin{scope}[xshift=9.0cm]
+        \draw[thick] (0,0) -- (2.2,0);
+        \draw[thick] (0,0) -- (-1.2,1.8);
+        \draw[color=warningred, thick] (0.8,0) arc (0:124:0.8);
+        \node at (0.5, -0.5) {\small\textbf{тупий}};
+    \end{scope}
+
+\end{tikzpicture}

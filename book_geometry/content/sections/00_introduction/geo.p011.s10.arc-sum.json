@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p011.s10.arc-sum",
+  "kind": "paragraph",
+  "ordinal": "10",
+  "title_uk": "Сума дуг",
+  "title_ru": "Сумма дуг",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 12,
+      "printed_page": 11,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_012_300dpi.png",
+      "image_sha256": "f9d73221c767dae490912153606a35b50dbba9abba210fc564907ab6506cdc46",
+      "bbox": null
+    },
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 13,
+      "printed_page": 12,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_013_300dpi.png",
+      "image_sha256": "60be8f95312ddd6a64285bae134760e7171a26c26ccf8a3ba4991e5209172a92",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Суммою нескольких данных дуг одинакового радиуса называется такая дуга того же радиуса, которая составлена из частей, соответственно равных данным дугам. Так, если от произвольной точки $M$ (черт. 7) окружности отложим часть $MN$, равную $AB$, а затем от точки $N$ в том же направлении отложим часть $NP$, равную $CD$, то дуга $MP$ будет суммою дуг $AB$ и $CD$. Подобно этому можно составить сумму трех и более дуг.\n\nСумма дуг, как и сумма отрезков прямой, обладает свойствами — переместительным и сочетательным.\n\nИз понятия о сумме дуг выводятся понятия об их разности, произведении и частном в том же смысле, как и для отрезков прямых.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Суму дуг однакового радіуса будують послідовним відкладанням на тому самому колі. На рис. 7 від точки $M$ відкладають дугу $MN$, рівну першій даній дузі, а потім дугу $NP$, рівну другій. Тоді дуга $MP$ є їхньою сумою.\n\nСума дуг має переставну та сполучну властивості. Аналогічно визначають різницю дуг, множення дуги на число та ділення дуги на число.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-007",
+      "source_number": 7,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-007.tex",
+      "alt_uk": "Додавання дуг однакового радіуса",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

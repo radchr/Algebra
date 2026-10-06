@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p009.s04.line-segment-ray",
+  "kind": "definition",
+  "ordinal": "4",
+  "title_uk": "Пряма, відрізок і промінь",
+  "title_ru": "Прямая конечная и бесконечная",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 10,
+      "printed_page": 9,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_010_300dpi.png",
+      "image_sha256": "f62222f203f60c359e7ac98e7e0bba36b07bb58da883a3ee1bd6dd3577db5482",
+      "bbox": null
+    },
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 11,
+      "printed_page": 10,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_011_300dpi.png",
+      "image_sha256": "a84299774015fe96593799fb513c03f6df66865d11038c8c76a007f16dea1b84",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Если прямую представляют продолженною в обе стороны бесконечно, то ее называют **бесконечною**, или **неограниченною прямой** (черт. 1). Прямую обозначают обыкновенно двумя буквами, поставленными у двух каких-либо ее точек. Так, говорят: «прямая $AB$ или $BA$» (черт. 1).\n\nЧасть прямой, ограниченная с обеих сторон, называется **отрезком прямой**, или **конечною прямой**; такая прямая обыкновенно обозначается двумя буквами, поставленными у концов ее (отрезок $CD$, черт. 2). Иногда прямая или отрезок прямой обозначаются и одною буквою; напр., говорят: прямая $a$, отрезок $b$ и т. п. Для краткости вместо «отрезок прямой» мы будем часто говорить просто «отрезок».\n\nИногда рассматривают прямую, ограниченную только с одной стороны, напр., в точке $A$ (черт. 3). О такой прямой говорят, что она исходит из точки $A$; ее называют **полупрямою** (или **лучом**).",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Пряма нескінченно продовжується в обидва боки (рис. 1). Її позначають малою літерою, наприклад $a$, або двома великими літерами, поставленими біля двох її точок: пряма $AB$.\n\nЧастину прямої, обмежену з обох боків двома точками, називають **відрізком** (відрізок $CD$, рис. 2). Ці точки називають кінцями відрізка.\n\nЧастину прямої, обмежену з одного боку початковою точкою, називають **променем** (рис. 3). Промінь $AB$ починається в точці $A$ і проходить через точку $B$.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "terminology_adaptation",
+      "title_uk": "Сучасні назви",
+      "text_uk": "Кисельов уживав вислови «кінцева пряма» та «півпряма». У сучасній українській шкільній геометрії використовуємо терміни **відрізок** і **промінь**.",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-001",
+      "source_number": 1,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-001.tex",
+      "alt_uk": "Пряма AB, позначена також малою літерою a",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-002",
+      "source_number": 2,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-002.tex",
+      "alt_uk": "Відрізок CD",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-003",
+      "source_number": 3,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-003.tex",
+      "alt_uk": "Промінь із початком у точці A",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

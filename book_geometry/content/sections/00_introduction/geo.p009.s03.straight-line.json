@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p009.s03.straight-line",
+  "kind": "definition",
+  "ordinal": "3",
+  "title_uk": "Пряма",
+  "title_ru": "Прямая линия",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 10,
+      "printed_page": 9,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_010_300dpi.png",
+      "image_sha256": "f62222f203f60c359e7ac98e7e0bba36b07bb58da883a3ee1bd6dd3577db5482",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Всякий знает, что такое прямая линия, или просто **прямая**, представление о которой дает нам натянутая тонкая нить.\n\nПрямая линия обладает следующим очевидным свойством: **через всякие две точки пространства можно провести прямую и притом только одну**.\n\nИз этого свойства следует: если две прямые наложены одна на другую так, что какие-нибудь две точки одной прямой совпадают с двумя точками другой прямой, то эти прямые сливаются и во всех остальных точках. По той же причине две прямые могут пересечься только в одной точке.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Наочне уявлення про пряму дає тонка натягнута нитка. Пряма має основну властивість: **через будь-які дві різні точки можна провести одну й тільки одну пряму**.\n\nЗвідси випливає: якщо дві прямі мають дві спільні точки, то вони збігаються. Тому дві різні прямі можуть перетинатися не більш ніж в одній точці.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "interactive_link",
+      "title_uk": "Як рух точки народжує лінію",
+      "text_uk": "Порівняй рух зі сталим і змінним напрямом та простеж, коли слід точки є прямим, а коли стає кривим.",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-point-trace.html"
+      ],
+      "qr_asset": "qr_point_trace.png",
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

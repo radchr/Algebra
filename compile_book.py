@@ -19,7 +19,7 @@ res1 = subprocess.run(
     ["xelatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
     cwd=BOOK_DIR,
     env=env,
-    capture_output=True
+    capture_output=True,
 )
 print("Pass 1 finished, exit code:", res1.returncode)
 
@@ -28,7 +28,7 @@ res2 = subprocess.run(
     ["xelatex", "-interaction=nonstopmode", "-output-directory=build", "main.tex"],
     cwd=BOOK_DIR,
     env=env,
-    capture_output=True
+    capture_output=True,
 )
 print("Pass 2 finished, exit code:", res2.returncode)
 

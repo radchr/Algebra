@@ -1,8 +1,11 @@
 import os
 import subprocess
+
 import pypdfium2 as pdfium
 
-SCRATCH_DIR = r"C:\Users\taxco\.gemini\antigravity\brain\33bf9318-001d-4b23-a552-53b42b3e3d9d\scratch"
+SCRATCH_DIR = (
+    r"C:\Users\taxco\.gemini\antigravity\brain\33bf9318-001d-4b23-a552-53b42b3e3d9d\scratch"
+)
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 PROJECT_ROOT = r"c:\Users\taxco\Dev\Algebra"
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
@@ -230,6 +233,7 @@ HTML_SHELL = """<!DOCTYPE html>
 </body>
 </html>
 """
+
 
 def generate_problems_html():
     body = """
@@ -541,6 +545,7 @@ def generate_problems_html():
 </div>
 """
     return HTML_SHELL.format(title="А. П. Кисельов — Задачі 1–29 (Український переклад)", body=body)
+
 
 def generate_answers_html():
     body = """
@@ -1229,6 +1234,7 @@ def generate_answers_html():
 """
     return HTML_SHELL.format(title="А. П. Кисельов — Відповіді та розв'язання (1–29)", body=body)
 
+
 def main():
     print("Generating HTML files...")
     problems_html = generate_problems_html()
@@ -1257,7 +1263,7 @@ def main():
         "--virtual-time-budget=4000",
         "--no-pdf-header-footer",
         f"--print-to-pdf={prob_pdf_root}",
-        prob_html_file
+        prob_html_file,
     ]
     subprocess.run(cmd1, check=True)
 
@@ -1269,12 +1275,13 @@ def main():
         "--virtual-time-budget=4000",
         "--no-pdf-header-footer",
         f"--print-to-pdf={ans_pdf_root}",
-        ans_html_file
+        ans_html_file,
     ]
     subprocess.run(cmd2, check=True)
 
     # Copy to data/ folder as well
     import shutil
+
     shutil.copyfile(prob_pdf_root, prob_pdf_data)
     shutil.copyfile(ans_pdf_root, ans_pdf_data)
 
@@ -1286,7 +1293,7 @@ def main():
     print(f"Problems PDF page count: {len(pdf1)}")
     for i in range(len(pdf1)):
         img = pdf1[i].render(scale=2).to_pil()
-        out_img = os.path.join(SCRATCH_DIR, f"zadachi_page_{i+1}.png")
+        out_img = os.path.join(SCRATCH_DIR, f"zadachi_page_{i + 1}.png")
         img.save(out_img)
         print(f"Rendered {out_img}")
 
@@ -1294,9 +1301,10 @@ def main():
     print(f"Answers PDF page count: {len(pdf2)}")
     for i in range(min(5, len(pdf2))):
         img = pdf2[i].render(scale=2).to_pil()
-        out_img = os.path.join(SCRATCH_DIR, f"vidpovidi_page_{i+1}.png")
+        out_img = os.path.join(SCRATCH_DIR, f"vidpovidi_page_{i + 1}.png")
         img.save(out_img)
         print(f"Rendered {out_img}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,12 @@
+\begin{tikzpicture}[scale=0.9]
+  \draw[very thick] (-4,1.2) -- (-2.2,1.2) node[midway,above] {$AB$};
+  \draw[very thick] (-1.4,1.2) -- (0.2,1.2) node[midway,above] {$CD$};
+  \draw[very thick] (1.0,1.2) -- (2.4,1.2) node[midway,above] {$EF$};
+  \draw[very thick,color=primaryblue] (-4,-0.2) -- (2.4,-0.2);
+  \foreach \x/\name in {-4/M,-2.2/N,-0.6/P,0.8/Q} {
+    \fill (\x,-0.2) circle (2pt) node[below] {$\name$};
+  }
+  \node[above] at (-3.1,-0.2) {$AB$};
+  \node[above] at (-1.4,-0.2) {$CD$};
+  \node[above] at (0.1,-0.2) {$EF$};
+\end{tikzpicture}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p020.ex06.opposite-rays",
+  "kind": "exercise",
+  "ordinal": "6",
+  "title_uk": "Вправа 6",
+  "title_ru": "Упражнение 6",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 21,
+      "printed_page": 20,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_021_300dpi.png",
+      "image_sha256": "e9bf9807ac3a8a8eba0f04bde0dadc2a28609279213995e41e64d14f804d6f39",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Если при точке $O$ прямой $AB$ (черт. 24) построим по разные стороны от $AB$ равные углы $AOD$ и $BOC$, то стороны их $OD$ и $OC$ составляют одну прямую.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Якщо при точці $O$ прямої $AB$ (рис. 24) побудувати по різні боки від цієї прямої рівні кути $\\angle AOD = \\angle BOC$, то промені $OD$ і $OC$ утворюють одну пряму лінію.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Доведення:*\nКут $\\angle AOC$ і кут $\\angle BOC$ є суміжними, отже:\n$$\\angle AOC + \\angle BOC = 180^\\circ.$$\nЗа умовою $\\angle BOC = \\angle AOD$. Підставимо $\\angle AOD$ замість $\\angle BOC$:\n$$\\angle AOC + \\angle AOD = 180^\\circ.$$\nКути $\\angle AOC$ та $\\angle AOD$ мають спільну вершину $O$, спільну сторону $OA$ і лежать по різні боки від неї, а їхня сума дорівнює $180^\\circ$. Отже, за § 26.3 промені $OD$ і $OC$ утворюють розгорнутий кут, тобто лежать на одній прямій лінії. Доведено!",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-024",
+      "source_number": 24,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-024.tex",
+      "alt_uk": "Вертикальні кути при перетині двох прямих",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

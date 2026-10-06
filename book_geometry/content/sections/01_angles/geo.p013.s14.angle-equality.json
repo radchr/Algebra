@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p013.s14.angle-equality",
+  "kind": "paragraph",
+  "ordinal": "14",
+  "title_uk": "Рівність і нерівність кутів",
+  "title_ru": "Равенство и неравенство углов",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 14,
+      "printed_page": 13,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_014_300dpi.png",
+      "image_sha256": "0004352040f0fe0321760760dc4095555d52207e4a4b49305f9d4211c25abefc",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Два угла считаются равными, если при наложении они могут совместиться. Положим, напр., что мы накладываем угол $AOB$ на угол $A_1O_1B_1$ (черт. 9) так, чтобы вершина $O$ упала в $O_1$, сторона $OB$ пошла по $O_1B_1$ и чтобы углы покрыли друг друга своими внутренними областями. Если при этом сторона $OA$ совместится с $O_1A_1$, то углы равны; если же $OA$ пойдет внутри угла $A_1O_1B_1$ или вне его, то углы не равны, причем тот из них будет меньше, который составит часть другого угла.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Два кути вважаються **рівними**, якщо при накладанні вони можуть суміститися. Припустимо, наприклад, що ми накладаємо кут $AOB$ на кут $A_1O_1B_1$ (рис. 9) так, щоб вершина $O$ збіглася з $O_1$, сторона $OB$ пішла по $O_1B_1$ і щоб кути накрили один одного своїми внутрішніми областями. Якщо при цьому сторона $OA$ суміститься з $O_1A_1$, то кути рівні; якщо ж сторона $OA$ пройде всередині кута $A_1O_1B_1$ або поза ним, то кути не рівні, до того ж меншим буде той з них, який становить частину іншого кута.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "interactive_link",
+      "title_uk": "Рівні кути можна сумістити",
+      "text_uk": "Перенеси й поверни копію кута до точного суміщення з еталоном та простеж, що його величина не змінюється.",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-equal-angles-motion.html"
+      ],
+      "qr_asset": "qr_equal_angles_motion.png",
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-009",
+      "source_number": 9,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-009.tex",
+      "alt_uk": "Порівняння кутів способом накладання",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 498 символів."
+    ]
+  }
+}

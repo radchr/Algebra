@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p012.s12.geometry-branches",
+  "kind": "definition",
+  "ordinal": "12",
+  "title_uk": "Поділ геометрії",
+  "title_ru": "Разделение геометрии",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 13,
+      "printed_page": 12,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_013_300dpi.png",
+      "image_sha256": "60be8f95312ddd6a64285bae134760e7171a26c26ccf8a3ba4991e5209172a92",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Геометрия разделяется на две части: **планиметрию** и **стереометрию**. Первая рассматривает свойства таких фигур, которых все части помещаются на одной плоскости, вторая — свойства таких фигур, которых не все части помещаются на одной плоскости.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Геометрію поділяють на **планіметрію** і **стереометрію**. Планіметрія вивчає властивості фігур, усі точки яких лежать в одній площині. Стереометрія вивчає властивості просторових фігур, які не можна цілком розмістити в одній площині.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

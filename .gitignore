@@ -11,14 +11,21 @@ dist/
 wheels/
 *.egg-info
 __marimo__/
+.pytest_cache/
 *.log
 
 # Scratch and temporary directories
 scratch/
 .scratch/
+tmp/
+output/
+
+# Reproducible high-resolution page renders
+data/geometry/01_raw_pages/
 
 # Virtual environments
 .venv
+.uv-cache/
 
 # OS files
 .DS_Store
@@ -30,3 +37,10 @@ Thumbs.db
 *.toc
 book_geometry/build/
 book_geometry/preview/
+
+# Tool caches and local backups
+.hypothesis/
+.ruff_cache/
+*.db.bak
+texput.*
+

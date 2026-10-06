@@ -1,0 +1,23 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    % Корпус транспортира
+    \draw[thick, fill=primaryblue!6] (-3.2,0) -- (3.2,0) arc (0:180:3.2) -- cycle;
+    \draw[thick, fill=white] (-2.2,0) -- (2.2,0) arc (0:180:2.2) -- cycle;
+    \filldraw (0,0) circle (2pt) node[below] {$C$};
+
+    % Градусні поділки
+    \foreach \a in {0,10,...,180} {
+        \draw (\a:2.8) -- (\a:3.2);
+    }
+    \foreach \a in {0,30,...,180} {
+        \draw[thick] (\a:2.6) -- (\a:3.2);
+        \node[font=\tiny] at (\a:2.4) {\a$^\circ$};
+    }
+
+    % Вимірюваний кут DCE = 50°
+    \draw[very thick, color=primaryblue, ->] (0,0) -- (3.5,0) node[right] {$E$};
+    \draw[very thick, color=warningred, ->] (0,0) -- (50:3.5) node[above right] {$D$};
+    \draw[color=warningred, thick] (1.1,0) arc (0:50:1.1);
+    \node[color=warningred, font=\small\bfseries] at (25:1.45) {$50^\circ$};
+
+\end{tikzpicture}

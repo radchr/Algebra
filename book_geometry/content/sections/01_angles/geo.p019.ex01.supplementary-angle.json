@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p019.ex01.supplementary-angle",
+  "kind": "exercise",
+  "ordinal": "1",
+  "title_uk": "Вправа 1",
+  "title_ru": "Упражнение 1",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 20,
+      "printed_page": 19,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_020_300dpi.png",
+      "image_sha256": "5e1563061b0aafc138578cae4158df544e8eaea31258714c5f9b695dd7587ebf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Некоторый угол равен $38^\\circ 29'$; найти величину смежного с ним угла.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Один із суміжних кутів дорівнює $38^\\circ 29'$. Знайдіть величину другого кута.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Розв'язання:*\nСума двох суміжних кутів дорівнює $180^\\circ$. Представимо $180^\\circ$ як $179^\\circ 60'$:\n$$\\text{Шуканий кут} = 179^\\circ 60' - 38^\\circ 29' = (179 - 38)^\\circ (60 - 29)' = 141^\\circ 31'.$$\n*Відповідь:* $141^\\circ 31'$.",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [
+    {
+      "kind": "angle_sum",
+      "measures": [
+        {
+          "degrees": 38,
+          "minutes": 29,
+          "seconds": 0
+        },
+        {
+          "degrees": 141,
+          "minutes": 31,
+          "seconds": 0
+        }
+      ],
+      "expected": {
+        "degrees": 180,
+        "minutes": 0,
+        "seconds": 0
+      }
+    }
+  ],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p020.ex04.adjacent-bisectors",
+  "kind": "exercise",
+  "ordinal": "4",
+  "title_uk": "Вправа 4",
+  "title_ru": "Упражнение 4",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 21,
+      "printed_page": 20,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_021_300dpi.png",
+      "image_sha256": "e9bf9807ac3a8a8eba0f04bde0dadc2a28609279213995e41e64d14f804d6f39",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Доказать, что биссектрисы двух смежных углов взаимно перпендикулярны.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Доведіть, що бісектриси двох суміжних кутів взаємно перпендикулярні.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Доведення:*\nНехай $\\angle AOB = \\alpha$ і $\\angle BOC = \\beta$ — два суміжні кути. Тоді:\n$$\\alpha + \\beta = 180^\\circ.$$\nПроведемо їхні бісектриси $OK$ та $OL$. За означенням бісектриси:\n$$\\angle KOB = \\frac{\\alpha}{2}, \\quad \\angle BOL = \\frac{\\beta}{2}.$$\nКут між бісектрисами дорівнює сумі цих частин:\n$$\\angle KOL = \\angle KOB + \\angle BOL = \\frac{\\alpha}{2} + \\frac{\\beta}{2} = \\frac{\\alpha + \\beta}{2} = \\frac{180^\\circ}{2} = 90^\\circ.$$\nОскільки кут між бісектрисами дорівнює $90^\\circ$, вони взаємно перпендикулярні: $OK \\perp OL$. Доведено!",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "interactive_link",
+      "title_uk": "Побачити через рух: бісектриси суміжних кутів",
+      "text_uk": "Змінюй суміжні кути й перевіряй, що кут між їхніми бісектрисами незмінно дорівнює $90^\\circ$:\n[https://radchr.github.io/Algebra/geometry-adjacent-bisectors.html](https://radchr.github.io/Algebra/geometry-adjacent-bisectors.html)",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-adjacent-bisectors.html"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p019.s26.common-vertex-angles",
+  "kind": "paragraph",
+  "ordinal": "26",
+  "title_uk": "Кути зі спільною вершиною",
+  "title_ru": "Углы, имеющие общую вершину",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 20,
+      "printed_page": 19,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_020_300dpi.png",
+      "image_sha256": "5e1563061b0aafc138578cae4158df544e8eaea31258714c5f9b695dd7587ebf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "О таких углах полезно заметить следующие три простые истины:\n1. Сумма нескольких углов ($AOB, BOC, COD, DOE$, черт. 25), имеющих общую вершину и заполняющих все пространство по одну сторону от прямой ($AE$), равна $180^\\circ$ (иначе $2d$), так как сумма эта составляет развернутый угол, а такой угол содержит $180^\\circ$.\n2. Сумма нескольких углов ($AOB, BOC, COD, DOE, EOA$, черт. 26), имеющих общую вершину и заполняющих все пространство кругом этой вершины, равна $360^\\circ$ (иначе $4d$), так как эта сумма образует полный угол, а такой угол содержит $360^\\circ$.\n3. Если два угла ($AOB$ и $BOC$, черт. 27) имеют общую вершину ($O$) и общую сторону ($OB$) и в сумме составляют $2d$ (т. е. $180^\\circ$), то их две другие стороны ($OA$ и $OC$) составляют продолжение одна другой (т. е. такие углы будут смежные). Действительно, сумма указанных углов составляет угол $AOC$, и если этот угол равен $180^\\circ$, то это значит, что он есть развернутый угол, т. е. что $AO$ составляет с $OC$ одну прямую.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "1. **Сума кутів, які мають спільну вершину й розташовані по один бік від прямої** (рис. 25), дорівнює $180^\\circ$ (утворюють розгорнутий кут):\n   $$\\angle 1 + \\angle 2 + \\angle 3 + \\angle 4 = 180^\\circ.$$\n2. **Сума кутів навколо спільної вершини** (рис. 26) дорівнює $360^\\circ$ (утворюють повний кут):\n   $$\\angle 1 + \\angle 2 + \\angle 3 + \\angle 4 + \\angle 5 = 360^\\circ.$$\n3. **Ознака суміжних кутів:** Якщо два кути мають спільну сторону, а їхня сума дорівнює $180^\\circ$, то дві інші сторони утворюють пряму лінію (тобто ці кути є суміжними, рис. 27).",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-025",
+      "source_number": 25,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-025.tex",
+      "alt_uk": "Кути по один бік від прямої",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-026",
+      "source_number": 26,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-026.tex",
+      "alt_uk": "Кути навколо спільної вершини",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-027",
+      "source_number": 27,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-027.tex",
+      "alt_uk": "Ознака суміжних кутів",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 386 символів."
+    ]
+  }
+}

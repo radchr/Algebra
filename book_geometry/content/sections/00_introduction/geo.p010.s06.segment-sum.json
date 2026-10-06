@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p010.s06.segment-sum",
+  "kind": "paragraph",
+  "ordinal": "6",
+  "title_uk": "Сума відрізків",
+  "title_ru": "Сумма отрезков",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 11,
+      "printed_page": 10,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_011_300dpi.png",
+      "image_sha256": "a84299774015fe96593799fb513c03f6df66865d11038c8c76a007f16dea1b84",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Суммою нескольких данных отрезков $AB, CD, EF\\dots$ (черт. 5) называется такой отрезок, который получится следующим образом. На какой-нибудь прямой берем произвольную точку $M$ и откладываем от нее отрезок $MN$, равный $AB$; затем от точки $N$ в том же направлении откладываем отрезок $NP$, равный $CD$, и отрезок $PQ$, равный $EF$. Тогда отрезок $MQ$ и будет сумма отрезков $AB, CD$ и $EF$ (которые по отношению к этой сумме называются слагаемыми). Подобным образом можно получить сумму какого угодно числа отрезков.\n\nСумма отрезков обладает свойствами всякой суммы: она не зависит от порядка слагаемых (**переместительное свойство**) и не изменяется, если некоторые слагаемые будут заменены их суммою (**сочетательное свойство**).",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Суму відрізків $AB$, $CD$, $EF$ будують так (рис. 5). На прямій беруть точку $M$ і послідовно відкладають в одному напрямку $MN=AB$, $NP=CD$, $PQ=EF$. Тоді:\n$$MQ=AB+CD+EF.$$\n\nСума відрізків не залежить від порядку доданків і від способу їх групування — це переставна та сполучна властивості додавання.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-005",
+      "source_number": 5,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-005.tex",
+      "alt_uk": "Послідовне додавання трьох відрізків",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

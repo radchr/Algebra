@@ -1,0 +1,45 @@
+Ось транскрипція німецького готичного тексту (Fraktur) з першої сторінки підручника з геометрії Даніеля Лемуса (*Lehmus’ Geometrie*, 1842 р.), а також його переклад українською мовою.
+
+---
+
+### **Транскрипція німецького тексту (Fraktur)**
+
+**Einleitung.**
+
+§. 1. 1. Ein Ort im Raume, ohne Ausdehnung gedacht, heißt ein Punkt.
+2. Denkt man sich einen Punkt bewegt, so heißt die Bahn desselben eine Linie.
+Eine Linie heißt gerade, wenn der sie beschreibende Punkt in einer Richtung fortgeht.
+Eine Linie heißt eine krumme Linie oder Curve, wenn der sie beschreibende Punkt seine Richtung stetig ändert.
+3. Denkt man sich eine Linie bewegt, jedoch, wenn sie eine gerade ist, nicht in der Richtung, in welcher sie liegt, so heißt die Bahn derselben eine Fläche.
+Eine Fläche heißt eine ebene Fläche oder Ebene, wenn die gerade Verbindungslinie jeder 2 Punkte derselben ganz in die Fläche fällt.
+4. Denkt man sich eine Fläche bewegt, jedoch, wenn sie eine Ebene ist, nicht in der Richtung gerader Linien in ihr, so heißt die Bahn derselben ein Körper.
+
+§. 2. Nach §. 1. wird also ein begränzter Körper durch Flächen; eine begränzte Fläche durch Linien, und eine begränzte Linie durch zwei Punkte begränzt.
+
+§. 3. Die Geometrie ist die Wissenschaft von den Gränzen der Räume und von den begränzten Räumen selbst, bloß in Beziehung auf ihre Größe und ihre Form.
+
+§. 4. Die Gegenstände der Geometrie heißen gleich ($=$), wenn sie in der Größe; ähnlich ($\sim$), wenn sie in der Form; congruent ($\cong$), wenn sie in Größe und Form übereinstimmen.
+
+§. 5. Denkt man sich eine gerade begränzte Linie, in einer Ebene um ihren einen Endpunkt herumbewegt, bis sie wieder in ihren ursprünglichen Ort ist, so heißt die Bahn, welche der andere Endpunkt durchläuft, eine Kreislinie oder Peripherie; jedes Stück derselben ein Bogen; die durch die Peripherie bes…
+
+---
+
+### **Український переклад**
+
+**Вступ.**
+
+§. 1. 1. Місце у просторі, уявлене без вимірів (протяжності), називається точкою.
+2. Якщо уявити, що точка рухається, то її траєкторія (шлях) називається лінією.
+Лінія називається прямою, якщо точка, що її описує, рухається в одному напрямку.
+Лінія називається кривою лінією або кривою, якщо точка, що її описує, постійно змінює свій напрямок.
+3. Якщо уявити, що лінія рухається — причому, якщо це пряма, то не в тому напрямку, в якому вона лежить, — то її траєкторія називається поверхнею.
+Поверхня називається пласкою поверхнею або площиною, якщо пряма лінія, що з'єднує будь-які 2 її точки, повністю лежить у цій поверхні.
+4. Якщо уявити, що поверхня рухається — причому, якщо це площина, то не в напрямку прямих ліній у ній, — то її траєкторія називається тілом.
+
+§. 2. Отже, згідно з §. 1, обмежене тіло обмежується поверхнями; обмежена поверхня — лініями, а обмежена лінія обмежується двома точками.
+
+§. 3. Геометрія — це наука про межі просторів і самі обмежені простори виключно щодо їх величини та форми.
+
+§. 4. Об'єкти геометрії називаються рівними ($=$), якщо вони збігаються за величиною; подібними ($\sim$), якщо за формою; конгруентними ($\cong$), якщо вони збігаються і за величиною, і за формою.
+
+§. 5. Якщо уявити, що обмежена пряма лінія в площині обертається навколо одного зі своїх кінців, доки знову не опиняється у своєму початковому положенні, то шлях, який прописує інший кінець, називається колом або периферією; кожна її частина — дугою; [частина площини], обмежена периферією… *(текст обривається внизу сторінки)*

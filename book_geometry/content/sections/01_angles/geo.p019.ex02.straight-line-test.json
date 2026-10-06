@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p019.ex02.straight-line-test",
+  "kind": "exercise",
+  "ordinal": "2",
+  "title_uk": "Вправа 2",
+  "title_ru": "Упражнение 2",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 20,
+      "printed_page": 19,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_020_300dpi.png",
+      "image_sha256": "5e1563061b0aafc138578cae4158df544e8eaea31258714c5f9b695dd7587ebf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Два угла $ABC$ и $CBD$, имея общую вершину $B$ и общую сторону $BC$, расположены так, что они не покрывают друг друга: угол $ABC = 100^\\circ 20'$, а угол $CBD = 79^\\circ 40'$. Составляют ли стороны $AB$ и $BD$ прямую или ломаную?",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Два кути $\\angle ABC = 100^\\circ 20'$ і $\\angle CBD = 79^\\circ 40'$ мають спільну вершину $B$, спільну сторону $BC$ і не перекриваються. Чи утворюють сторони $AB$ і $BD$ пряму лінію?",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Розв'язання:*\nЗнайдемо суму цих кутів:\n$$\\angle ABC + \\angle CBD = 100^\\circ 20' + 79^\\circ 40' = 179^\\circ 60' = 180^\\circ.$$\nОскільки сума двох кутів зі спільною стороною дорівнює $180^\\circ$, за властивістю § 26.3 їхні сторони $AB$ і $BD$ утворюють розгорнутий кут, тобто лежать на одній прямій лінії.\n*Відповідь:* Так, утворюють пряму лінію.",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [
+    {
+      "kind": "angle_sum",
+      "measures": [
+        {
+          "degrees": 100,
+          "minutes": 20,
+          "seconds": 0
+        },
+        {
+          "degrees": 79,
+          "minutes": 40,
+          "seconds": 0
+        }
+      ],
+      "expected": {
+        "degrees": 180,
+        "minutes": 0,
+        "seconds": 0
+      }
+    }
+  ],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

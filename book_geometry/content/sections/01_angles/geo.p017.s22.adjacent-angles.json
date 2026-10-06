@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p017.s22.adjacent-angles",
+  "kind": "theorem",
+  "ordinal": "22",
+  "title_uk": "Суміжні кути та їхні властивості",
+  "title_ru": "Смежные углы и их свойства",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 18,
+      "printed_page": 17,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_018_300dpi.png",
+      "image_sha256": "c014a1b76a008b9a9b5c8683b1f948d36251b7c0c706247beb04d7f6e006217f",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Два угла ($AOB$ и $BOC$, черт. 19) называются **смежными**, если одна сторона у них общая, а две другие стороны составляют продолжение одна другой.\nТак как такие углы в сумме составляют развернутый угол, то **сумма двух смежных углов равна $180^\\circ$** (другими словами, она равна сумме двух прямых углов).\n\nДля каждого данного угла можно построить два смежных с ним угла. Напр., для угла $AOB$ (черт. 20), продолжив сторону $AO$, мы получим один смежный угол $BOC$, а продолжив сторону $BO$, получим другой смежный угол $AOD$. Два угла, смежные с одним и тем же углом, равны между собою, так как каждый из них содержит одинаковое число градусов, именно такое число, которое в сумме с числом градусов, содержащихся в угле $AOB$, составляет $180^\\circ$, заключающихся в развернутом угле.\n\nЕсли угол $AOB$ прямой (черт. 21), т. е. если он содержит $90^\\circ$, то и каждый из смежных с ним углов $COB$ и $AOD$ должен быть также прямой, так как он содержит в себе $180^\\circ - 90^\\circ$, т. е. $90^\\circ$; 4-й угол $COD$ тоже должен быть прямым, так как три угла $AOB, BOC$ и $AOD$ составляют в сумме $270^\\circ$, и следовательно, от $360^\\circ$ на долю 4-го угла $COD$ остается тоже $90^\\circ$. Таким образом: **если при пересечении двух прямых ($AC$ и $BD$, черт. 21) один из четырех углов окажется прямой, то и остальные три угла должны быть прямые.**",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Два кути ($AOB$ і $BOC$, рис. 19) називаються **суміжними**, якщо одна сторона в них спільна, а дві інші сторони є доповняльними променями (становлять продовження одна одної).\n\nОскільки такі кути в сумі утворюють розгорнутий кут, то:\n$$\\mathbf{Сума\\ двох\\ суміжних\\ кутів\\ дорівнює\\ 180^\\circ} \\quad (\\text{або } 2d).$$\n\nДля будь-якого кута можна побудувати два суміжні з ним кути (рис. 20). Кути, суміжні з одним і тим самим кутом, рівні між собою.\n\nЯкщо один із суміжних кутів прямий ($90^\\circ$, рис. 21), то й другий дорівнює $180^\\circ - 90^\\circ = 90^\\circ$.\n*Наслідок:* Якщо при перетині двох прямих один із чотирьох кутів є прямим, то й інші три кути — прямі.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "proof_guide",
+      "title_uk": "Властивість суміжних кутів",
+      "text_uk": "1. Сторони $OA$ і $OC$ утворюють пряму лінію, тобто розгорнутий кут $\\angle AOC$.\n2. Градусна міра розгорнутого кута за домовленістю становить $180^\\circ$.\n3. Внутрішній промінь $OB$ ділить розгорнутий кут на дві частини: $\\angle AOB$ та $\\angle BOC$.\n4. Оскільки ціле дорівнює сумі частин: $\\angle AOB + \\angle BOC = \\angle AOC = 180^\\circ$.",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "misconception",
+      "title_uk": "Будь-які кути з сумою $180^\\circ$ є суміжними?",
+      "text_uk": "**Ні в якому разі!** Якщо один кут $70^\\circ$ накреслено на початку зошита, а кут $110^\\circ$ — на іншій сторінці, їхня сума справді $180^\\circ$, але вони **не суміжні**.\nСуміжність обов'язково вимагає спільної вершини та спільної сторони!",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "interactive_link",
+      "title_uk": "Побачити через рух: суміжні кути",
+      "text_uk": "Рухай спільний промінь і перевіряй, що сума двох суміжних кутів залишається $180^\\circ$:\n[https://radchr.github.io/Algebra/geometry-adjacent-angles.html](https://radchr.github.io/Algebra/geometry-adjacent-angles.html)",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-adjacent-angles.html"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-019",
+      "source_number": 19,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-019.tex",
+      "alt_uk": "Суміжні кути",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-020",
+      "source_number": 20,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-020.tex",
+      "alt_uk": "Два кути, суміжні з одним кутом",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-021",
+      "source_number": 21,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-021.tex",
+      "alt_uk": "Перпендикулярні прямі",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 694 символів."
+    ]
+  }
+}

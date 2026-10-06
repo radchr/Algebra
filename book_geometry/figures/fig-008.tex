@@ -1,0 +1,16 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (4,2.5);
+    \coordinate (B) at (4.5,0);
+    \coordinate (D) at (3.8,1.6);
+    \coordinate (E) at (4.2,0.8);
+
+    \draw[->, very thick, color=primaryblue] (O) -- (A) node[above right] {$A$};
+    \draw[->, very thick, color=primaryblue] (O) -- (B) node[right] {$B$};
+
+    \draw[->, thick, dashed, color=gray] (O) -- (D) node[right] {$D$};
+    \draw[->, thick, dashed, color=gray] (O) -- (E) node[right] {$E$};
+
+    \filldraw[black] (O) circle (2pt) node[left] {$O$};
+\end{tikzpicture}

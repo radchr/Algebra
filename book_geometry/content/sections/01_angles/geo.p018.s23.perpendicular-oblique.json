@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p018.s23.perpendicular-oblique",
+  "kind": "definition",
+  "ordinal": "23",
+  "title_uk": "Перпендикуляр і похила",
+  "title_ru": "Перпендикуляр и наклонная",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 19,
+      "printed_page": 18,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_019_300dpi.png",
+      "image_sha256": "816a114a696c1634edb83bff74301adf99718e08122365f385d37c265f9d53f6",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Общая сторона ($OB$) двух смежных углов называется **наклонною** к прямой ($AC$), на которой лежат две другие стороны, в том случае, когда смежные углы не равны между собою (черт. 22, левый); в том же случае, когда смежные углы равны (черт. 22, правый) и когда, следовательно, каждый из углов есть прямой, общая сторона называется **перпендикуляром** к прямой, на которой лежат две другие стороны. Общая вершина ($O$) в первом случае называется **основанием наклонной**, во втором случае — **основанием перпендикуляра**.\n\nДве прямые ($AC$ и $BD$, черт. 21), пересекающиеся между собою под прямым углом, называются **взаимно перпендикулярными**. Что прямая $AC$ перпендикулярна к прямой $BD$, выражают письменно так:\n$$AC \\perp BD.$$",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Спільна сторона ($OB$) двох суміжних кутів називається **похилою** до прямої ($AC$), на якій лежать дві інші сторони, коли суміжні кути не рівні між собою (рис. 22, ліворуч). Якщо ж суміжні кути рівні (рис. 22, праворуч), тобто є прямими, ця спільна сторона називається **перпендикуляром** до прямої. Точка $O$ називається відповідно **основою похилої** або **основою перпендикуляра**.\n\nДві прямі, що перетинаються під прямим кутом, називаються **перпендикулярними**:\n$$AC \\perp BD.$$",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-021",
+      "source_number": 21,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-021.tex",
+      "alt_uk": "Перпендикулярні прямі",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-022",
+      "source_number": 22,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-022.tex",
+      "alt_uk": "Похила і перпендикуляр до прямої",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 484 символів."
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p020.ex05.vertical-bisectors",
+  "kind": "exercise",
+  "ordinal": "5",
+  "title_uk": "Вправа 5",
+  "title_ru": "Упражнение 5",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 21,
+      "printed_page": 20,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_021_300dpi.png",
+      "image_sha256": "e9bf9807ac3a8a8eba0f04bde0dadc2a28609279213995e41e64d14f804d6f39",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Доказать, что биссектрисы двух вертикальных углов составляют продолжение одна другой.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Доведіть, що бісектриси двох вертикальних кутів лежать на одній прямій (є доповняльними променями).",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Доведення:*\nНехай при перетині двох прямих утворилися вертикальні кути $\\angle 1$ та $\\angle 2$, причому $\\angle 1 = \\angle 2 = \\alpha$. Суміжний з ними кут позначимо $\\angle 3$, тоді $\\angle 3 = 180^\\circ - \\alpha$.\nПроведемо бісектриси обох вертикальних кутів. Кожна бісектриса ділить свій кут на кути по $\\frac{\\alpha}{2}$.\nРозглянемо кут між двома променями бісектрис, який складається з половини першого кута, кута $\\angle 3$ і половини другого кута:\n$$\\text{Кут між променями} = \\frac{\\alpha}{2} + \\angle 3 + \\frac{\\alpha}{2} = \\frac{\\alpha}{2} + (180^\\circ - \\alpha) + \\frac{\\alpha}{2} = 180^\\circ.$$\nОскільки кут між променями бісектрис дорівнює $180^\\circ$, ці промені утворюють розгорнутий кут, тобто лежать на одній прямій лінії. Доведено!",
+      "citations": [],
+      "status": "needs_review"
+    },
+    {
+      "kind": "interactive_link",
+      "title_uk": "Побачити через рух: бісектриси вертикальних кутів",
+      "text_uk": "Рухай одну з прямих і спостерігай, як бісектриси вертикальних кутів залишаються протилежними променями:\n[https://radchr.github.io/Algebra/geometry-vertical-bisectors.html](https://radchr.github.io/Algebra/geometry-vertical-bisectors.html)",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-vertical-bisectors.html"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

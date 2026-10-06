@@ -80,6 +80,24 @@
   breakable
 }
 
+% Компактне посилання з PDF на одну самостійну рухову ілюстрацію.
+\newcommand{\motionlink}[4]{%
+  \begin{mediabox}[#1]
+  \begin{minipage}{0.72\textwidth}
+  \raggedright
+  #2
+
+  \vspace{0.25cm}
+  \href{#3}{\textbf{Відкрити інтерактивну ілюстрацію}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.23\textwidth}
+  \centering
+  \includegraphics[width=2.05cm]{#4}
+  \end{minipage}
+  \end{mediabox}
+}
+
 % Означення та теореми
 \newtheorem{theorem}{Теорема}[chapter]
 \newtheorem{definition}{Означення}[chapter]

@@ -1,0 +1,13 @@
+\begin{tikzpicture}[scale=1.0]
+  \draw[thick] (0,0) circle (2.2);
+  \coordinate (M) at (170:2.2);
+  \coordinate (N) at (105:2.2);
+  \coordinate (P) at (35:2.2);
+  \draw[very thick,color=primaryblue] (M) arc (170:105:2.2);
+  \draw[very thick,color=feynmangreen] (N) arc (105:35:2.2);
+  \foreach \p/\name in {M/M,N/N,P/P} {
+    \fill (\p) circle (2pt) node[above] {$\name$};
+  }
+  \fill (0,0) circle (2pt) node[below] {$O$};
+  \node at (0,2.65) {$\overset{\frown}{MP}=\overset{\frown}{MN}+\overset{\frown}{NP}$};
+\end{tikzpicture}

@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Д. Х. Л. Лемус: Елементарна геометрія (1842) — §§ 1–22</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --lehmus-gold: #c89b3c;
+      --lehmus-blue: #1d4ed8;
+      --lehmus-dark: #0f172a;
+      --lehmus-bg-card: #ffffff;
+      --lehmus-border: #e2e8f0;
+      --feynman-green: #15803d;
+      --klein-purple: #7c3aed;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.68;
+    }
+
+    .doc-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+
+    .doc-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 40px 32px;
+      border-radius: 16px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+    }
+
+    .doc-hero .tag-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .doc-hero .badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #e2e8f0;
+    }
+
+    .doc-hero .badge.gold {
+      background: rgba(200, 155, 60, 0.25);
+      color: #fde047;
+      border: 1px solid rgba(253, 224, 71, 0.4);
+    }
+
+    .doc-hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      color: #ffffff;
+    }
+
+    .doc-hero p.subtitle {
+      font-size: 16px;
+      color: #cbd5e1;
+      margin: 0;
+      max-width: 820px;
+    }
+
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-nav:hover { color: #0f172a; }
+
+    /* Блоки параграфів */
+    .para-card {
+      background: var(--lehmus-bg-card);
+      border: 1px solid var(--lehmus-border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .para-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .para-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .para-ref {
+      font-size: 13px;
+      color: #94a3b8;
+      font-family: monospace;
+    }
+
+    /* Оригінальні цитати німецькою (розгортання) */
+    details.german-source {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 14px 0;
+      font-size: 13.5px;
+    }
+
+    details.german-source summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #475569;
+      user-select: none;
+    }
+
+    details.german-source summary:hover {
+      color: #1e293b;
+    }
+
+    .german-quote {
+      margin-top: 10px;
+      padding-left: 12px;
+      border-left: 3px solid #cbd5e1;
+      font-style: italic;
+      color: #334155;
+      font-family: Georgia, serif;
+    }
+
+    /* Педагогічні врізки */
+    .didactic-box {
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 18px 0;
+      font-size: 14.5px;
+    }
+
+    .didactic-box.feynman {
+      background: #f0fdf4;
+      border-left: 4px solid var(--feynman-green);
+      color: #166534;
+    }
+
+    .didactic-box.klein {
+      background: #faf5ff;
+      border-left: 4px solid var(--klein-purple);
+      color: #581c87;
+    }
+
+    .didactic-box.nus {
+      background: #eff6ff;
+      border-left: 4px solid var(--lehmus-blue);
+      color: #1e40af;
+    }
+
+    .didactic-box h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Інтерактивні сцени */
+    .interactive-wrap {
+      background: #fdfefe;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 22px 0 10px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .interactive-wrap h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .interactive-wrap p.hint {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0 0 12px;
+    }
+
+    .svg-stage {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      display: block;
+      touch-action: none;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed #e2e8f0;
+      font-size: 13.5px;
+    }
+
+    .controls-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .controls-row input[type="range"] {
+      cursor: pointer;
+    }
+
+    .controls-row .val-badge {
+      background: #e2e8f0;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 600;
+      font-size: 12.5px;
+    }
+
+    .btn-reset {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: background 0.15s;
+    }
+    .btn-reset:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Статичні рисунки оригіналу (SVG) */
+    .original-fig-box {
+      text-align: center;
+      margin: 18px 0;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid #f1f5f9;
+      border-radius: 8px;
+    }
+    .original-fig-box svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .original-fig-box .caption {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 6px;
+    }
+
+    .theorem-proof {
+      background: #f8fafc;
+      border-left: 3px solid #94a3b8;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+    }
+
+    .qed {
+      float: right;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+    <a href="index.html" class="back-nav">← Повернутися до головного меню</a>
+
+    <header class="doc-hero">
+      <div class="tag-line">
+        <span class="badge gold">Першоджерело 1842 року</span>
+        <span class="badge">Кінетична геометрія</span>
+        <span class="badge">Стандарт НУШ 7 клас</span>
+        <span class="badge">Ерлангенська лінія Клейна</span>
+      </div>
+      <h1>Д. Х. Л. Лемус: Елементарна геометрія</h1>
+      <p class="subtitle">
+        Повний адаптований переклад та інтерактивний аналіз <strong>параграфів §§ 1–22</strong> книги 
+        <em>«Lehrbuch der Geometrie»</em> (Берлін, 1842). 
+        Породження простору через неперервний рух, вчення про сталий напрямок та теорія кута без евклідової схоластики.
+      </p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- ВСТУП: КІНЕТИЧНИЙ ГЕНЕЗИС ПРОСТОРУ (§§ 1–9) -->
+    <!-- ========================================== -->
+    <h2 style="font-size: 24px; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 40px; color: #0f172a;">
+      Частина I. Кінетичний вступ (Einleitung): Як рух породжує простір (§§ 1–9)
+    </h2>
+
+    <!-- § 1 -->
+    <article class="para-card" id="p1">
+      <div class="para-header">
+        <h3 class="para-title">§ 1. Точка, лінія, поверхня та тіло як сліди руху</h3>
+        <span class="para-ref">Стор. 1 оригіналу</span>
+      </div>
+
+      <p>
+        <strong>1. Точка:</strong> Місце у просторі, уявлене абсолютно без вимірів (без будь-якої протяжності), називається <strong>точкою</strong>.
+      </p>
+      <p>
+        <strong>2. Лінія:</strong> Якщо уявити собі, що точка рухається, то її траєкторія (пройдений слід) називається <strong>лінією</strong>.
+      </p>
+      <ul>
+        <li>Лінія називається <strong>прямою</strong>, якщо точка, що її описує, рухається в одному незмінному <strong>напрямку</strong>.</li>
+        <li>Лінія називається <strong>кривою</strong>, якщо точка, що її описує, неперервно змінює свій напрямок руху.</li>
+      </ul>
+      <p>
+        <strong>3. Поверхня:</strong> Якщо уявити, що лінія рухається (причому, якщо це пряма, то вона рухається вбік, а не вздовж власного напрямку), то її пройдений слід називається <strong>поверхнею</strong>.
+      </p>
+      <ul>
+        <li>Поверхня називається <strong>площиною</strong> (або пласкою поверхнею), якщо пряма лінія, що сполучає будь-які дві її точки, цілком і повністю належить цій поверхні.</li>
+      </ul>
+      <p>
+        <strong>4. Тіло:</strong> Якщо уявити, що поверхня рухається (причому не в межах власної площини, а виходячи в третій вимір), то її пройдений слід називається <strong>геометричним тілом</strong>.
+      </p>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§ 1)</summary>
+        <div class="german-quote">
+          „§. 1. 1. Ein Ort im Raume, ohne Ausdehnung gedacht, heißt ein Punkt.<br>
+          2. Denkt man sich einen Punkt bewegt, so heißt die Bahn desselben eine Linie. Eine Linie heißt gerade, wenn der sie beschreibende Punkt in einer Richtung fortgeht. Eine Linie heißt eine krumme Linie oder Curve, wenn der sie beschreibende Punkt seine Richtung stetig ändert.<br>
+          3. Denkt man sich eine Linie bewegt, jedoch, wenn sie eine gerade ist, nicht in der Richtung, in welcher sie liegt, so heißt die Bahn derselben eine Fläche...<br>
+          4. Denkt man sich eine Fläche bewegt... so heißt die Bahn derselben ein Körper.“
+        </div>
+      </details>
+
+      <div class="didactic-box feynman">
+        <h4>🧠 Інтуїція Фейнмана: Розмірність як ступінь свободи руху</h4>
+        Не намагайся запам'ятати абстрактні аксіоми Евкліда про те, що «точка — це те, що не має частин». Уяви світ динамічно: 
+        <strong>точка</strong> — це кінчик лазерного променя ($0D$). Поки він нерухомий, у ньому немає розмірів. 
+        Але як тільки лазер малює лінію на стіні — виникає <strong>1D</strong>. 
+        Якщо лазерний відрізок протягнути вниз, немов валик з фарбою — народжується <strong>2D-площина</strong>. 
+        А якщо підняти вологу пофарбовану площину вгору — виникає об'ємне <strong>3D-тіло</strong>!
+      </div>
+
+      <!-- Інтерактив 1: Генератор вимірів Лемуса -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 1: Кінетичний генератор простору</h3>
+        <p class="hint">Обери режим руху і потягни повзунок, щоб побачити, як точка породжує пряму, криву або поверхню.</p>
+        
+        <svg id="stage-dim-gen" class="svg-stage" viewBox="0 0 600 240"></svg>
+        
+        <div class="controls-row">
+          <label><input type="radio" name="dim-mode" value="straight" checked> Пряма (сталий напрям)</label>
+          <label><input type="radio" name="dim-mode" value="curve"> Крива (змінний напрям)</label>
+          <label><input type="radio" name="dim-mode" value="surface"> Площина (зсув лінії)</label>
+          <label style="margin-left: auto;">
+            Прогрес руху:
+            <input type="range" id="dim-slider" min="0" max="100" value="70">
+            <span class="val-badge" id="dim-val">70%</span>
+          </label>
+        </div>
+      </div>
+    </article>
+
+    <!-- §§ 2–4 -->
+    <article class="para-card" id="p2-4">
+      <div class="para-header">
+        <h3 class="para-title">§§ 2–4. Межі просторів та класифікація відношень</h3>
+        <span class="para-ref">Стор. 1 оригіналу</span>
+      </div>
+
+      <p>
+        <strong>§ 2. Межі фігур:</strong> Згідно з § 1, геометричне тіло обмежується поверхнями; обмежена поверхня — лініями, а обмежена лінія — двома точками (кінцями).
+      </p>
+      <p>
+        <strong>§ 3. Предмет геометрії:</strong> Геометрія — це наука про межі просторів і самі обмежені простори, які розглядаються <em>виключно з точки зору їхньої величини та форми</em>.
+      </p>
+      <p>
+        <strong>§ 4. Три фундаментальні відношення:</strong> Геометричні об'єкти називаються:
+      </p>
+      <ul>
+        <li><strong>Рівними за величиною ($=$):</strong> якщо вони збігаються за числовим розміром (довжиною, площею або об'ємом).</li>
+        <li><strong>Подібними ($\sim$):</strong> якщо вони збігаються за своєю формою (пропорціями), але можуть різнитися розміром.</li>
+        <li><strong>Конгруентними / повністю рівними ($\cong$):</strong> якщо вони одночасно збігаються <em>і за формою, і за величиною</em> (тобто можуть бути точно суміщені жорстким рухом).</li>
+      </ul>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§§ 2–4)</summary>
+        <div class="german-quote">
+          „§. 2. Nach §. 1. wird also ein begränzter Körper durch Flächen; eine begränzte Fläche durch Linien, und eine begränzte Linie durch zwei Punkte begränzt.<br>
+          §. 3. Die Geometrie ist die Wissenschaft von den Gränzen der Räume und von den begränzten Räumen selbst, bloß in Beziehung auf ihre Größe und ihre Form.<br>
+          §. 4. Die Gegenstände der Geometrie heißen gleich ($=$), wenn sie in der Größe; ähnlich ($\sim$), wenn sie in der Form; congruent ($\cong$), wenn sie in Größe und Form übereinstimmen.“
+        </div>
+      </details>
+
+      <div class="didactic-box nus">
+        <h4>📚 Адаптація до термінів НУШ</h4>
+        Сучасна українська програма 7 класу використовує термін <strong>«рівні фігури»</strong> замість латинського «конгруентні» ($\cong$). Проте позначення Лемуса дуже точне: воно застерігає учня від плутанини між <em>рівновеликими</em> фігурами (однакова площа) та <em>рівними</em> (повний геометричний збіг форми й розміру).
+      </div>
+    </article>
+
+    <!-- §§ 5–7 -->
+    <article class="para-card" id="p5-7">
+      <div class="para-header">
+        <h3 class="para-title">§§ 5–7. Кінетичне коло та куля</h3>
+        <span class="para-ref">Стор. 1–2 оригіналу</span>
+      </div>
+
+      <p>
+        <strong>§ 5. Коло через обертання:</strong> Якщо уявити, що обмежений прямий відрізок у площині обертається навколо одного зі своїх кінців, доки знову не повернеться у вихідне положення, то шлях, який описує інший кінець, називається <strong>колом</strong> (або периферією кола). Кожна частина цього шляху називається <strong>дугою</strong>.
+      </p>
+      <p>
+        <strong>§ 6. Куля через обертання:</strong> Якщо уявити собі півколо, яке обертається в тривимірному просторі навколо свого обмежувального діаметра до повного оберту, то пройдений ним тілесний простір називається <strong>кулею</strong>, а слід дуги півкола — <strong>сферою</strong> (поверхнею кулі).
+      </p>
+      <p>
+        <strong>§ 7. Круг та куля як рівновіддалені простори:</strong> 
+        <strong>Круг</strong> (кругова площина) — це плоска область, обмежена лінією кола, всі точки якої лежать на однаковій відстані від внутрішньої точки (центра). 
+        <strong>Куля</strong> — це тіло, обмежене поверхнею сфери, рівновіддаленої від центра.
+      </p>
+
+      <!-- Інтерактив 2: Кінетичне коло Лемуса -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 2: Обертання відрізка та народження кола</h3>
+        <p class="hint">Обертай важіль циркуля навколо центра $O$, щоб на власні очі побачити слід, що породжує лінію кола.</p>
+        
+        <svg id="stage-circle-rot" class="svg-stage" viewBox="0 0 600 260"></svg>
+        
+        <div class="controls-row">
+          <label>Кут повороту: 
+            <input type="range" id="circle-angle-slider" min="0" max="360" value="120">
+            <span class="val-badge" id="circle-angle-val">120°</span>
+          </label>
+          <button class="btn-reset" id="btn-full-circle">Зробити повний оберт (360°)</button>
+          <button class="btn-reset" id="btn-reset-circle">Очистити слід</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- §§ 8–9 -->
+    <article class="para-card" id="p8-9">
+      <div class="para-header">
+        <h3 class="para-title">§§ 8–9. Класифікація геометрії</h3>
+        <span class="para-ref">Стор. 2–3 оригіналу</span>
+      </div>
+
+      <p>
+        Геометрія поділяється на розділи залежно від об'єктів дослідження:
+      </p>
+      <ul>
+        <li><strong>Планіметрія (Ebene Geometrie):</strong> досліджує фігури, всі точки яких лежать в одній площині.</li>
+        <li><strong>Стереометрія (Körperliche Geometrie):</strong> досліджує просторові тіла та фігури різних площин.</li>
+        <li><strong>Сферика (Sphärik):</strong> розглядає геометричні побудови та лінії на поверхні сфери.</li>
+        <li><strong>Елементарна геометрія:</strong> доводить істини синтетичним шляхом і розв'язує задачі через пряму геометричну побудову (циркулем і лінійкою).</li>
+      </ul>
+    </article>
+
+    <!-- ======================================================= -->
+    <!-- ЧАСТИНА II. ВЧЕННЯ ПРО ПРЯМУ ТА НАПРЯМОК (LONGIMETRIE) -->
+    <!-- ======================================================= -->
+    <h2 style="font-size: 24px; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 50px; color: #0f172a;">
+      Частина II. Вчення про пряму лінію та поняття напрямку (Longimetrie, §§ 10–12)
+    </h2>
+
+    <!-- § 10 -->
+    <article class="para-card" id="p10">
+      <div class="para-header">
+        <h3 class="para-title">§ 10. Властивості прямої лінії та поняття «напрямку» (Richtung)</h3>
+        <span class="para-ref">Стор. 5 оригіналу</span>
+      </div>
+
+      <p>
+        <strong>1. Збіг за напрямком:</strong> Дві прямі лінії, які мають дві спільні точки, цілком збігаються між собою або <em>покривають одна одну за напрямком</em>.
+      </p>
+      <p>
+        <strong>2. Визначеність прямої:</strong> Пряма лінія вважається цілком заданою за своїм напрямком, якщо задано положення двох будь-яких її точок.
+      </p>
+      <p>
+        <strong>3. З'єднання точок:</strong> Будь-які дві точки в просторі можна уявити сполученими прямою лінією.
+      </p>
+      <p>
+        <strong>4. Точки поза прямою:</strong> Якщо точка не лежить у напрямку даної прямої лінії, то кажуть: вона лежить <em>поза цією прямою</em>.
+      </p>
+      <p>
+        <strong>5. Єдиність точки перетину:</strong> Дві різні прямі, що перетинаються, мають лише одну-єдину спільну точку.
+      </p>
+      <p>
+        <strong>6. Позначення:</strong> Обмежена пряма лінія (відрізок) позначається двома літерами, поставленими біля її кінців ($AB$).
+      </p>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§ 10)</summary>
+        <div class="german-quote">
+          „§. 10. 1. Zwei gerade Linien, welche zwei Punkte gemeinschaftlich haben, fallen ganz in einander, oder decken sich der Richtung nach.<br>
+          2. Eine gerade Linie ist ihrer Richtung nach gegeben, wenn die Lage zweier Punkte derselben gegeben ist.<br>
+          3. Jede zwei Punkte kann man sich durch eine gerade Linie verbunden denken.<br>
+          4. Liegt ein Punkt nicht in der Richtung einer geraden Linie, so sagt man: er liegt außerhalb derselben.<br>
+          5. Zwei sich durchschneidende Linien haben nur einen einzigen Punkt gemein.“
+        </div>
+      </details>
+
+      <div class="didactic-box klein">
+        <h4>📐 Погляд Фелікса Клейна: Напрямок як первинний просторовий вектор</h4>
+        Зверни увагу: Лемус не використовує абстрактні аксіоми Гільберта. Для нього пряма — це носій <strong>сталого напрямку</strong>. 
+        У Клейна («Елементарна математика з точки зору вищої», стор. 247) саме паралельне перенесення (зсув точок зі збереженням напрямку) 
+        стає основою побудови всієї афінної та метричної геометрії.
+      </div>
+
+      <!-- Інтерактив 3: Дослідження напрямку прямої -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 3: Дві точки визначають напрямок прямої</h3>
+        <p class="hint">Перетягуй сині точки $A$ або $B$ мишкою/пальцем. Спостерігай, як миттєво перебудовується нескінченний напрямок прямої.</p>
+        
+        <svg id="stage-line-direction" class="svg-stage" viewBox="0 0 600 240"></svg>
+        
+        <div class="controls-row">
+          <span>Статус точки $C$: <strong id="pt-c-status" style="color: #1e40af;">перетягни зелену точку C</strong></span>
+          <button class="btn-reset" id="btn-snap-c" style="margin-left: auto;">Покласти точку C на пряму</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- § 11 -->
+    <article class="para-card" id="p11">
+      <div class="para-header">
+        <h3 class="para-title">§ 11. Геометричні операції над відрізками (сума, різниця, відношення)</h3>
+        <span class="para-ref">Стор. 5–6 оригіналу · Рис. 1</span>
+      </div>
+
+      <p>
+        Якщо задано два відрізки $AB$ та $CD$ (<strong>Рис. 1</strong>), і потрібно вказати їхню суму, різницю або частку, використовують звичайні знаки арифметики:
+      </p>
+      <ul>
+        <li>$AB + CD$ — <em>позначена сума</em>;</li>
+        <li>$AB - CD$ — <em>позначена різниця</em>;</li>
+        <li>$AB : CD$ — <em>позначена частка (відношення)</em>.</li>
+      </ul>
+
+      <p>
+        Оскільки сума і різниця двох відрізків самі є відрізками, їх можна <strong>наочно побудувати геометрично</strong> (за допомогою циркуля вздовж однієї прямої):
+      </p>
+      <ol>
+        <li>
+          <strong>Побудова суми ($AF = AB + CD$):</strong> продовжуємо відрізок $AB$ за точку $B$ і на продовженні відкладаємо розхилом циркуля відрізок $BF = CD$. Отриманий суцільний відрізок $AF$ є сумою:
+          $$AF = AB + BF = AB + CD$$
+        </li>
+        <li>
+          <strong>Побудова різниці ($AG = AB - CD$):</strong> на самому відрізку $AB$ відкладаємо від кінця $B$ всередину розхилом циркуля відрізок $BG = CD$. Залишок $AG$ є різницею:
+          $$AG = AB - BG = AB - CD$$
+        </li>
+      </ol>
+
+      <p style="font-size: 14.5px; color: #475569; background: #f8fafc; padding: 12px 16px; border-left: 3px solid #64748b; border-radius: 4px;">
+        <strong>Важливе зауваження Лемуса про частку:</strong> 
+        <em>«Про геометричне зображення частки двох ліній у вигляді лінії не може бути й мови, оскільки частка двох відрізків $AB : CD$ — це не лінія, а абстрактне безрозмірне число»</em>. Добуток двох ліній у межах одновимірної теорії Лемус також називає беззмістовним, поки не введено поняття площі.
+      </p>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§ 11)</summary>
+        <div class="german-quote">
+          „§. 11. Hat man 2 gerade Linien, ab, cd, Fig. 1 und will ihre Summe, Differenz oder ihren Quotienten... anzeigen, so bedient man sich der gewöhnlichen Zeichen der Arithmetik: so wäre ab + cd die angezeigte Summe, ab - cd die angezeigte Differenz, ab : cd der angezeigte Quotient.<br>
+          Da die Summe sowohl wie die Differenz zweier Linien selbst wieder eine Linie ist, so kann die wirkliche Darstellung dieser Linien ab + cd und ab - cd verlangt werden. Denkt man sich, um diese Forderungen zu erfüllen:<br>
+          1. ab verlängert, und in der Verlängerung bf = cd gemacht, so ist ab + cd = ab + bf = af, also af die verlangte Summe,<br>
+          2. auf ab von einem der Endpunkte aus, bg = cd gemacht, so ist ab - cd = ab - bg = ag, also ag die verlangte Differenz.<br>
+          Von der wirklichen Darstellung des Quotienten zweier Linien, als Linie kann nie die Rede sein, weil der Quotient zweier Linien, keine Linie, sondern eine abstrakte Zahl ist.“
+        </div>
+      </details>
+
+      <!-- Векторний Рис. 1 Лемуса (повне автентичне відтворення з оригінальної Tafel I) -->
+      <div class="original-fig-box">
+        <svg width="560" height="170" viewBox="0 0 560 170" style="background:#ffffff; border-radius:8px;">
+          <!-- 1. ПРЯМА ЛІНІЯ (A, G, B, F) -->
+          <line x1="30" y1="45" x2="520" y2="45" stroke="#94a3b8" stroke-width="1.2" />
+          
+          <!-- Базовий відрізок AB (синій) -->
+          <line x1="60" y1="45" x2="330" y2="45" stroke="#1d4ed8" stroke-width="3" />
+          
+          <!-- Продовження BF = CD (зелене пунктирне) -->
+          <line x1="330" y1="45" x2="450" y2="45" stroke="#059669" stroke-width="3" stroke-dasharray="5,3" />
+          
+          <!-- Засічки та точки на прямій -->
+          <!-- Точка A (хрестик/засічка на початку) -->
+          <line x1="60" y1="36" x2="60" y2="54" stroke="#0f172a" stroke-width="2.5" />
+          <circle cx="60" cy="45" r="3.5" fill="#0f172a" />
+          <text x="56" y="28" font-family="sans-serif" font-size="14" font-weight="bold">a</text>
+          
+          <!-- Точка G (засічка) -->
+          <line x1="210" y1="36" x2="210" y2="54" stroke="#dc2626" stroke-width="2.5" />
+          <circle cx="210" cy="45" r="3.5" fill="#dc2626" />
+          <text x="206" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#dc2626">g</text>
+          
+          <!-- Точка B (засічка) -->
+          <line x1="330" y1="36" x2="330" y2="54" stroke="#0f172a" stroke-width="2.5" />
+          <circle cx="330" cy="45" r="3.5" fill="#0f172a" />
+          <text x="326" y="28" font-family="sans-serif" font-size="14" font-weight="bold">b</text>
+          
+          <!-- Точка F (засічка) -->
+          <line x1="450" y1="36" x2="450" y2="54" stroke="#059669" stroke-width="2.5" />
+          <circle cx="450" cy="45" r="3.5" fill="#059669" />
+          <text x="446" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#059669">f</text>
+          
+          <!-- Напис номера фігури «1.» як у гравюрі 1842 р. -->
+          <text x="265" y="76" font-family="serif" font-size="18" font-style="italic" fill="#64748b">1.</text>
+
+          <!-- 2. ДРУГИЙ ВІДРІЗОК CD (ОКРЕМИЙ ВІДРІЗОК ВНИЗУ, ЯК В ОРИГІНАЛІ ЛЕМУСА) -->
+          <!-- Його довжина в точності дорівнює BG (330 - 210 = 120) та BF (450 - 330 = 120) -->
+          <line x1="210" y1="108" x2="330" y2="108" stroke="#059669" stroke-width="3" />
+          <!-- Кінці c та d із засічками -->
+          <line x1="210" y1="100" x2="210" y2="116" stroke="#059669" stroke-width="2.5" />
+          <circle cx="210" cy="108" r="3.5" fill="#059669" />
+          <text x="195" y="113" font-family="sans-serif" font-size="14" font-weight="bold" fill="#059669">c</text>
+
+          <line x1="330" y1="100" x2="330" y2="116" stroke="#059669" stroke-width="2.5" />
+          <circle cx="330" cy="108" r="3.5" fill="#059669" />
+          <text x="338" y="113" font-family="sans-serif" font-size="14" font-weight="bold" fill="#059669">d</text>
+
+          <!-- Вертикальні пунктири та дуга циркуля: наочне перенесення довжини CD -->
+          <line x1="210" y1="54" x2="210" y2="100" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+          <line x1="330" y1="54" x2="330" y2="100" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+          <path d="M 330 108 A 120 120 0 0 0 450 45" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+
+          <!-- Пояснювальні підписи -->
+          <text x="60" y="148" font-family="sans-serif" font-size="12" fill="#1d4ed8">ab — даний відрізок</text>
+          <text x="210" y="148" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">cd — другий відрізок (bg = bf = cd)</text>
+          <text x="440" y="82" font-family="sans-serif" font-size="11" font-weight="bold" fill="#059669">af = ab + cd (сума)</text>
+          <text x="105" y="72" font-family="sans-serif" font-size="11" font-weight="bold" fill="#dc2626">ag = ab - cd (різниця)</text>
+        </svg>
+        <div class="caption">Рис. 1 Лемуса (1842): Додавання і віднімання відрізків на прямій. Відрізок cd відкладається від кінця b праворуч (bf = cd, сума af) і всередину ліворуч (bg = cd, різниця ag).</div>
+      </div>
+
+      <!-- Інтерактивна модель додавання та віднімання відрізків -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель: Геометричне додавання та віднімання відрізків ($AB \pm CD$)</h3>
+        <p class="hint">Змінюй повзунками довжину відрізків $AB$ та $CD$. Віртуальний циркуль показує відкладання $CD$ праворуч і ліворуч від точки $B$.</p>
+        
+        <svg id="stage-segment-arith" class="svg-stage" viewBox="0 0 600 210" style="background:#ffffff;"></svg>
+        
+        <div class="controls-row">
+          <label>Довжина $AB$:
+            <input type="range" id="seg-ab-slider" min="160" max="320" value="240">
+            <span class="val-badge" id="seg-ab-val">240 px</span>
+          </label>
+          <label>Довжина $CD$:
+            <input type="range" id="seg-cd-slider" min="40" max="140" value="90">
+            <span class="val-badge" id="seg-cd-val">90 px</span>
+          </label>
+          <div style="margin-left: auto; font-family: monospace; font-size: 13px; color: #1e40af;">
+            <span id="seg-calc-display">AF = 330 px | AG = 150 px</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- § 12 -->
+    <article class="para-card" id="p12">
+      <div class="para-header">
+        <h3 class="para-title">§ 12. Теорема про конгруентність кругових секторів при рівних дугах</h3>
+        <span class="para-ref">Стор. 6 оригіналу · Рис. 2</span>
+      </div>
+
+      <p>
+        <strong>Теорема (Lehrsatz):</strong> Якщо периферію (коло) будь-якого круга поділити на довільну кількість (скажімо, $n$) рівних частин (дуг), і з кожної точки поділу провести радіус до центра, то всі утворені кругові сектори будуть <strong>конгруентними (повністю рівними)</strong>.
+      </p>
+
+      <p>
+        <strong>Доведення Лемуса (Beweis):</strong> Нехай точка $M$ (<strong>Рис. 2</strong>) — центр кола, а дуги $CD$ та $AB$ — дві з $n$ рівних дуг кола ($CD = AB$).
+      </p>
+      <p>
+        За означенням кола (§ 7), усі радіуси того самого кола рівні між собою:
+        $$MC = MD = MA = MB = R$$
+        Уявімо тепер, що круговий сектор $MCD$, залишаючись у своїй площині, <em>обертається навколо центра $M$</em> доти, доки радіус $MC$ не суміститься з радіусом $MA$.
+      </p>
+      <p>
+        Тепер достатньо довести, що за такого суміщення радіусів точка $D$ неодмінно потрапить у точку $B$, а дуга $CD$ накладеться на дугу $AB$:
+      </p>
+      <ul>
+        <li>Оскільки всі точки дуги $CD$ віддалені від центра $M$ на радіус $R$, то при обертанні навколо $M$ точка $D$ обов'язково потрапить на коло.</li>
+        <li>Якби точка $D$ не потрапила точно в точку $B$, вона мусила б опинитися або праворуч, або ліворуч від точки $B$ на цьому ж колі.</li>
+        <li>Але тоді довжина дуги $CD$ виявилася б або меншою, або більшою за довжину дуги $AB$, що прямо суперечить умові $CD = AB$ та базовій аксіомі: <em>частина завжди менша за ціле</em>.</li>
+      </ul>
+      <p>
+        Отже, точка $D$ обов'язково збігається з $B$, дуга $CD$ покриває дугу $AB$, а сектори $MCD$ та $MAB$ повністю накладаються, тобто $MCD \cong MAB$.
+      </p>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§ 12)</summary>
+        <div class="german-quote">
+          „§. 12. Lehrsatz. Denkt man sich die Peripherie irgend eines Kreises in eine beliebige Anzahl (etwa in n) gleiche Theile (Bogen) getheilt, und aus jedem Theilpunkt einen Halbmesser gezogen, so sind sämmtliche entstehende Kreis-Ausschnitte congruent.<br>
+          Beweis. Ist m Fig. 2. der Mittelpunkt des Kreises, und sind cd, ab zwei von den n gleichen Bogen, so sind mc, md, ma, mb, nach §. 7. einander als Halbmesser gleich. Denkt man sich nun den Kreisausschnitt mcd in seiner Ebene bleibend, um m gedreht bis mc auf ma fällt, so muß bloß bewiesen werden, daß dann auch d auf b und Bogen cd auf Bogen ab fällt, also die Ausschnitte sich decken. Hiervon überzeugt man sich aber leicht indirect: da nämlich, wegen Gleichheit aller Halbmesser eines und desselben Kreises, d sowohl wie jeder andere Punkt des Bogens cd, nothwendig in die Peripherie fallen muß; so könnte d nur rechts oder links b in derselben zu liegen kommen, wenn man annehmen wollte: d träfe nicht auf b! Beides wäre aber, da nach der Voraussetzung cd = ab ist, dem Grundsatz widersprechend: der Theil ist kleiner wie das Ganze.“
+        </div>
+      </details>
+
+      <div class="didactic-box klein">
+        <h4>📐 Погляд Фелікса Клейна: Доведення поворотом (Ерлангенська програма)</h4>
+        Зверни увагу на строго кінетичний характер доведення Лемуса: він доводить рівність секторів не через формальні аксіоми трикутників, а через <strong>обертання площини навколо центра $M$</strong>. Поворот є елементом групи ізометрій евклідової площини $SO(2)$, що зберігає метрику (радіуси) та кривину (довжини дуг).
+      </div>
+
+      <!-- Векторний Рис. 2 Лемуса -->
+      <div class="original-fig-box">
+        <svg width="420" height="240" viewBox="0 0 420 240" style="background:#ffffff; border-radius:8px;">
+          <!-- Коло з центром M=(210, 120), R=90 -->
+          <circle cx="210" cy="120" r="90" fill="none" stroke="#64748b" stroke-width="1.8" />
+          <!-- Центр M -->
+          <circle cx="210" cy="120" r="4.5" fill="#0f172a" />
+          <text x="194" y="124" font-family="sans-serif" font-size="14" font-weight="bold">m</text>
+          <text x="206" y="98" font-family="serif" font-size="18" font-style="italic" fill="#94a3b8">2.</text>
+
+          <!-- Сектор MCD (внизу) -->
+          <line x1="210" y1="120" x2="210" y2="210" stroke="#059669" stroke-width="2.2" />
+          <line x1="210" y1="120" x2="262" y2="193" stroke="#059669" stroke-width="2.2" />
+          <path d="M 210 210 A 90 90 0 0 0 262 193" fill="none" stroke="#059669" stroke-width="4" />
+          <circle cx="210" cy="210" r="4" fill="#059669" />
+          <circle cx="262" cy="193" r="4" fill="#059669" />
+          <text x="205" y="228" font-family="sans-serif" font-size="13" font-weight="bold" fill="#059669">c</text>
+          <text x="270" y="206" font-family="sans-serif" font-size="13" font-weight="bold" fill="#059669">d</text>
+
+          <!-- Сектор MAB (праворуч) -->
+          <line x1="210" y1="120" x2="297" y2="97" stroke="#1d4ed8" stroke-width="2.2" />
+          <line x1="210" y1="120" x2="268" y2="51" stroke="#1d4ed8" stroke-width="2.2" />
+          <path d="M 297 97 A 90 90 0 0 0 268 51" fill="none" stroke="#1d4ed8" stroke-width="4" />
+          <circle cx="297" cy="97" r="4" fill="#1d4ed8" />
+          <circle cx="268" cy="51" r="4" fill="#1d4ed8" />
+          <text x="306" y="104" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">a</text>
+          <text x="274" y="44" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">b</text>
+
+          <!-- Пунктирні радіуси інших секторів для ілюстрації поділу на n частин -->
+          <line x1="210" y1="120" x2="210" y2="30" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+          <line x1="210" y1="120" x2="146" y2="56" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+          <line x1="210" y1="120" x2="120" y2="120" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+          <line x1="210" y1="120" x2="146" y2="184" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3" />
+        </svg>
+        <div class="caption">Рис. 2 Лемуса (1842): Поділ кола на рівні частини та доведення конгруентності секторів mab ≅ mcd через обертання навколо центра m.</div>
+      </div>
+    </article>
+
+    <!-- ========================================================== -->
+    <!-- ЧАСТИНА III. ТЕОРІЯ КУТА ЧЕРЕЗ КОНЦЕНТРИЧНІ КОЛА (§§ 13–16) -->
+    <!-- ========================================================== -->
+    <h2 style="font-size: 24px; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 50px; color: #0f172a;">
+      Частина III. Теорія кута як інваріанта концентричних кіл (§§ 13–16)
+    </h2>
+
+    <!-- §§ 13–15 -->
+    <article class="para-card" id="p13-15">
+      <div class="para-header">
+        <h3 class="para-title">§§ 13–15. Поділ концентричних кіл та незалежність кута від радіуса</h3>
+        <span class="para-ref">Стор. 6–7 оригіналу · Рис. 3, 4</span>
+      </div>
+
+      <p>
+        <strong>§ 13. Теорема про поділ концентричних кіл:</strong> Якщо описати зі спільного центра $M$ кілька концентричних кіл і одне з них поділити на $n$ рівних дуг, провівши радіуси через усі точки поділу, то ці радіуси відітнуть на всіх інших колах також <em>рівно $n$ конгруентних дуг та $n$ конгруентних секторів</em>.
+      </p>
+
+      <p>
+        <strong>§ 14. Теорема про частку периферії:</strong> Якщо два промені вирізають на внутрішньому колі дугу $ed$, що дорівнює $\frac{1}{n}$ частині його периферії $p$, то на зовнішньому колі вони виріжуть дугу $fg$, яка також становить <em>рівно ту саму $\frac{1}{n}$ частину своєї периферії $P$</em>:
+        $$n \cdot ed = p \implies n \cdot fg = P \implies fg = \frac{P}{n}$$
+      </p>
+
+      <p>
+        <strong>§ 15. Теорема про пропорційність дуг:</strong> Дуги концентричних кіл, обмежені тими самими променями, відносяться між собою як повні довжини відповідних кіл:
+        $$\frac{ed}{fg} = \frac{p}{P} \iff \frac{ed}{p} = \frac{fg}{P} = \text{const}$$
+      </p>
+
+      <div class="didactic-box feynman">
+        <h4>💡 Чому цей крок геніальний?</h4>
+        Замислись: як довести дитині, що на маленькому кишеньковому транспортирі й на гігантському будівельному кутомірі кут $45^\circ$ — це один і той самий кут?
+        Адже дуга на великому колі значно довша за дугу на маленькому!
+        Лемус показує: довжина дуги зростає <em>пропорційно</em> до радіуса, але <strong>відношення дуги до всієї периферії $\frac{b}{p}$ залишається абсолютно сталим</strong>!
+      </div>
+
+      <!-- Інтерактив 4: Концентричні кола та пропорційність дуг -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 4: Інваріантність частки дуги в концентричних колах</h3>
+        <p class="hint">Змінюй радіуси внутрішнього та зовнішнього кола, або обертай промінь $B$. Переконайся: дріб $\frac{\text{дуга}}{\text{периферія}}$ не змінюється при масштабуванні!</p>
+        
+        <svg id="stage-concentric" class="svg-stage" viewBox="0 0 600 280"></svg>
+        
+        <div class="controls-row">
+          <label>Кут між променями:
+            <input type="range" id="conc-angle-slider" min="15" max="150" value="60">
+            <span class="val-badge" id="conc-angle-val">60°</span>
+          </label>
+          <label>Радіус зовн. кола:
+            <input type="range" id="conc-r2-slider" min="110" max="170" value="140">
+            <span class="val-badge" id="conc-r2-val">R=140</span>
+          </label>
+          <div style="margin-left: auto; font-family: monospace; font-size: 13px; color: #1e40af;">
+            Частка: <strong id="conc-ratio-display">60° / 360° = 1/6 (16.7%)</strong>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- § 16 -->
+    <article class="para-card" id="p16">
+      <div class="para-header">
+        <h3 class="para-title">§ 16. Суворе означення кута як міри розбіжності двох напрямків</h3>
+        <span class="para-ref">Стор. 7–8 оригіналу</span>
+      </div>
+
+      <p>
+        <strong>1. Означення кута (Erklärung):</strong> Якщо дві прямі лінії перетинаються в точці $M$, і з центра $M$ описати коло довільного радіуса, то відношення відтятої дуги $b$ до повної довжини кола $p$ визначає <strong>величину розбіжності двох прямих ліній одна від одної</strong> (*die Abweichung der beiden Linien von einander*). 
+        Ця розбіжність називається <strong>кутом</strong>, утвореним двома лініями.
+      </p>
+      <ul>
+        <li>Лінії називаються <strong>сторонами кута</strong>.</li>
+        <li>Точка їхнього перетину називається <strong>вершиною кута</strong> (*Scheitelpunkt*).</li>
+      </ul>
+      <p>
+        <strong>2. Позначення:</strong> Кут позначають трьома літерами $\angle AMB$ (літера вершини завжди стоїть посередині) або однією літерою вершини $\angle M$.
+      </p>
+      <p>
+        <strong>3. Прямий кут ($R$):</strong> Якщо дуга між двома променями становить рівно $\frac{1}{4}$ частину кола (або половину розгорнутого півкола), такий кут називається <strong>прямим кутом</strong> і позначається символом <strong>$R$</strong> (від нім. <em>Rechter Winkel</em>, у сучасних позначеннях $R = 90^\circ$).
+      </p>
+      <p>
+        <strong>4. Гострий і тупий кути:</strong> Кут, менший за $R$, називається <em>гострим</em>; кут, більший за $R$, але менший за $2R$, називається <em>тупим</em>.
+      </p>
+
+      <details class="german-source">
+        <summary>Оригінальний німецький текст (§ 16.1)</summary>
+        <div class="german-quote">
+          „...so bestimmt das Verhältniß des Bogens $b$ zur ganzen Peripherie $p$, die Abweichung der beiden Linien $mo$, $md$ von einander, und diese Abweichung wird der von beiden Linien gebildete Winkel genannt: die Linien selbst heißen die Schenkel des Winkels, und ihr Schneidungspunkt, die Spitze oder der Scheitelpunkt desselben.“
+        </div>
+      </details>
+    </article>
+
+    <!-- ======================================================== -->
+    <!-- ЧАСТИНА IV. СУМІЖНІ ТА ВЕРТИКАЛЬНІ КУТИ (§§ 17–22)        -->
+    <!-- ======================================================== -->
+    <h2 style="font-size: 24px; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 50px; color: #0f172a;">
+      Частина IV. Суміжні та вертикальні кути (§§ 17–22)
+    </h2>
+
+    <!-- § 17–19 -->
+    <article class="para-card" id="p17-19">
+      <div class="para-header">
+        <h3 class="para-title">§§ 17–19. Кути на прямій та ознака утворення прямої лінії</h3>
+        <span class="para-ref">Стор. 9 оригіналу · Рис. 5, 6</span>
+      </div>
+
+      <p>
+        <strong>§ 17. Теорема про суму кутів на прямій:</strong> Сума всіх кутів, розташованих на один бік від прямої лінії зі спільною вершиною на ній, завжди дорівнює <strong>$2R$</strong> ($180^\circ$):
+        $$\angle AMC + \angle CMD + \angle DMB = 2R = 180^\circ$$
+      </p>
+
+      <div class="theorem-proof">
+        <strong>Доведення Лемуса:</strong> Опишемо зі спільної вершини $M$ півколо периферією $\frac{p}{2}$. Кожен кут спирається на свою дугу, а сума всіх дуг складає точно половину повного кола $\frac{p}{2}$. Оскільки повне коло містить $4R$, то половина становить $\frac{4R}{2} = 2R = 180^\circ$. <span class="qed">■</span>
+      </div>
+
+      <p>
+        <strong>§ 18. Обернена теорема (Ознака прямої лінії):</strong> Якщо кілька прилеглих кутів зі спільною вершиною мають у сумі рівно $2R$, то їхні дві крайні сторони утворюють <strong>одну суцільну пряму лінію</strong>.
+      </p>
+
+      <div class="theorem-proof">
+        <strong>Доведення від супротивного:</strong> Якби крайні промені $MA$ і $MB$ не лежали на одній прямій, то продовження променя $MA$ пішло б вище або нижче $MB$. Тоді утворився б кут, сума з яким давала б $2R$. Звідси випливало б, що частина кута дорівнює цілому куту, що неможливо. Отже, вони неодмінно утворюють пряму лінію. <span class="qed">■</span>
+      </div>
+
+      <p>
+        <strong>§ 19. Повний кут навколо точки:</strong> Сума всіх кутів на площині навколо спільної вершини дорівнює <strong>$4R$</strong> ($360^\circ$).
+      </p>
+
+      <!-- Інтерактив 5: Тест на пряму лінію -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 5: Ознака прямої лінії (Ламається чи випрямляється?)</h3>
+        <p class="hint">Змінюй кут $\beta$. Спостерігай: лише коли $\alpha + \beta = 180^\circ$ ($2R$), злам у точці $M$ зникає і два промені утворюють ідеальну пряму лінію!</p>
+        
+        <svg id="stage-straight-test" class="svg-stage" viewBox="0 0 600 240"></svg>
+        
+        <div class="controls-row">
+          <label>Кут $\alpha$: 
+            <input type="range" id="st-alpha" min="30" max="150" value="65">
+            <span class="val-badge" id="st-alpha-val">65°</span>
+          </label>
+          <label>Кут $\beta$: 
+            <input type="range" id="st-beta" min="30" max="150" value="115">
+            <span class="val-badge" id="st-beta-val">115°</span>
+          </label>
+          <div style="margin-left: auto;">
+            Сума: <strong id="st-sum-badge" class="val-badge" style="background: #dcfce7; color: #166534;">65° + 115° = 180° (ПРЯМА!)</strong>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- § 20 -->
+    <article class="para-card" id="p20">
+      <div class="para-header">
+        <h3 class="para-title">§ 20. Теорема про рівність вертикальних кутів (Scheitelwinkelsatz)</h3>
+        <span class="para-ref">Стор. 10 оригіналу · Рис. 7</span>
+      </div>
+
+      <p>
+        <strong>Теорема:</strong> Вертикальні кути рівні між собою: $\alpha = \beta$.
+      </p>
+
+      <div class="theorem-proof">
+        <strong>Класичне доведення Лемуса (§ 20):</strong><br>
+        Нехай прямі $AB$ і $CD$ перетинаються в точці $M$ (Рис. 7 Лемуса). Кути $\alpha$ і $\beta$ є вертикальними, а кут $\gamma$ — суміжний до кожного з них.
+        $$\alpha + \gamma = 2R \quad (\text{за § 17})$$
+        $$\beta + \gamma = 2R \quad (\text{за § 17})$$
+        $$\text{Звідси: } \alpha + \gamma = \beta + \gamma$$
+        $$\text{Віднімемо спільний кут } \gamma: \quad \alpha = \beta. \quad \text{Що й треба було довести.} \quad \blacksquare$$
+      </div>
+
+      <!-- Векторний Рис. 7 Лемуса -->
+      <div class="original-fig-box">
+        <svg width="420" height="150" viewBox="0 0 420 150">
+          <line x1="40" y1="120" x2="380" y2="30" stroke="#1d4ed8" stroke-width="2.5" />
+          <line x1="60" y1="20" x2="360" y2="130" stroke="#059669" stroke-width="2.5" />
+          <circle cx="210" cy="75" r="4" fill="#0f172a" />
+          
+          <text x="210" y="98" font-family="sans-serif" font-size="13" font-weight="bold">M</text>
+          <text x="260" y="70" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1d4ed8">α</text>
+          <text x="145" y="85" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1d4ed8">β</text>
+          <text x="210" y="45" font-family="sans-serif" font-size="16" font-weight="bold" fill="#b45309">γ</text>
+        </svg>
+        <div class="caption">Рис. 7 Лемуса (1842): Вертикальні кути при перетині двох прямих ліній</div>
+      </div>
+
+      <!-- Інтерактив 6: Півоберт на 180 градусів (Клейнівська модель) -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 6: Механічні ножиці та поворот на 180° (Півоберт)</h3>
+        <p class="hint">Обертай кут $\alpha$ навколо точки перетину $M$. При повороті на $180^\circ$ його промені сумістяться з протилежними променями, доводячи рівність $\alpha = \beta$ через рух площини!</p>
+        
+        <svg id="stage-vertical-half-turn" class="svg-stage" viewBox="0 0 600 260"></svg>
+        
+        <div class="controls-row">
+          <label>Розкриття ножиць: 
+            <input type="range" id="vert-scissors-slider" min="20" max="140" value="55">
+            <span class="val-badge" id="vert-scissors-val">55°</span>
+          </label>
+          <label>Поворот на кут: 
+            <input type="range" id="vert-rot-slider" min="0" max="180" value="0">
+            <span class="val-badge" id="vert-rot-val">0°</span>
+          </label>
+          <button class="btn-reset" id="btn-do-half-turn">Зробити півоберт (180°)</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- §§ 21–22 -->
+    <article class="para-card" id="p21-22">
+      <div class="para-header">
+        <h3 class="para-title">§§ 21–22. Теорема про пряму з рівних кутів та аксіоми доповнень</h3>
+        <span class="para-ref">Стор. 10 оригіналу · Рис. 8</span>
+      </div>
+
+      <p>
+        <strong>§ 21. Теорема:</strong> Якщо від точки $M$ прямої лінії $AB$ по різні її боки відкласти два рівні кути $\angle AMD = \angle BMC$, то промені $MC$ і $MD$ утворюють <strong>одну суцільну пряму лінію</strong>.
+      </p>
+
+      <div class="theorem-proof">
+        <strong>Доведення Лемуса:</strong><br>
+        Припустимо від супротивного, що продовження променя $CM$ за точку $M$ (назвемо його $MF$) не збігається з $MD$.<br>
+        Тоді кут $\angle AMF$ і кут $\angle BMC$ є вертикальними, отже, за § 20: $\angle AMF = \angle BMC$.<br>
+        Але за умовою $\angle AMD = \angle BMC$. Звідси випливає, що $\angle AMF = \angle AMD$, тобто частина кута дорівнює цілому куту, що неможливо!<br>
+        Отже, продовження променя $CM$ обов'язково збігається з $MD$, утворюючи пряму лінію $CD$. <span class="qed">■</span>
+      </div>
+
+      <!-- Векторний Рис. 8 Лемуса -->
+      <div class="original-fig-box">
+        <svg width="460" height="150" viewBox="0 0 460 150">
+          <line x1="30" y1="75" x2="430" y2="75" stroke="#64748b" stroke-width="2" stroke-dasharray="4" />
+          <line x1="90" y1="135" x2="370" y2="15" stroke="#1d4ed8" stroke-width="2.5" />
+          <circle cx="230" cy="75" r="4" fill="#0f172a" />
+          
+          <text x="228" y="96" font-family="sans-serif" font-size="13" font-weight="bold">M</text>
+          <text x="35" y="70" font-family="sans-serif" font-size="13" font-weight="bold">A</text>
+          <text x="415" y="70" font-family="sans-serif" font-size="13" font-weight="bold">B</text>
+          <text x="375" y="25" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">D</text>
+          <text x="75" y="145" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">C</text>
+          <text x="280" y="65" font-family="sans-serif" font-size="14" font-weight="bold" fill="#059669">∠AMD</text>
+          <text x="140" y="95" font-family="sans-serif" font-size="14" font-weight="bold" fill="#059669">∠BMC</text>
+        </svg>
+        <div class="caption">Рис. 8 Лемуса (1842): Утворення прямої лінії з двох рівних протилежних кутів</div>
+      </div>
+
+      <p>
+        <strong>§ 22. Основні положення про доповнення кутів (Grundsätze):</strong>
+      </p>
+      <ol>
+        <li>Рівні кути мають рівні доповнення до $1R$ ($90^\circ$), до $2R$ ($180^\circ$) та до $4R$ ($360^\circ$).</li>
+        <li>Кути, які мають рівні доповнення до одного й того самого кута ($1R$, $2R$ або $4R$), <strong>є рівними між собою</strong>:
+          $$180^\circ - \alpha = 180^\circ - \beta \implies \alpha = \beta$$
+        </li>
+      </ol>
+    </article>
+
+    <!-- Підсумок для 7 класу -->
+    <div class="didactic-box nus" style="margin-top: 40px; padding: 24px;">
+      <h3 style="margin-top: 0; color: #1e3a8a;">🎯 Методичний висновок для 7 класу (Кисельов vs Лемус)</h3>
+      <p>
+        Підхід Лемуса 1842 року відкриває для учня дивовижну істину: <strong>геометрія не починається зі складних і сухих аксіом</strong>. 
+        Вона починається з життєвого, природного руху:
+      </p>
+      <ul>
+        <li>Пряма — це рух зі сталим напрямком (вектором швидкості).</li>
+        <li>Кут — це поворот променя навколо шарніра, а його градусна міра — це інваріантна частка кола, спільна для будь-якого радіуса.</li>
+        <li>Вертикальні кути рівні не просто через арифметичне віднімання, а тому, що вони є жорсткими ножицями, які суміщаються звичайним півобертом на $180^\circ$!</li>
+      </ul>
+      <p style="margin-bottom: 0;">
+        Цей 10-сторінковий німецький трактат є найкращим концептуальним компаньйоном до нашого основного підручника 
+        <a href="geometry-angles.html" style="font-weight: 700; color: #1d4ed8;">«Кути. Суміжні та вертикальні кути»</a>.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ІНТЕРАКТИВНІ СКРИПТИ SVG (VANILLA JS 60FPS) -->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // -------------------------------------------------------------
+      // 1. Інтерактивна модель 1: Генератор вимірів Лемуса (§ 1)
+      // -------------------------------------------------------------
+      const dimSvg = document.getElementById("stage-dim-gen");
+      const dimSlider = document.getElementById("dim-slider");
+      const dimVal = document.getElementById("dim-val");
+      const dimRadios = document.querySelectorAll('input[name="dim-mode"]');
+
+      function renderDimGen() {
+        const t = parseFloat(dimSlider.value) / 100;
+        dimVal.textContent = Math.round(t * 100) + "%";
+        const mode = document.querySelector('input[name="dim-mode"]:checked').value;
+
+        dimSvg.innerHTML = "";
+
+        if (mode === "straight") {
+          // Пряма: сталий напрям
+          const startX = 60, startY = 120;
+          const endX = 540, endY = 120;
+          const curX = startX + (endX - startX) * t;
+
+          // Напрямна лінія пунктир
+          dimSvg.innerHTML += `<line x1="${startX}" y1="${startY}" x2="${endX}" y2="${endY}" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6"/>`;
+          // Пройдений слід
+          dimSvg.innerHTML += `<line x1="${startX}" y1="${startY}" x2="${curX}" y2="${startY}" stroke="#1d4ed8" stroke-width="4" stroke-linecap="round"/>`;
+          // Рухома точка
+          dimSvg.innerHTML += `<circle cx="${curX}" cy="${startY}" r="7" fill="#dc2626" />`;
+          // Вектор швидкості
+          if (t < 0.98) {
+            dimSvg.innerHTML += `<line x1="${curX}" y1="${startY}" x2="${curX + 45}" y2="${startY}" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow)"/>`;
+          }
+          // Позначки
+          dimSvg.innerHTML += `<text x="60" y="95" font-size="14" font-weight="bold" fill="#0f172a">Початок руху (сталий вектор швидкості)</text>`;
+          dimSvg.innerHTML += `<text x="${curX - 25}" y="${startY + 28}" font-size="12" font-family="monospace" fill="#dc2626">v = const</text>`;
+        } 
+        else if (mode === "curve") {
+          // Крива: напрям змінюється
+          let pathD = "M 60 160";
+          const steps = 100;
+          const curStep = Math.round(steps * t);
+          let curPt = {x: 60, y: 160};
+
+          for (let i = 1; i <= steps; i++) {
+            const progress = i / steps;
+            const px = 60 + 480 * progress;
+            const py = 120 - Math.sin(progress * Math.PI * 2) * 55;
+            if (i <= curStep) {
+              pathD += ` L ${px} ${py}`;
+              curPt = {x: px, y: py};
+            }
+          }
+
+          // Повний контур пунктиром
+          let fullD = "M 60 160";
+          for (let i = 1; i <= steps; i++) {
+            const p = i / steps;
+            fullD += ` L ${60 + 480 * p} ${120 - Math.sin(p * Math.PI * 2) * 55}`;
+          }
+          dimSvg.innerHTML += `<path d="${fullD}" fill="none" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6"/>`;
+          dimSvg.innerHTML += `<path d="${pathD}" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round"/>`;
+          dimSvg.innerHTML += `<circle cx="${curPt.x}" cy="${curPt.y}" r="7" fill="#dc2626" />`;
+          dimSvg.innerHTML += `<text x="60" y="50" font-size="14" font-weight="bold" fill="#0f172a">Напрям постійно повертається (крива)</text>`;
+        } 
+        else if (mode === "surface") {
+          // Площина: рух відрізка впоперек
+          const y1 = 60, y2 = 180;
+          const startX = 80;
+          const curW = 440 * t;
+
+          // Замітання площини
+          dimSvg.innerHTML += `<rect x="${startX}" y="${y1}" width="${curW}" height="${y2 - y1}" fill="rgba(29, 78, 216, 0.15)" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="4"/>`;
+          // Рухомий фронт відрізка
+          dimSvg.innerHTML += `<line x1="${startX + curW}" y1="${y1}" x2="${startX + curW}" y2="${y2}" stroke="#1d4ed8" stroke-width="4" stroke-linecap="round"/>`;
+          dimSvg.innerHTML += `<circle cx="${startX + curW}" cy="${y1}" r="5" fill="#dc2626"/>`;
+          dimSvg.innerHTML += `<circle cx="${startX + curW}" cy="${y2}" r="5" fill="#dc2626"/>`;
+          dimSvg.innerHTML += `<text x="80" y="45" font-size="14" font-weight="bold" fill="#0f172a">Відрізок рухається вбік і «замітає» площину (2D)</text>`;
+        }
+      }
+
+      dimSlider.addEventListener("input", renderDimGen);
+      dimRadios.forEach(r => r.addEventListener("change", renderDimGen));
+      renderDimGen();
+
+
+      // -------------------------------------------------------------
+      // 2. Інтерактивна модель 2: Обертання відрізка (§ 5)
+      // -------------------------------------------------------------
+      const circleSvg = document.getElementById("stage-circle-rot");
+      const circleSlider = document.getElementById("circle-angle-slider");
+      const circleVal = document.getElementById("circle-angle-val");
+      const btnFull = document.getElementById("btn-full-circle");
+      const btnReset = document.getElementById("btn-reset-circle");
+
+      function renderCircle() {
+        const deg = parseFloat(circleSlider.value);
+        circleVal.textContent = Math.round(deg) + "°";
+        const cx = 300, cy = 130, r = 85;
+
+        const rad = (deg * Math.PI) / 180;
+        const curX = cx + r * Math.cos(-rad);
+        const curY = cy + r * Math.sin(-rad);
+
+        circleSvg.innerHTML = "";
+
+        // Повне коло орієнтир
+        circleSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#f1f5f9" stroke-width="3"/>`;
+
+        // Дуга пройденого сліду
+        if (deg > 0) {
+          const largeArc = deg > 180 ? 1 : 0;
+          const arcD = `M ${cx + r} ${cy} A ${r} ${r} 0 ${largeArc} 0 ${curX} ${curY}`;
+          circleSvg.innerHTML += `<path d="${arcD}" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>`;
+        }
+
+        // Початкове положення відрізка
+        circleSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3"/>`;
+        // Рухомий важіль
+        circleSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${curX}" y2="${curY}" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>`;
+
+        // Центр і кінець
+        circleSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="6" fill="#0f172a"/>`;
+        circleSvg.innerHTML += `<circle cx="${curX}" cy="${curY}" r="7" fill="#dc2626"/>`;
+
+        circleSvg.innerHTML += `<text x="${cx - 18}" y="${cy + 5}" font-weight="bold" font-size="14">O</text>`;
+        circleSvg.innerHTML += `<text x="${curX + 10}" y="${curY + 5}" font-weight="bold" font-size="14" fill="#dc2626">A (слід)</text>`;
+        circleSvg.innerHTML += `<text x="40" y="40" font-size="14" font-weight="bold" fill="#0f172a">Коло — це траєкторія вільного кінця відрізка</text>`;
+      }
+
+      circleSlider.addEventListener("input", renderCircle);
+      btnFull.addEventListener("click", () => { circleSlider.value = 360; renderCircle(); });
+      btnReset.addEventListener("click", () => { circleSlider.value = 0; renderCircle(); });
+      renderCircle();
+
+
+      // -------------------------------------------------------------
+      // 3. Інтерактивна модель 3: Напрямок прямої (§ 10)
+      // -------------------------------------------------------------
+      const dirSvg = document.getElementById("stage-line-direction");
+      const ptCStatus = document.getElementById("pt-c-status");
+      const btnSnapC = document.getElementById("btn-snap-c");
+
+      let ptA = {x: 140, y: 150};
+      let ptB = {x: 420, y: 90};
+      let ptC = {x: 280, y: 170};
+      let dragged = null;
+
+      function renderDirLine() {
+        dirSvg.innerHTML = "";
+
+        // Обчислення нескінченної прямої через A і B
+        const dx = ptB.x - ptA.x;
+        const dy = ptB.y - ptA.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const ux = dx / len;
+        const uy = dy / len;
+
+        const x1 = ptA.x - ux * 800;
+        const y1 = ptA.y - uy * 800;
+        const x2 = ptB.x + ux * 800;
+        const y2 = ptB.y + uy * 800;
+
+        // Пряма
+        dirSvg.innerHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1d4ed8" stroke-width="3"/>`;
+
+        // Точки A і B
+        dirSvg.innerHTML += `<circle cx="${ptA.x}" cy="${ptA.y}" r="8" fill="#1d4ed8" style="cursor: grab;" id="drag-a"/>`;
+        dirSvg.innerHTML += `<text x="${ptA.x - 18}" y="${ptA.y - 12}" font-weight="bold" font-size="14" fill="#1d4ed8">A</text>`;
+
+        dirSvg.innerHTML += `<circle cx="${ptB.x}" cy="${ptB.y}" r="8" fill="#1d4ed8" style="cursor: grab;" id="drag-b"/>`;
+        dirSvg.innerHTML += `<text x="${ptB.x + 12}" y="${ptB.y - 12}" font-weight="bold" font-size="14" fill="#1d4ed8">B</text>`;
+
+        // Точка C
+        dirSvg.innerHTML += `<circle cx="${ptC.x}" cy="${ptC.y}" r="8" fill="#16a34a" style="cursor: grab;" id="drag-c"/>`;
+        dirSvg.innerHTML += `<text x="${ptC.x + 12}" y="${ptC.y + 16}" font-weight="bold" font-size="14" fill="#16a34a">C</text>`;
+
+        // Перевірка, чи лежить точка C на прямій AB (відстань від точки до прямої)
+        const dist = Math.abs((ptB.y - ptA.y) * ptC.x - (ptB.x - ptA.x) * ptC.y + ptB.x * ptA.y - ptB.y * ptA.x) / len;
+
+        if (dist < 4) {
+          ptCStatus.textContent = "Точка C лежить У НАПРЯМКУ прямої AB!";
+          ptCStatus.style.color = "#16a34a";
+        } else {
+          ptCStatus.textContent = `Точка C лежить ПОЗА прямою (відхилення ${Math.round(dist)} px)`;
+          ptCStatus.style.color = "#dc2626";
+        }
+      }
+
+      function getSvgCoords(e, svg) {
+        const rect = svg.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const scaleX = 600 / rect.width;
+        const scaleY = 240 / rect.height;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      dirSvg.addEventListener("pointerdown", (e) => {
+        const p = getSvgCoords(e, dirSvg);
+        if (Math.hypot(p.x - ptA.x, p.y - ptA.y) < 22) dragged = "A";
+        else if (Math.hypot(p.x - ptB.x, p.y - ptB.y) < 22) dragged = "B";
+        else if (Math.hypot(p.x - ptC.x, p.y - ptC.y) < 22) dragged = "C";
+        if (dragged) dirSvg.setPointerCapture(e.pointerId);
+      });
+
+      dirSvg.addEventListener("pointermove", (e) => {
+        if (!dragged) return;
+        const p = getSvgCoords(e, dirSvg);
+        if (dragged === "A") { ptA.x = p.x; ptA.y = p.y; }
+        else if (dragged === "B") { ptB.x = p.x; ptB.y = p.y; }
+        else if (dragged === "C") { ptC.x = p.x; ptC.y = p.y; }
+        renderDirLine();
+      });
+
+      dirSvg.addEventListener("pointerup", (e) => {
+        dragged = null;
+      });
+
+      btnSnapC.addEventListener("click", () => {
+        // Проектуємо C на лінію AB
+        const dx = ptB.x - ptA.x;
+        const dy = ptB.y - ptA.y;
+        const lenSq = dx * dx + dy * dy;
+        const t = ((ptC.x - ptA.x) * dx + (ptC.y - ptA.y) * dy) / lenSq;
+        ptC.x = ptA.x + t * dx;
+        ptC.y = ptA.y + t * dy;
+        renderDirLine();
+      });
+
+      renderDirLine();
+
+
+      // -------------------------------------------------------------
+      // Інтерактивна модель: Геометричні операції над відрізками (§ 11)
+      // -------------------------------------------------------------
+      const segAbSlider = document.getElementById("seg-ab-slider");
+      const segCdSlider = document.getElementById("seg-cd-slider");
+      const segAbVal = document.getElementById("seg-ab-val");
+      const segCdVal = document.getElementById("seg-cd-val");
+      const segCalcDisplay = document.getElementById("seg-calc-display");
+      const segSvg = document.getElementById("stage-segment-arith");
+
+      if (segAbSlider && segCdSlider && segSvg) {
+        function renderSegmentArith() {
+          const ab = parseFloat(segAbSlider.value);
+          let cd = parseFloat(segCdSlider.value);
+          if (cd > ab - 20) {
+            cd = ab - 20;
+            segCdSlider.value = cd;
+          }
+          segAbVal.textContent = ab + " px";
+          segCdVal.textContent = cd + " px";
+
+          const sum = ab + cd;
+          const diff = ab - cd;
+          const ratio = (ab / cd).toFixed(2);
+          segCalcDisplay.innerHTML = `Сума AF = <strong>${sum}</strong> px | Різниця AG = <strong>${diff}</strong> px | AB : CD = <strong>${ratio}</strong>`;
+
+          const startX = 60;
+          const yMain = 65;
+          const yCd = 145;
+          const ptA = startX;
+          const ptB = startX + ab;
+          const ptF = ptB + cd;
+          const ptG = ptB - cd;
+
+          segSvg.innerHTML = "";
+
+          // Базова пряма
+          segSvg.innerHTML += `<line x1="20" y1="${yMain}" x2="580" y2="${yMain}" stroke="#cbd5e1" stroke-width="1.5"/>`;
+
+          // Відрізок AB (синій)
+          segSvg.innerHTML += `<line x1="${ptA}" y1="${yMain}" x2="${ptB}" y2="${yMain}" stroke="#1d4ed8" stroke-width="4"/>`;
+
+          // Відрізок BF = CD (зелений пунктирний, сума)
+          segSvg.innerHTML += `<line x1="${ptB}" y1="${yMain}" x2="${ptF}" y2="${yMain}" stroke="#059669" stroke-width="4" stroke-dasharray="6,3"/>`;
+
+          // Відрізок AG = AB - CD (підсвічування різниці червоним)
+          segSvg.innerHTML += `<line x1="${ptA}" y1="${yMain}" x2="${ptG}" y2="${yMain}" stroke="#dc2626" stroke-width="4"/>`;
+
+          // Точка A
+          segSvg.innerHTML += `<circle cx="${ptA}" cy="${yMain}" r="5" fill="#0f172a"/>`;
+          segSvg.innerHTML += `<text x="${ptA - 6}" y="${yMain - 15}" font-size="14" font-weight="bold">A</text>`;
+
+          // Точка G (різниця)
+          segSvg.innerHTML += `<circle cx="${ptG}" cy="${yMain}" r="5" fill="#dc2626"/>`;
+          segSvg.innerHTML += `<line x1="${ptG}" y1="${yMain - 10}" x2="${ptG}" y2="${yMain + 10}" stroke="#dc2626" stroke-width="2.5"/>`;
+          segSvg.innerHTML += `<text x="${ptG - 6}" y="${yMain - 15}" font-size="14" font-weight="bold" fill="#dc2626">G</text>`;
+
+          // Точка B
+          segSvg.innerHTML += `<circle cx="${ptB}" cy="${yMain}" r="5" fill="#0f172a"/>`;
+          segSvg.innerHTML += `<line x1="${ptB}" y1="${yMain - 10}" x2="${ptB}" y2="${yMain + 10}" stroke="#0f172a" stroke-width="2.5"/>`;
+          segSvg.innerHTML += `<text x="${ptB - 6}" y="${yMain - 15}" font-size="14" font-weight="bold">B</text>`;
+
+          // Точка F (сума)
+          segSvg.innerHTML += `<circle cx="${ptF}" cy="${yMain}" r="5" fill="#059669"/>`;
+          segSvg.innerHTML += `<line x1="${ptF}" y1="${yMain - 10}" x2="${ptF}" y2="${yMain + 10}" stroke="#059669" stroke-width="2.5"/>`;
+          segSvg.innerHTML += `<text x="${ptF - 6}" y="${yMain - 15}" font-size="14" font-weight="bold" fill="#059669">F</text>`;
+
+          // Окремий другий відрізок CD внизу
+          segSvg.innerHTML += `<line x1="${ptG}" y1="${yCd}" x2="${ptB}" y2="${yCd}" stroke="#059669" stroke-width="4"/>`;
+          segSvg.innerHTML += `<line x1="${ptG}" y1="${yCd - 10}" x2="${ptG}" y2="${yCd + 10}" stroke="#059669" stroke-width="2.5"/>`;
+          segSvg.innerHTML += `<line x1="${ptB}" y1="${yCd - 10}" x2="${ptB}" y2="${yCd + 10}" stroke="#059669" stroke-width="2.5"/>`;
+          segSvg.innerHTML += `<circle cx="${ptG}" cy="${yCd}" r="5" fill="#059669"/>`;
+          segSvg.innerHTML += `<circle cx="${ptB}" cy="${yCd}" r="5" fill="#059669"/>`;
+          segSvg.innerHTML += `<text x="${ptG - 18}" y="${yCd + 5}" font-size="14" font-weight="bold" fill="#059669">C</text>`;
+          segSvg.innerHTML += `<text x="${ptB + 10}" y="${yCd + 5}" font-size="14" font-weight="bold" fill="#059669">D</text>`;
+
+          // Пунктирні вертикальні зв'язки розхилу циркуля
+          segSvg.innerHTML += `<line x1="${ptG}" y1="${yMain + 10}" x2="${ptG}" y2="${yCd - 10}" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3,3"/>`;
+          segSvg.innerHTML += `<line x1="${ptB}" y1="${yMain + 10}" x2="${ptB}" y2="${yCd - 10}" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3,3"/>`;
+
+          // Циркульна дуга перенесення вправо (відкладання BF = CD)
+          segSvg.innerHTML += `<path d="M ${ptB} ${yCd} A ${cd} ${cd} 0 0 0 ${ptF} ${yMain}" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3"/>`;
+
+          // Підписи розмірів
+          segSvg.innerHTML += `<text x="${(ptA + ptG) / 2 - 35}" y="${yMain + 25}" font-size="12" font-weight="bold" fill="#dc2626">AG = ${diff}px (різниця)</text>`;
+          segSvg.innerHTML += `<text x="${(ptG + ptB) / 2 - 25}" y="${yCd + 24}" font-size="12" font-weight="bold" fill="#059669">CD = ${cd}px</text>`;
+          segSvg.innerHTML += `<text x="${(ptB + ptF) / 2 - 20}" y="${yMain + 25}" font-size="12" font-weight="bold" fill="#059669">BF = ${cd}px</text>`;
+          segSvg.innerHTML += `<text x="${(ptA + ptF) / 2 - 40}" y="${yMain - 28}" font-size="12" font-weight="bold" fill="#0f172a">AF = AB + CD = ${sum}px (сума)</text>`;
+        }
+
+        segAbSlider.addEventListener("input", renderSegmentArith);
+        segCdSlider.addEventListener("input", renderSegmentArith);
+        renderSegmentArith();
+      }
+      const concSvg = document.getElementById("stage-concentric");
+      const concAngleSlider = document.getElementById("conc-angle-slider");
+      const concAngleVal = document.getElementById("conc-angle-val");
+      const concR2Slider = document.getElementById("conc-r2-slider");
+      const concR2Val = document.getElementById("conc-r2-val");
+      const concRatioDisplay = document.getElementById("conc-ratio-display");
+
+      function renderConcentric() {
+        const deg = parseFloat(concAngleSlider.value);
+        const r1 = 75;
+        const r2 = parseFloat(concR2Slider.value);
+        concAngleVal.textContent = deg + "°";
+        concR2Val.textContent = "R=" + r2;
+
+        const ratio = (deg / 360).toFixed(3);
+        const percent = ((deg / 360) * 100).toFixed(1);
+        concRatioDisplay.textContent = `Дуга/Коло = ${deg}°/360° = ${ratio} (${percent}%)`;
+
+        const cx = 200, cy = 140;
+        const rad = (deg * Math.PI) / 180;
+
+        concSvg.innerHTML = "";
+
+        // Два концентричні кола
+        concSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="${r1}" fill="none" stroke="#cbd5e1" stroke-width="2"/>`;
+        concSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="${r2}" fill="none" stroke="#94a3b8" stroke-width="2.5"/>`;
+
+        // Промінь 1 (горизонтальний)
+        concSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${cx + r2 + 40}" y2="${cy}" stroke="#0f172a" stroke-width="2.5"/>`;
+        // Промінь 2
+        const rx = cx + (r2 + 40) * Math.cos(-rad);
+        const ry = cy + (r2 + 40) * Math.sin(-rad);
+        concSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${rx}" y2="${ry}" stroke="#0f172a" stroke-width="2.5"/>`;
+
+        // Дуги (Рис. 4 Лемуса)
+        const arc1_x = cx + r1 * Math.cos(-rad);
+        const arc1_y = cy + r1 * Math.sin(-rad);
+        concSvg.innerHTML += `<path d="M ${cx + r1} ${cy} A ${r1} ${r1} 0 0 0 ${arc1_x} ${arc1_y}" fill="none" stroke="#2563eb" stroke-width="4"/>`;
+
+        const arc2_x = cx + r2 * Math.cos(-rad);
+        const arc2_y = cy + r2 * Math.sin(-rad);
+        concSvg.innerHTML += `<path d="M ${cx + r2} ${cy} A ${r2} ${r2} 0 0 0 ${arc2_x} ${arc2_y}" fill="none" stroke="#16a34a" stroke-width="5"/>`;
+
+        // Позначення точок як у книзі Лемуса (M, C, D, F, G)
+        concSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="5" fill="#0f172a"/>`;
+        concSvg.innerHTML += `<text x="${cx - 18}" y="${cy + 5}" font-weight="bold" font-size="14">M</text>`;
+
+        concSvg.innerHTML += `<text x="${cx + r1 + 5}" y="${cy + 18}" font-size="12" font-weight="bold" fill="#2563eb">c</text>`;
+        concSvg.innerHTML += `<text x="${arc1_x - 12}" y="${arc1_y - 6}" font-size="12" font-weight="bold" fill="#2563eb">d</text>`;
+        concSvg.innerHTML += `<text x="${cx + r2 + 5}" y="${cy + 18}" font-size="12" font-weight="bold" fill="#16a34a">f</text>`;
+        concSvg.innerHTML += `<text x="${arc2_x - 12}" y="${arc2_y - 8}" font-size="12" font-weight="bold" fill="#16a34a">g</text>`;
+
+        // Інформаційний блок праворуч
+        concSvg.innerHTML += `
+          <g transform="translate(390, 45)">
+            <rect width="195" height="190" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+            <text x="14" y="28" font-size="14" font-weight="bold" fill="#0f172a">Закон інваріантності:</text>
+            <text x="14" y="58" font-size="13" fill="#2563eb">Дуга ed (внутр.): ${(deg*r1*Math.PI/180).toFixed(1)} px</text>
+            <text x="14" y="78" font-size="13" fill="#2563eb">Периферія p: ${(2*Math.PI*r1).toFixed(1)} px</text>
+            <text x="14" y="98" font-size="13" font-weight="bold" fill="#2563eb">ed / p = ${percent}%</text>
+            
+            <line x1="14" y1="112" x2="180" y2="112" stroke="#e2e8f0"/>
+            
+            <text x="14" y="132" font-size="13" fill="#16a34a">Дуга fg (зовн.): ${(deg*r2*Math.PI/180).toFixed(1)} px</text>
+            <text x="14" y="152" font-size="13" fill="#16a34a">Периферія P: ${(2*Math.PI*r2).toFixed(1)} px</text>
+            <text x="14" y="172" font-size="13" font-weight="bold" fill="#16a34a">fg / P = ${percent}%</text>
+          </g>
+        `;
+      }
+
+      concAngleSlider.addEventListener("input", renderConcentric);
+      concR2Slider.addEventListener("input", renderConcentric);
+      renderConcentric();
+
+
+      // -------------------------------------------------------------
+      // 5. Інтерактивна модель 5: Ознака прямої лінії (§ 18)
+      // -------------------------------------------------------------
+      const stAlphaSlider = document.getElementById("st-alpha");
+      const stBetaSlider = document.getElementById("st-beta");
+      const stAlphaVal = document.getElementById("st-alpha-val");
+      const stBetaVal = document.getElementById("st-beta-val");
+      const stSumBadge = document.getElementById("st-sum-badge");
+      const stSvg = document.getElementById("stage-straight-test");
+
+      function renderStraightTest() {
+        const a = parseFloat(stAlphaSlider.value);
+        const b = parseFloat(stBetaSlider.value);
+        stAlphaVal.textContent = a + "°";
+        stBetaVal.textContent = b + "°";
+
+        const sum = a + b;
+        const isStraight = (sum === 180);
+
+        if (isStraight) {
+          stSumBadge.textContent = `${a}° + ${b}° = 180° (ПРЯМА ЛІНІЯ!)`;
+          stSumBadge.style.background = "#dcfce7";
+          stSumBadge.style.color = "#166534";
+        } else {
+          stSumBadge.textContent = `${a}° + ${b}° = ${sum}° (ЗЛАМ НА ${Math.abs(180 - sum)}°)`;
+          stSumBadge.style.background = "#fee2e2";
+          stSumBadge.style.color = "#991b1b";
+        }
+
+        const mx = 300, my = 150;
+        const len = 170;
+
+        stSvg.innerHTML = "";
+
+        // Центральний спільний промінь (вгору під кутом)
+        const commonRad = 60 * Math.PI / 180;
+        const cx = mx + len * Math.cos(-commonRad);
+        const cy = my + len * Math.sin(-commonRad);
+        stSvg.innerHTML += `<line x1="${mx}" y1="${my}" x2="${cx}" y2="${cy}" stroke="#0f172a" stroke-width="3"/>`;
+        stSvg.innerHTML += `<text x="${cx + 8}" y="${cy - 4}" font-size="13" font-weight="bold">C (спільний промінь)</text>`;
+
+        // Лівий промінь MA (під кутом commonRad + a)
+        const leftRad = commonRad + (a * Math.PI / 180);
+        const ax = mx - len * Math.cos(Math.PI - leftRad);
+        const ay = my + len * Math.sin(Math.PI - leftRad);
+        stSvg.innerHTML += `<line x1="${mx}" y1="${my}" x2="${ax}" y2="${ay}" stroke="#1d4ed8" stroke-width="3.5"/>`;
+        stSvg.innerHTML += `<text x="${ax - 20}" y="${ay + 18}" font-size="13" font-weight="bold" fill="#1d4ed8">A</text>`;
+
+        // Правий промінь MB (під кутом commonRad - b)
+        const rightRad = commonRad - (b * Math.PI / 180);
+        const bx = mx + len * Math.cos(rightRad);
+        const by = my + len * Math.sin(rightRad);
+        stSvg.innerHTML += `<line x1="${mx}" y1="${my}" x2="${bx}" y2="${by}" stroke="#059669" stroke-width="3.5"/>`;
+        stSvg.innerHTML += `<text x="${bx + 10}" y="${by + 18}" font-size="13" font-weight="bold" fill="#059669">B</text>`;
+
+        // Вершина
+        stSvg.innerHTML += `<circle cx="${mx}" cy="${my}" r="6" fill="#0f172a"/>`;
+        stSvg.innerHTML += `<text x="${mx - 6}" y="${my + 24}" font-size="14" font-weight="bold">M</text>`;
+
+        // Ідеальна пунктирна пряма для порівняння зламу
+        stSvg.innerHTML += `<line x1="${mx - 200}" y1="${my}" x2="${mx + 200}" y2="${my}" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4"/>`;
+      }
+
+      stAlphaSlider.addEventListener("input", renderStraightTest);
+      stBetaSlider.addEventListener("input", renderStraightTest);
+      renderStraightTest();
+
+
+      // -------------------------------------------------------------
+      // 6. Інтерактивна модель 6: Вертикальні кути (§ 20)
+      // -------------------------------------------------------------
+      const vertScissorsSlider = document.getElementById("vert-scissors-slider");
+      const vertScissorsVal = document.getElementById("vert-scissors-val");
+      const vertRotSlider = document.getElementById("vert-rot-slider");
+      const vertRotVal = document.getElementById("vert-rot-val");
+      const btnDoHalfTurn = document.getElementById("btn-do-half-turn");
+      const vertSvg = document.getElementById("stage-vertical-half-turn");
+
+      function renderVertical() {
+        const alpha = parseFloat(vertScissorsSlider.value);
+        const rot = parseFloat(vertRotSlider.value);
+        vertScissorsVal.textContent = alpha + "°";
+        vertRotVal.textContent = rot + "°";
+
+        const mx = 300, my = 130, len = 160;
+        vertSvg.innerHTML = "";
+
+        const aRad = (alpha * Math.PI) / 360; // напівкут
+
+        // Статичні прямі (ножиці)
+        const x1 = mx + len * Math.cos(aRad);
+        const y1 = my - len * Math.sin(aRad);
+        const x2 = mx - len * Math.cos(aRad);
+        const y2 = my + len * Math.sin(aRad);
+        vertSvg.innerHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#cbd5e1" stroke-width="3"/>`;
+
+        const x3 = mx + len * Math.cos(-aRad);
+        const y3 = my - len * Math.sin(-aRad);
+        const x4 = mx - len * Math.cos(-aRad);
+        const y4 = my + len * Math.sin(-aRad);
+        vertSvg.innerHTML += `<line x1="${x3}" y1="${y3}" x2="${x4}" y2="${y4}" stroke="#cbd5e1" stroke-width="3"/>`;
+
+        // Кут альфа (праворуч)
+        vertSvg.innerHTML += `<text x="${mx + 60}" y="${my + 5}" font-size="16" font-weight="bold" fill="#1d4ed8">α = ${alpha}°</text>`;
+        // Вертикальний кут бета (ліворуч)
+        vertSvg.innerHTML += `<text x="${mx - 120}" y="${my + 5}" font-size="16" font-weight="bold" fill="#059669">β = ${alpha}°</text>`;
+
+        // Обертовий фантомний сектор кута
+        const rotRad = (rot * Math.PI) / 180;
+        const p1x = mx + 90 * Math.cos(aRad + rotRad);
+        const p1y = my - 90 * Math.sin(aRad + rotRad);
+        const p2x = mx + 90 * Math.cos(-aRad + rotRad);
+        const p2y = my - 90 * Math.sin(-aRad + rotRad);
+
+        const phantomColor = rot === 180 ? "#16a34a" : "rgba(220, 38, 38, 0.7)";
+        vertSvg.innerHTML += `
+          <path d="M ${mx} ${my} L ${p1x} ${p1y} A 90 90 0 0 1 ${p2x} ${p2y} Z" 
+                fill="rgba(220, 38, 38, 0.15)" stroke="${phantomColor}" stroke-width="2.5" stroke-dasharray="${rot === 180 ? '0' : '4'}"/>
+        `;
+
+        vertSvg.innerHTML += `<circle cx="${mx}" cy="${my}" r="6" fill="#0f172a"/>`;
+        vertSvg.innerHTML += `<text x="${mx - 8}" y="${my - 14}" font-size="14" font-weight="bold">M</text>`;
+      }
+
+      vertScissorsSlider.addEventListener("input", renderVertical);
+      vertRotSlider.addEventListener("input", renderVertical);
+      btnDoHalfTurn.addEventListener("click", () => {
+        let cur = parseFloat(vertRotSlider.value);
+        const target = cur >= 180 ? 0 : 180;
+        vertRotSlider.value = target;
+        renderVertical();
+      });
+
+      renderVertical();
+
+    });
+  </script>
+</body>
+</html>

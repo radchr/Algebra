@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мартін Гарднер: Рекреаційна геометрія — Сірники, Шарніри та Задача Наполеона</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --gardner-purple: #6366f1;
+      --gardner-purple-dark: #4338ca;
+      --gardner-amber: #d97706;
+      --gardner-emerald: #059669;
+      --gardner-rose: #e11d48;
+      --gardner-cyan: #0284c7;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.68;
+    }
+
+    .doc-container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 30px 20px 90px;
+    }
+
+    .doc-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #4f46e5 100%);
+      color: #ffffff;
+      padding: 42px 32px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 30px -6px rgba(55, 48, 163, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-hero::after {
+      content: "🎪";
+      position: absolute;
+      right: 24px;
+      bottom: -15px;
+      font-size: 140px;
+      opacity: 0.14;
+      pointer-events: none;
+    }
+
+    .doc-hero .tag-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .doc-hero .badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    .doc-hero .badge.gold {
+      background: #fef08a;
+      color: #713f12;
+    }
+
+    .doc-hero h1 {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      color: #ffffff;
+    }
+
+    .doc-hero p.subtitle {
+      font-size: 16px;
+      color: #e0e7ff;
+      margin: 0;
+      max-width: 840px;
+    }
+
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4f46e5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .back-nav:hover {
+      transform: translateX(-4px);
+      color: #3730a3;
+    }
+
+    /* Картки розділів */
+    .concept-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .concept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 16px;
+      gap: 16px;
+    }
+
+    .concept-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .story-tag {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .feynman-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--gardner-emerald);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 14.5px;
+    }
+    .feynman-box h4 {
+      color: #166534;
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .history-box {
+      background: #fffbeb;
+      border-left: 4px solid var(--gardner-amber);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 14px;
+      color: #78350f;
+    }
+    .history-box h4 {
+      color: #92400e;
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    /* Інтерактивна сцена */
+    .interactive-stage {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 22px 0 16px;
+    }
+
+    .stage-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1e293b;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stage-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0 0 14px;
+    }
+
+    .svg-canvas {
+      width: 100%;
+      height: 350px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      display: block;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+      user-select: none;
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .btn-step {
+      background: #4f46e5;
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-step:hover {
+      background: #3730a3;
+      transform: translateY(-1px);
+    }
+    .btn-step.secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-step.secondary:hover {
+      background: #cbd5e1;
+    }
+    .btn-step.play {
+      background: var(--gardner-emerald);
+    }
+    .btn-step.play:hover {
+      background: #047857;
+    }
+
+    .step-indicator {
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-left: auto;
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .step-explanation {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border-left: 3px solid #4f46e5;
+      font-size: 13.5px;
+      color: #334155;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Інтерактивні повзунки */
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+    .slider-row input[type="range"] {
+      cursor: pointer;
+      accent-color: #4f46e5;
+    }
+    .val-pill {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+    <a href="index.html" class="back-nav">← Повернутися до головного меню</a>
+
+    <header class="doc-hero">
+      <div class="tag-line">
+        <span class="badge gold">Мартін Гарднер · «Математичний цирк»</span>
+        <span class="badge">Рекреаційна геометрія</span>
+        <span class="badge">Шарніри · Сірники · Орігамі</span>
+        <span class="badge">Педагогіка Фейнмана</span>
+      </div>
+      <h1>Геометричний цирк Мартіна Гарднера</h1>
+      <p class="subtitle">
+        Дивовижні головоломки та парадокси мінімальних інструментів: як Наполеон переміг Лапласа циркулем, 
+        як звичайні сірники замінюють лінійку, як 7 залізних стрижнів вперше в історії накреслили пряму лінію,
+        і чому аркуш паперу виявився сильнішим за стародавнього Евкліда.
+      </p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 1. ЗАДАЧА НАПОЛЕОНА БОНАПАРТА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="napoleon-square">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>1. Задача Наполеона: Вписаний квадрат одним лише циркулем</span>
+        </h2>
+        <span class="story-tag">Гарднер, «Математичний цирк», гл. 17</span>
+      </div>
+
+      <div class="history-box">
+        <h4>🎖️ Історичний анекдот: Наполеон проти Лапласа</h4>
+        У грудні 1797 року майбутній імператор Франції <strong>Наполеон Бонапарт</strong> був обраний академіком Французької академії наук у секцію геометрії.
+        Він привіз із Мілана книгу Лоренцо Маскероні й особисто продемонстрував академікам, як розв'язувати задачі без лінійки.
+        Великий математик <strong>П'єр-Симон Лаплас</strong> іронічно зауважив: <em>«Генерале, ми чекали від вас усього, крім уроків геометрії!»</em>.
+        А Наполеон запропонував задачу, яку пізніше назвали його іменем.
+      </div>
+
+      <p>
+        <strong>Умова задачі Наполеона:</strong> Дано коло з центром $O$ та радіусом $R$. 
+        Знайти 4 вершини вписаного квадрата <strong>ОДНИМ ЛИШЕ ЦИРКУЛЕМ</strong>.
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Секрет Піфагора ($R\sqrt{3}$ перетворюється на $R\sqrt{2}$)</h4>
+        Школяр знає: сторона квадрата дорівнює $a_4 = R\sqrt{2}$. Але як добути $\sqrt{2}$ без лінійки?
+        <ol>
+          <li>Три кроки циркуля по колу дають діаметр $AD = 2R$ та хорду $AC = R\sqrt{3}$.</li>
+          <li>Розкриваємо циркуль на $R\sqrt{3}$ і робимо засічки з кінців діаметра $A$ і $D$. Вони перетинаються в точці $X$.</li>
+          <li>У прямокутному трикутнику $\Delta AOX$: гіпотенуза $AX = R\sqrt{3}$, катет $AO = R$.  
+              За теоремою Піфагора інший катет:
+              $$OX = \sqrt{(R\sqrt{3})^2 - R^2} = \sqrt{3R^2 - R^2} = \mathbf{R\sqrt{2}}!$$</li>
+          <li>Відстань $OX$ — це в точності <strong>сторона квадрата</strong>! Розхилом $OX$ циркуль миттєво відкладає 4 вершини квадрата на колі!</li>
+        </ol>
+      </div>
+
+      <!-- Інтерактив 1: Задача Наполеона -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 1: Розв'язання задачі Наполеона циркулем</div>
+        <div class="stage-desc">Крокуй кнопками або натисни «▶ Автоплей», щоб побачити, як Піфагорів катет народжує ідеальний квадрат!</div>
+
+        <svg id="stage-napoleon" class="svg-canvas" viewBox="0 0 600 350"></svg>
+
+        <div class="controls-bar">
+          <button class="btn-step secondary" id="nap-prev">◀ Назад</button>
+          <button class="btn-step" id="nap-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="nap-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="nap-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="nap-indicator">Крок 0 з 4</span>
+        </div>
+
+        <div class="step-explanation" id="nap-explanation">
+          Натисни «Крок вперед», щоб розпочати побудову Наполеона.
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 2. ЖИВИЙ ШАРНІР ПОСЕЛЬЄ-ЛІПКІНА (ПРЯМА ЛІНІЯ БЕЗ ЛІНІЙКИ) -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="peaucellier-linkage">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>2. Механічний парадокс: Як накреслити пряму лінію без лінійки?</span>
+        </h2>
+        <span class="story-tag">А. Б. Кемпе (1877) · Гарднер</span>
+      </div>
+
+      <p>
+        Подумай над технологічною загадкою століття:  
+        Щоб виточити рівну рейку лінійки, фрезерному верстату потрібна інша рівна напрямна рейка. 
+        <strong>Але як створити найпершу пряму лінію у Всесвіті</strong>, якщо природно ми вміємо робити лише обертання коліс і циркулів?
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Інверсор Посельє–Ліпкіна (1864 / 1871)</h4>
+        Сім жорстких залізних стрижнів на заклепках здійснюють диво:
+        <ul>
+          <li>Чотири стрижні утворюють рухомий ромб $BCPD$.</li>
+          <li>Два довгі стрижні з'єднують ромб із нерухомим шарніром $O$.</li>
+          <li>Один повідець крутить точку $B$ по колу.</li>
+        </ul>
+        За математичним законом <strong>інверсії кола</strong> добуток відстаней $OB \cdot OP = \text{const}$. 
+        Коли точка $B$ обертається по дузі кола, точка $P$ рухається <strong>по математично ідеальній, абсолютно строгій прямій лінії!</strong>
+      </div>
+
+      <!-- Інтерактив 2: Живий механізм Посельє-Ліпкіна -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 2: Механічний робот, що креслить пряму лінію</div>
+        <div class="stage-desc"><strong>Потягни повзунок кута важеля</strong> або натисни «▶ Увімкнути мотор». Подивись, як обертання шарніра креслить червону вертикальну пряму!</div>
+
+        <svg id="stage-peaucellier" class="svg-canvas" viewBox="0 0 600 350"></svg>
+
+        <div class="controls-bar">
+          <div class="slider-row">
+            <span>Кут повідця:</span>
+            <input type="range" id="peau-slider" min="-50" max="50" step="0.5" value="0">
+            <span class="val-pill" id="peau-angle-val">0°</span>
+          </div>
+
+          <button class="btn-step play" id="peau-motor" style="margin-left: 10px;">▶ Увімкнути мотор</button>
+          <span class="step-indicator" id="peau-status">X-координата пера P = 450.0 px (Строго стала!)</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 3. ГЕОМЕТРІЯ СІРНИКІВ Т. Р. ДОУСОНА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="matchstick-geometry">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>3. Геометрія сірників Т. Р. Доусона (1939)</span>
+        </h2>
+        <span class="story-tag">Рекреаційна геометрія</span>
+      </div>
+
+      <p>
+        Англійський шаховий гросмейстер Т. Р. Доусон доказав приголомшливу теорему:  
+        <strong>Будь-яку евклідову задачу можна побудувати, маючи лише коробку однакових дерев'яних сірників!</strong>
+        Без олівця, без циркуля і без лінійки!
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Як сірники будують прямий кут $90^\circ$ та середину?</h4>
+        Три однакових сірники утворюють рівносторонній трикутник із кутами $60^\circ$.  
+        Якщо приставити ще два сірники — утворюється <strong>ромб</strong>.  
+        А що ми знаємо про ромб із 7-го класу?  
+        <strong>Діагоналі ромба завжди перетинаються під кутом строго $90^\circ$ і ділять одна одну навпіл!</strong>  
+        Так прості сірники стають фабрикою ідеальних перпендикулярів і точних середин відрізків.
+      </div>
+
+      <!-- Інтерактив 3: Сірники Доусона -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 3: Побудова прямого кута 90° та середини сірниками</div>
+        <div class="stage-desc">Натискай «Крок вперед», щоб подивитися, як 4 сірники народжують ідеальний перпендикуляр і ділять відрізок навпіл.</div>
+
+        <svg id="stage-matchstick" class="svg-canvas" viewBox="0 0 600 330"></svg>
+
+        <div class="controls-bar">
+          <button class="btn-step secondary" id="match-prev">◀ Назад</button>
+          <button class="btn-step" id="match-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="match-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="match-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="match-indicator">Крок 0 з 3</span>
+        </div>
+
+        <div class="step-explanation" id="match-explanation">
+          Натисни «Крок вперед», щоб викладати сірники Доусона.
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 4. ТОМАГАВК ДЛЯ ТРИСЕКЦІЇ КУТА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="tomahawk-trisection">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>4. Геометричний «Томагавк»: Поділ кута на 3 частини</span>
+        </h2>
+        <span class="story-tag">Франція, 1835 · Гарднер</span>
+      </div>
+
+      <p>
+        Давні греки 2000 років шукали спосіб поділити довільний кут на три рівні частини циркулем і лінійкою (<strong>трисекція кута</strong>). 
+        У 1837 році П'єр Ванцель довів, що це математично неможливо.
+      </p>
+
+      <p>
+        Але у 1835 році винайшли дивовижний інструмент — <strong>Томагавк</strong> (схожий на індіанську сокирку з півкола та ручки). 
+        Він розтинає будь-який кут на три рівні частини за одну секунду!
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Чому це працює? Три рівні прямокутні трикутники</h4>
+        Томагавк складається з півкола радіусом $r$, вістря на відстані $r$ та прямої ручки.  
+        Коли ми прикладаємо його так, що півколо торкається одного променя кута, вістря торкається другого променя, а ручка проходить через вершину:  
+        утворюються <strong>три абсолютно однакових прямокутних трикутники</strong> з катетами $r$ і спільною стороною!  
+        Кожен із трьох кутів стає рівно $\frac{\alpha}{3}$!
+      </div>
+
+      <!-- Інтерактив 4: Томагавк -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 4: Трисекція кута Томагавком</div>
+        <div class="stage-desc"><strong>Змінюй кут повзунком</strong>: подивись, як три кольорові сектори залишаються строго однаковими!</div>
+
+        <svg id="stage-tomahawk" class="svg-canvas" viewBox="0 0 600 340"></svg>
+
+        <div class="controls-bar">
+          <div class="slider-row">
+            <span>Заданий кут $\alpha$:</span>
+            <input type="range" id="toma-slider" min="30" max="105" step="1" value="66">
+            <span class="val-pill" id="toma-angle-val">66°</span>
+          </div>
+
+          <span class="step-indicator" id="toma-parts" style="color: #059669; font-weight: 800;">
+            Кожна третина = 22.0° (Точний поділ на 3!)
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 5. ОРІГАМІ ПРОТИ ЕВКЛІДА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="origami-geometry">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>5. Орігамі: Чому звичайний аркуш паперу сильніший за Евкліда?</span>
+        </h2>
+        <span class="story-tag">Аксіоми Худзіти–Хатторі</span>
+      </div>
+
+      <p>
+        Чому циркуль і лінійка не можуть подвоїти куб чи розділити кут на 3 частини, а простий аркуш шкільного зошита робить це з легкістю?
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Алгебра інструментів: Степінь 2 проти Степеня 3</h4>
+        <ul>
+          <li><strong>Циркуль і лінійка</strong> перетинають прямі й кола. У формулах це дає квадратні рівняння: ми можемо добувати лише <strong>квадратні корені ($\sqrt{2}, \sqrt{5}$)</strong> — це числа степеня $2, 4, 8, 16\dots$</li>
+          <li>А для подвоєння куба потрібен <strong>кубічний корінь ($\sqrt[3]{2}$)</strong>! Число 3 не ділиться на 2, тому Евклід безсилий.</li>
+          <li><strong>Орігамі (згин паперу):</strong> коли ти складаєш аркуш, ти можеш зробити рух (аксіома №6 Белоч): <em>одночасно сумістити дві точки з двома лініями</em>. Математично це відповідає побудові спільної дотичної до двох парабол — а це рівняння <strong>3-го степеня (кубічне)</strong>!</li>
+        </ul>
+        Орігамі здатне добувати кубічні корені $\sqrt[3]{x}$, тому <strong>папір легко здійснює трисекцію кута та подвоює куб!</strong>
+      </div>
+
+      <!-- Інтерактив 5: Трисекція кута методом орігамі Хісасі Абе -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 5: Трисекція кута згинами орігамі (Метод Хісасі Абе, 1980)</div>
+        <div class="stage-desc">Крокуй кнопками «Крок вперед» або «▶ Автоплей». <strong>Змінюй кут повзунком</strong>: подивись, як простий згин аркуша розв'язує задачу, нерозв'язну для Евкліда!</div>
+
+        <svg id="stage-origami" class="svg-canvas" viewBox="0 0 600 360"></svg>
+
+        <div class="controls-bar">
+          <div class="slider-row">
+            <span>Кут $\alpha$:</span>
+            <input type="range" id="origami-slider" min="36" max="84" step="3" value="60">
+            <span class="val-pill" id="origami-angle-val">60°</span>
+          </div>
+
+          <button class="btn-step secondary" id="ori-prev">◀ Назад</button>
+          <button class="btn-step" id="ori-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="ori-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="ori-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="ori-indicator">Крок 0 з 3</span>
+        </div>
+
+        <div class="step-explanation" id="ori-explanation">
+          Натисни «Крок вперед», щоб покроково скласти аркуш орігамі за методом Абе.
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- СКРИПТИ ІНТЕРАКТИВНИХ МОДЕЛЕЙ -->
+  <!-- ========================================== -->
+  <script>
+    function createSVG(tag, attrs) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (let k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    /* -------------------------------------------------------------
+       1. СЦЕНА НАПОЛЕОНА (Вписаний квадрат одним циркулем)
+       ------------------------------------------------------------- */
+    (function initNapoleon() {
+      const svg = document.getElementById('stage-napoleon');
+      const prevBtn = document.getElementById('nap-prev');
+      const nextBtn = document.getElementById('nap-next');
+      const playBtn = document.getElementById('nap-play');
+      const resetBtn = document.getElementById('nap-reset');
+      const indicator = document.getElementById('nap-indicator');
+      const explanation = document.getElementById('nap-explanation');
+
+      let step = 0;
+      const maxSteps = 4;
+      let playTimer = null;
+
+      const O = { x: 300, y: 175 };
+      const R = 85;
+
+      const stepTexts = [
+        "Початковий стан: дано коло з центром O та радіусом R. Потрібно знайти вершини квадрата одним лише циркулем.",
+        "Крок 1: Обираємо точку A. Робимо 3 кроки розхилом R по колу: отримуємо B (60°), C (120°) та діаметральну точку D (180°).",
+        "Крок 2: Вимірюємо циркулем хорду AC. Її довжина строго дорівнює R√3!",
+        "Крок 3: Розхилом R√3 проводимо дуги з точок A та D. Вони перетинаються вгорі в точці X. За теоремою Піфагора катет OX = √(3R² - R²) = R√2!",
+        "Крок 4: Фінал Наполеона! Відстань OX = R√2 — це сторона квадрата! Розхилом OX циркуль відкладає 4 вершини ідеального квадрата на колі!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        // Головне коло
+        svg.appendChild(createSVG('circle', {
+          cx: O.x, cy: O.y, r: R,
+          fill: 'none', stroke: '#cbd5e1', 'stroke-width': 2
+        }));
+        drawPoint(O, 'O (центр)', -10, 18, '#0f172a', 4.5);
+
+        // Точки A, B, C, D
+        const A = { x: O.x - R, y: O.y };
+        const B = { x: O.x - R * Math.cos(Math.PI / 3), y: O.y - R * Math.sin(Math.PI / 3) };
+        const C = { x: O.x + R * Math.cos(Math.PI / 3), y: O.y - R * Math.sin(Math.PI / 3) };
+        const D = { x: O.x + R, y: O.y };
+
+        drawPoint(A, 'A', -16, 6);
+
+        // КРОК 1: Три кроки циркуля
+        if (step >= 1) {
+          drawPoint(B, 'B (60°)', -14, -10, '#4f46e5');
+          drawPoint(C, 'C (120°)', -6, -10, '#4f46e5');
+          drawPoint(D, 'D (180°)', 10, 6, '#4f46e5');
+
+          // Уявний діаметр AD
+          svg.appendChild(createSVG('line', {
+            x1: A.x, y1: A.y, x2: D.x, y2: D.y,
+            stroke: '#94a3b8', 'stroke-dasharray': '4,4', 'stroke-width': 1.5
+          }));
+        }
+
+        // КРОК 2: Хорда AC = R√3
+        const rSqrt3 = R * Math.sqrt(3);
+        if (step >= 2) {
+          svg.appendChild(createSVG('line', {
+            x1: A.x, y1: A.y, x2: C.x, y2: C.y,
+            stroke: '#d97706', 'stroke-width': 2.5
+          }));
+          const tAC = createSVG('text', {
+            x: (A.x + C.x) / 2 - 25, y: (A.y + C.y) / 2 - 8,
+            'font-size': 12, 'font-weight': 'bold', fill: '#d97706'
+          });
+          tAC.textContent = 'AC = R√3';
+          svg.appendChild(tAC);
+        }
+
+        // КРОК 3: Точка X та Піфагорів катет
+        const Xy = O.y - R * Math.sqrt(2);
+        const X = { x: O.x, y: Xy };
+        if (step >= 3) {
+          // Дуги радіусом R√3 з A та D
+          drawArc(A, rSqrt3, -0.9, -0.4, 'rgba(217, 119, 6, 0.4)');
+          drawArc(D, rSqrt3, -2.7, -2.2, 'rgba(217, 119, 6, 0.4)');
+
+          // Сторони трикутника AOX
+          svg.appendChild(createSVG('line', {
+            x1: A.x, y1: A.y, x2: X.x, y2: X.y,
+            stroke: '#d97706', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+          svg.appendChild(createSVG('line', {
+            x1: D.x, y1: D.y, x2: X.x, y2: X.y,
+            stroke: '#d97706', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+
+          // Катет OX
+          svg.appendChild(createSVG('line', {
+            x1: O.x, y1: O.y, x2: X.x, y2: X.y,
+            stroke: '#059669', 'stroke-width': 3
+          }));
+
+          drawPoint(X, 'X', 10, -6, '#d97706', 5);
+
+          const tOX = createSVG('text', {
+            x: O.x + 8, y: (O.y + X.y) / 2,
+            'font-size': 12, 'font-weight': 'bold', fill: '#059669'
+          });
+          tOX.textContent = 'OX = R√2 !';
+          svg.appendChild(tOX);
+        }
+
+        // КРОК 4: Чотири вершини квадрата
+        if (step >= 4) {
+          const S1 = { x: O.x - R, y: O.y }; // A
+          const S2 = { x: O.x, y: O.y - R }; // Верхня
+          const S3 = { x: O.x + R, y: O.y }; // D
+          const S4 = { x: O.x, y: O.y + R }; // Нижня
+
+          // Малюємо вписаний квадрат
+          svg.appendChild(createSVG('polygon', {
+            points: `${S1.x},${S1.y} ${S2.x},${S2.y} ${S3.x},${S3.y} ${S4.x},${S4.y}`,
+            fill: 'rgba(5, 150, 105, 0.12)', stroke: '#059669', 'stroke-width': 2.5
+          }));
+
+          [S1, S2, S3, S4].forEach((s, idx) => {
+            drawPoint(s, `K${idx + 1}`, -6, idx === 1 ? -10 : (idx === 3 ? 18 : 6), '#059669', 5.5);
+          });
+
+          const okText = createSVG('text', {
+            x: 300, y: 325, 'font-size': 13, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          okText.textContent = '✓ Вершини квадрата K₁K₂K₃K₄ побудовано без жодної лінійки!';
+          svg.appendChild(okText);
+        }
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      function drawArc(center, radius, startAngle, endAngle, color) {
+        const x1 = center.x + radius * Math.cos(startAngle);
+        const y1 = center.y + radius * Math.sin(startAngle);
+        const x2 = center.x + radius * Math.cos(endAngle);
+        const y2 = center.y + radius * Math.sin(endAngle);
+        svg.appendChild(createSVG('path', {
+          d: `M ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2}`,
+          fill: 'none', stroke: color, 'stroke-width': 2
+        }));
+      }
+
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1300);
+      });
+
+      render();
+    })();
+
+
+    /* -------------------------------------------------------------
+       2. СЦЕНА ПОСЕЛЬЄ-ЛІПКІНА (Інверсор для креслення прямої лінії)
+       ------------------------------------------------------------- */
+    (function initPeaucellier() {
+      const svg = document.getElementById('stage-peaucellier');
+      const slider = document.getElementById('peau-slider');
+      const angleVal = document.getElementById('peau-angle-val');
+      const motorBtn = document.getElementById('peau-motor');
+      const statusText = document.getElementById('peau-status');
+
+      let isMotorRunning = false;
+      let motorDirection = 1;
+      let animId = null;
+
+      // Геометричні параметри інверсора
+      const O = { x: 140, y: 175 }; // Нерухомий центр довгих важелів
+      const O1 = { x: 200, y: 175 }; // Центр обертання повідця
+      const r = 60; // Довжина повідця (радіус)
+      const s = 85; // Сторона ромба
+      const L = 195; // Довжина довгих важелів
+      const k2 = L * L - s * s; // Інверсійна константа = 195² - 85² = 38025 - 7225 = 30800
+      // Лінія x: x = O.x + k2 / (2 * r) = 140 + 30800 / 120 = 140 + 256.67 = 396.67
+
+      function render(deg) {
+        svg.innerHTML = '';
+        angleVal.textContent = deg.toFixed(1) + '°';
+
+        const theta = (deg * Math.PI) / 180;
+
+        // Координати точки B (рухається по колу радіуса r навколо O1)
+        const B = {
+          x: O1.x + r * Math.cos(theta),
+          y: O1.y + r * Math.sin(theta)
+        };
+
+        // Вектор OB та відстань d_OB
+        const vx = B.x - O.x;
+        const vy = B.y - O.y;
+        const d_OB = Math.hypot(vx, vy);
+
+        // За законом інверсії: d_OP = k2 / d_OB
+        const d_OP = k2 / d_OB;
+        const ux = vx / d_OB;
+        const uy = vy / d_OB;
+
+        // Точка P (перо, що креслить лінію)
+        const P = {
+          x: O.x + d_OP * ux,
+          y: O.y + d_OP * uy
+        };
+
+        // Вершини ромба C і D
+        const midX = (B.x + P.x) / 2;
+        const midY = (B.y + P.y) / 2;
+        const halfDiagBP = Math.hypot(P.x - B.x, P.y - B.y) / 2;
+        const halfDiagCD = Math.sqrt(Math.max(0, s * s - halfDiagBP * halfDiagBP));
+
+        const nx = -uy;
+        const ny = ux;
+        const C = { x: midX + halfDiagCD * nx, y: midY + halfDiagCD * ny };
+        const D = { x: midX - halfDiagCD * nx, y: midY - halfDiagCD * ny };
+
+        // 1. Малюємо траєкторію кола точки B
+        svg.appendChild(createSVG('circle', {
+          cx: O1.x, cy: O1.y, r: r,
+          fill: 'none', stroke: '#e2e8f0', 'stroke-width': 1.5, 'stroke-dasharray': '4,4'
+        }));
+
+        // 2. Ідеальна пряма лінія (траєкторія точки P)
+        const lineX = O.x + k2 / (2 * r);
+        svg.appendChild(createSVG('line', {
+          x1: lineX, y1: 25, x2: lineX, y2: 325,
+          stroke: 'rgba(225, 29, 72, 0.25)', 'stroke-width': 6
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: lineX, y1: 25, x2: lineX, y2: 325,
+          stroke: '#e11d48', 'stroke-width': 2, 'stroke-dasharray': '6,4'
+        }));
+
+        // 3. Повідець O1B
+        svg.appendChild(createSVG('line', {
+          x1: O1.x, y1: O1.y, x2: B.x, y2: B.y,
+          stroke: '#3b82f6', 'stroke-width': 3.5
+        }));
+
+        // 4. Довгі стрижні OC та OD
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: C.x, y2: C.y,
+          stroke: '#475569', 'stroke-width': 2.5
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: D.x, y2: D.y,
+          stroke: '#475569', 'stroke-width': 2.5
+        }));
+
+        // 5. Ромб BCPD
+        svg.appendChild(createSVG('polygon', {
+          points: `${B.x},${B.y} ${C.x},${C.y} ${P.x},${P.y} ${D.x},${D.y}`,
+          fill: 'rgba(99, 102, 241, 0.1)', stroke: '#4f46e5', 'stroke-width': 3
+        }));
+
+        // 6. Шарніри (точки)
+        drawHinge(O, 'O (опора)');
+        drawHinge(O1, 'O₁');
+        drawHinge(B, 'B (коло)', '#3b82f6');
+        drawHinge(C, 'C');
+        drawHinge(D, 'D');
+
+        // Перо P
+        svg.appendChild(createSVG('circle', {
+          cx: P.x, cy: P.y, r: 7.5, fill: '#e11d48', stroke: '#ffffff', 'stroke-width': 2
+        }));
+        const tP = createSVG('text', {
+          x: P.x + 12, y: P.y + 5, 'font-size': 13, 'font-weight': 'bold', fill: '#e11d48'
+        });
+        tP.textContent = 'P (ПРЯМА ЛІНІЯ!)';
+        svg.appendChild(tP);
+
+        statusText.textContent = `Координата X точки P = ${P.x.toFixed(1)} px (Строго стала!)`;
+      }
+
+      function drawHinge(pt, label, color = '#1e293b') {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: 5, fill: color, stroke: '#ffffff', 'stroke-width': 1.5
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x - 12, y: pt.y - 10, 'font-size': 11, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      slider.addEventListener('input', e => render(parseFloat(e.target.value)));
+
+      motorBtn.addEventListener('click', () => {
+        isMotorRunning = !isMotorRunning;
+        motorBtn.textContent = isMotorRunning ? '⏸ Зупинити мотор' : '▶ Увімкнути мотор';
+        motorBtn.style.background = isMotorRunning ? '#e11d48' : '#059669';
+
+        if (isMotorRunning) {
+          function loop() {
+            if (!isMotorRunning) return;
+            let val = parseFloat(slider.value) + motorDirection * 0.7;
+            if (val >= 48) { val = 48; motorDirection = -1; }
+            if (val <= -48) { val = -48; motorDirection = 1; }
+            slider.value = val;
+            render(val);
+            animId = requestAnimationFrame(loop);
+          }
+          loop();
+        } else {
+          cancelAnimationFrame(animId);
+        }
+      });
+
+      render(0);
+    })();
+
+
+    /* -------------------------------------------------------------
+       3. СЦЕНА СІРНИКІВ ДОУСОНА
+       ------------------------------------------------------------- */
+    (function initMatchstick() {
+      const svg = document.getElementById('stage-matchstick');
+      const prevBtn = document.getElementById('match-prev');
+      const nextBtn = document.getElementById('match-next');
+      const playBtn = document.getElementById('match-play');
+      const resetBtn = document.getElementById('match-reset');
+      const indicator = document.getElementById('match-indicator');
+      const explanation = document.getElementById('match-explanation');
+
+      let step = 0;
+      const maxSteps = 3;
+      let playTimer = null;
+
+      const L = 120; // Довжина одного сірника
+      const A = { x: 220, y: 165 };
+      const B = { x: A.x + L, y: 165 };
+
+      // Висота рівностороннього трикутника h = L * sqrt(3) / 2
+      const h = (L * Math.sqrt(3)) / 2;
+      const P1 = { x: (A.x + B.x) / 2, y: A.y - h };
+      const P2 = { x: (A.x + B.x) / 2, y: A.y + h };
+
+      const stepTexts = [
+        "Початковий стан: маємо відрізок AB, довжина якого в точності дорівнює одному сірнику (L).",
+        "Крок 1: Кладемо два сірники так, щоб вони спиралися на A і B. Утворюється верхній рівносторонній трикутник AP₁B.",
+        "Крок 2: Знизу кладемо ще два сірники. Утворюється нижній трикутник AP₂B. Разом 4 сірники складають ідеальний ромб AP₁BP₂!",
+        "Крок 3: Магія ромба: сірник P₁P₂ падає на AB рівно під кутом 90° і ділить відрізок AB навпіл у точці M! Перпендикуляр і середина готові!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        // Базовий відрізок AB (сірник)
+        drawMatch(A, B, '#0f172a');
+        drawPoint(A, 'A', -16, 5);
+        drawPoint(B, 'B', 10, 5);
+
+        // КРОК 1: Верхній трикутник AP1B
+        if (step >= 1) {
+          drawMatch(A, P1, '#d97706');
+          drawMatch(B, P1, '#d97706');
+          drawPoint(P1, 'P₁ (верхня вершина)', -40, -12, '#d97706');
+        }
+
+        // КРОК 2: Нижній трикутник AP2B
+        if (step >= 2) {
+          drawMatch(A, P2, '#d97706');
+          drawMatch(B, P2, '#d97706');
+          drawPoint(P2, 'P₂ (нижня вершина)', -40, 20, '#d97706');
+        }
+
+        // КРОК 3: Діагональ P1P2 і прямий кут 90°
+        if (step >= 3) {
+          svg.appendChild(createSVG('line', {
+            x1: P1.x, y1: P1.y - 20, x2: P2.x, y2: P2.y + 20,
+            stroke: '#059669', 'stroke-width': 2.5
+          }));
+
+          const M = { x: (A.x + B.x) / 2, y: A.y };
+          drawPoint(M, 'M (середина)', 8, 16, '#059669', 5);
+
+          // Квадратик прямого кута
+          const sz = 12;
+          svg.appendChild(createSVG('path', {
+            d: `M ${M.x} ${M.y - sz} L ${M.x + sz} ${M.y - sz} L ${M.x + sz} ${M.y}`,
+            fill: 'none', stroke: '#059669', 'stroke-width': 2
+          }));
+
+          const t90 = createSVG('text', {
+            x: M.x + 16, y: M.y - 14, 'font-size': 12, 'font-weight': 'bold', fill: '#059669'
+          });
+          t90.textContent = '90°';
+          svg.appendChild(t90);
+
+          const okText = createSVG('text', {
+            x: 300, y: 310, 'font-size': 13, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          okText.textContent = '✓ Чотири сірники побудували перпендикуляр 90° та розділили відрізок навпіл!';
+          svg.appendChild(okText);
+        }
+      }
+
+      function drawMatch(p1, p2, bodyColor) {
+        // Тіло сірника
+        svg.appendChild(createSVG('line', {
+          x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
+          stroke: '#fde68a', 'stroke-width': 6, 'stroke-linecap': 'round'
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
+          stroke: bodyColor, 'stroke-width': 1.5
+        }));
+        // Сірникові голівки
+        drawSulfurHead(p1, p2);
+      }
+
+      function drawSulfurHead(p1, p2) {
+        const dx = p2.x - p1.x;
+        const dy = p2.y - p1.y;
+        const dist = Math.hypot(dx, dy);
+        const ux = dx / dist;
+        const uy = dy / dist;
+        const hx = p2.x - ux * 4;
+        const hy = p2.y - uy * 4;
+        svg.appendChild(createSVG('ellipse', {
+          cx: hx, cy: hy, rx: 5, ry: 3.5,
+          fill: '#b91c1c',
+          transform: `rotate(${Math.atan2(dy, dx) * 180 / Math.PI} ${hx} ${hy})`
+        }));
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1300);
+      });
+
+      render();
+    })();
+
+
+    /* -------------------------------------------------------------
+       4. СЦЕНА ТОМАГАВКА (Трисекція кута)
+       ------------------------------------------------------------- */
+    (function initTomahawk() {
+      const svg = document.getElementById('stage-tomahawk');
+      const slider = document.getElementById('toma-slider');
+      const angleVal = document.getElementById('toma-angle-val');
+      const partsText = document.getElementById('toma-parts');
+
+      function render(deg) {
+        svg.innerHTML = '';
+        angleVal.textContent = deg + '°';
+        const third = (deg / 3).toFixed(1);
+        partsText.textContent = `Кожна третина = ${third}° (Точний поділ на 3!)`;
+
+        const totalRad = (deg * Math.PI) / 180;
+        const thirdRad = totalRad / 3;
+
+        const O = { x: 90, y: 250 };
+        const rayLen = 380;
+        const r = 50; // Радіус леза томагавка
+
+        // Сторони кута
+        // Нижній промінь OB вздовж осі X
+        const RayB = { x: O.x + rayLen, y: O.y };
+        // Верхній промінь OA під кутом deg
+        const RayA = {
+          x: O.x + rayLen * Math.cos(totalRad),
+          y: O.y - rayLen * Math.sin(totalRad)
+        };
+
+        // Заповнення трьох секторів різними кольорами
+        drawSector(O, rayLen - 50, 0, thirdRad, 'rgba(5, 150, 105, 0.15)');
+        drawSector(O, rayLen - 50, thirdRad, 2 * thirdRad, 'rgba(99, 102, 241, 0.15)');
+        drawSector(O, rayLen - 50, 2 * thirdRad, 3 * thirdRad, 'rgba(217, 119, 6, 0.15)');
+
+        // Промені трисекції (промені з вершини O)
+        const Ray1 = { x: O.x + rayLen * Math.cos(thirdRad), y: O.y - rayLen * Math.sin(thirdRad) };
+        const Ray2 = { x: O.x + rayLen * Math.cos(2 * thirdRad), y: O.y - rayLen * Math.sin(2 * thirdRad) };
+
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: RayB.x, y2: RayB.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: RayA.x, y2: RayA.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: Ray1.x, y2: Ray1.y,
+          stroke: '#059669', 'stroke-width': 2, 'stroke-dasharray': '5,4'
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: Ray2.x, y2: Ray2.y,
+          stroke: '#4f46e5', 'stroke-width': 2, 'stroke-dasharray': '5,4'
+        }));
+
+        // Малюємо геометричний Томагавк
+        // Центр півкола C_T лежить на відстані r від нижнього променя і на першому трисекційному промені
+        const d_OC = r / Math.sin(thirdRad);
+        const C_T = {
+          x: O.x + d_OC * Math.cos(thirdRad),
+          y: O.y - d_OC * Math.sin(thirdRad)
+        };
+
+        // Точка вістря S лежить на промені OA на відстані d_OC від O
+        const S = {
+          x: O.x + d_OC * Math.cos(totalRad),
+          y: O.y - d_OC * Math.sin(totalRad)
+        };
+
+        // Ручка томагавка — це відрізок OC_T
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: C_T.x, y2: C_T.y,
+          stroke: '#4f46e5', 'stroke-width': 4
+        }));
+
+        // Лезо томагавка: півколо навколо C_T радіусом r
+        // Дотична точка T на нижньому промені
+        const T = { x: C_T.x, y: O.y };
+        svg.appendChild(createSVG('line', {
+          x1: C_T.x, y1: C_T.y, x2: T.x, y2: T.y,
+          stroke: '#64748b', 'stroke-dasharray': '3,3', 'stroke-width': 1.5
+        }));
+
+        // Півколо леза (торкається променя OB у точці T)
+        svg.appendChild(createSVG('circle', {
+          cx: C_T.x, cy: C_T.y, r: r,
+          fill: 'rgba(99, 102, 241, 0.2)', stroke: '#4f46e5', 'stroke-width': 2.5
+        }));
+
+        // Поперечна перекладина до вістря S
+        svg.appendChild(createSVG('line', {
+          x1: C_T.x, y1: C_T.y, x2: S.x, y2: S.y,
+          stroke: '#d97706', 'stroke-width': 3
+        }));
+
+        // Точки інструмента
+        drawPoint(O, 'O (вершина)', -14, 20);
+        drawPoint(S, 'Вістря (на OA)', -40, -12, '#d97706', 6);
+        drawPoint(C_T, 'C (центр леза)', 10, -8, '#4f46e5', 5);
+        drawPoint(T, 'Точка дотику (до OB)', -50, 18, '#64748b', 4.5);
+
+        // Підписи кутів
+        drawAngleArc(O, 45, 0, thirdRad, '#059669', `α/3 = ${third}°`);
+        drawAngleArc(O, 70, thirdRad, 2 * thirdRad, '#4f46e5', `α/3 = ${third}°`);
+        drawAngleArc(O, 95, 2 * thirdRad, 3 * thirdRad, '#d97706', `α/3 = ${third}°`);
+      }
+
+      function drawSector(center, radius, startAngle, endAngle, color) {
+        const x1 = center.x + radius * Math.cos(-startAngle);
+        const y1 = center.y + radius * Math.sin(-startAngle);
+        const x2 = center.x + radius * Math.cos(-endAngle);
+        const y2 = center.y + radius * Math.sin(-endAngle);
+        svg.appendChild(createSVG('path', {
+          d: `M ${center.x} ${center.y} L ${x1} ${y1} A ${radius} ${radius} 0 0 0 ${x2} ${y2} Z`,
+          fill: color, stroke: 'none'
+        }));
+      }
+
+      function drawAngleArc(center, radius, startAngle, endAngle, color, label) {
+        const midA = (startAngle + endAngle) / 2;
+        const tx = center.x + (radius + 24) * Math.cos(-midA);
+        const ty = center.y + (radius + 24) * Math.sin(-midA);
+        const t = createSVG('text', {
+          x: tx, y: ty, 'font-size': 11, 'font-weight': 'bold', fill: color, 'text-anchor': 'middle'
+        });
+        t.textContent = label;
+        svg.appendChild(t);
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      slider.addEventListener('input', e => render(parseFloat(e.target.value)));
+      render(66);
+    })();
+
+
+    /* -------------------------------------------------------------
+       5. СЦЕНА ОРІГАМІ (Трисекція кута за методом Хісасі Абе, 1980)
+       ------------------------------------------------------------- */
+    (function initOrigami() {
+      const svg = document.getElementById('stage-origami');
+      const slider = document.getElementById('origami-slider');
+      const angleVal = document.getElementById('origami-angle-val');
+      const prevBtn = document.getElementById('ori-prev');
+      const nextBtn = document.getElementById('ori-next');
+      const playBtn = document.getElementById('ori-play');
+      const resetBtn = document.getElementById('ori-reset');
+      const indicator = document.getElementById('ori-indicator');
+      const explanation = document.getElementById('ori-explanation');
+
+      let step = 0;
+      const maxSteps = 3;
+      let playTimer = null;
+
+      const stepTexts = [
+        "Початковий стан: аркуш орігамі з кутом α при вершині O. Нижній край — базовий промінь OA. Промінь OB утворює кут α.",
+        "Крок 1: Робимо дві паралельні складки L₁ та L₂ на однаковій відстані d. На складці L₁ ставимо точку P.",
+        "Крок 2: Згинаємо аркуш (Аксіома №6 Белоч): суміщаємо вершину O з лінією L₂ (точка O'), а точку P — з променем OB (точка P').",
+        "Крок 3: Розгортаємо папір! Лінія згину та промінь OO' розтинають початковий кут рівно на три рівні частини: α/3, α/3, α/3!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        const deg = parseFloat(slider.value);
+        angleVal.textContent = deg + '°';
+
+        const totalRad = (deg * Math.PI) / 180;
+        const thirdRad = totalRad / 3;
+        const thirdDeg = (deg / 3).toFixed(1);
+
+        // 1. Аркуш паперу орігамі
+        svg.appendChild(createSVG('rect', {
+          x: 40, y: 35, width: 520, height: 285, rx: 10,
+          fill: '#fffdf5', stroke: '#e2e8f0', 'stroke-width': 2,
+          filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.04))'
+        }));
+
+        // Вершина O та промені
+        const O = { x: 100, y: 280 };
+        const rayLen = 420;
+        const d = 45; // Відстань між паралельними складками
+
+        // Промінь OA (нижній край аркуша)
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: O.x + rayLen, y2: O.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+        drawPoint(O, 'O (вершина)', -16, 20);
+
+        // Промінь OB (верхня сторона кута)
+        const B = {
+          x: O.x + rayLen * Math.cos(totalRad),
+          y: O.y - rayLen * Math.sin(totalRad)
+        };
+        svg.appendChild(createSVG('line', {
+          x1: O.x, y1: O.y, x2: B.x, y2: B.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+
+        // КРОК 1: Дві паралельні лінії L1 та L2
+        const yL1 = O.y - d;
+        const yL2 = O.y - 2 * d;
+        const P = { x: O.x, y: yL1 };
+
+        if (step >= 1) {
+          // Лінія L1
+          svg.appendChild(createSVG('line', {
+            x1: 40, y1: yL1, x2: 560, y2: yL1,
+            stroke: '#3b82f6', 'stroke-width': 1.8, 'stroke-dasharray': '5,4'
+          }));
+          const tL1 = createSVG('text', {
+            x: 470, y: yL1 - 6, 'font-size': 11, 'font-weight': 'bold', fill: '#3b82f6'
+          });
+          tL1.textContent = 'L₁ (відстань d)';
+          svg.appendChild(tL1);
+
+          // Лінія L2
+          svg.appendChild(createSVG('line', {
+            x1: 40, y1: yL2, x2: 560, y2: yL2,
+            stroke: '#7c3aed', 'stroke-width': 1.8, 'stroke-dasharray': '5,4'
+          }));
+          const tL2 = createSVG('text', {
+            x: 470, y: yL2 - 6, 'font-size': 11, 'font-weight': 'bold', fill: '#7c3aed'
+          });
+          tL2.textContent = 'L₂ (відстань 2d)';
+          svg.appendChild(tL2);
+
+          drawPoint(P, 'P', -14, -6, '#3b82f6', 4.5);
+        }
+
+        // Розрахунок точок відбиття O' та P' для Кроку 2
+        // O' лежить на лінії L2 на промені під кутом 2α/3
+        const r_Oprime = (2 * d) / Math.sin(2 * thirdRad);
+        const Oprime = {
+          x: O.x + r_Oprime * Math.cos(2 * thirdRad),
+          y: yL2
+        };
+
+        // P' лежить на промені OB на відстані r_Pprime
+        const r_Pprime = r_Oprime * Math.cos(thirdRad);
+        const Pprime = {
+          x: O.x + r_Pprime * Math.cos(totalRad),
+          y: O.y - r_Pprime * Math.sin(totalRad)
+        };
+
+        // Середина OO' — лежить на лінії згину і строго на лінії L1 (бо y = (280 + 190)/2 = 235)
+        const midOO = { x: (O.x + Oprime.x) / 2, y: (O.y + Oprime.y) / 2 };
+
+        // КРОК 2: Згин аркуша (Аксіома №6 Белоч)
+        if (step === 2) {
+          // Лінія згину (перпендикулярна до OO')
+          const dx = Oprime.x - O.x;
+          const dy = Oprime.y - O.y;
+          const dist = Math.hypot(dx, dy);
+          const nx = -dy / dist;
+          const ny = dx / dist;
+
+          const creaseP1 = { x: midOO.x - 180 * nx, y: midOO.y - 180 * ny };
+          const creaseP2 = { x: midOO.x + 180 * nx, y: midOO.y + 180 * ny };
+
+          svg.appendChild(createSVG('line', {
+            x1: creaseP1.x, y1: creaseP1.y, x2: creaseP2.x, y2: creaseP2.y,
+            stroke: '#e11d48', 'stroke-width': 2.5, 'stroke-dasharray': '6,3'
+          }));
+
+          // Загнутий клапоть паперу (трикутник згину)
+          svg.appendChild(createSVG('polygon', {
+            points: `${creaseP1.x},${creaseP1.y} ${Oprime.x},${Oprime.y} ${creaseP2.x},${creaseP2.y}`,
+            fill: 'rgba(254, 215, 170, 0.45)', stroke: '#ea580c', 'stroke-width': 1.5
+          }));
+
+          // Точки O' та P'
+          drawPoint(Oprime, "O' (на L₂)", 10, -6, '#e11d48', 6);
+          drawPoint(Pprime, "P' (на OB)", 10, -6, '#ea580c', 5.5);
+
+          // Лінія відбиття від O до O'
+          svg.appendChild(createSVG('line', {
+            x1: O.x, y1: O.y, x2: Oprime.x, y2: Oprime.y,
+            stroke: '#94a3b8', 'stroke-dasharray': '4,4', 'stroke-width': 1.5
+          }));
+
+          const tFold = createSVG('text', {
+            x: 300, y: 55, 'font-size': 13, 'font-weight': 'bold', fill: '#e11d48', 'text-anchor': 'middle'
+          });
+          tFold.textContent = "⚡ Аксіома №6 Белоч: точка O лягає на L₂, а точка P — на промінь OB!";
+          svg.appendChild(tFold);
+        }
+
+        // КРОК 3: Розгортаємо папір і бачимо три рівні сектори
+        if (step >= 3) {
+          // Три кольорові сектори
+          drawSector(O, rayLen - 120, 0, thirdRad, 'rgba(5, 150, 105, 0.18)');
+          drawSector(O, rayLen - 120, thirdRad, 2 * thirdRad, 'rgba(99, 102, 241, 0.18)');
+          drawSector(O, rayLen - 120, 2 * thirdRad, 3 * thirdRad, 'rgba(217, 119, 6, 0.18)');
+
+          // Промені трисекції
+          const Ray1 = { x: O.x + rayLen * Math.cos(thirdRad), y: O.y - rayLen * Math.sin(thirdRad) };
+          const Ray2 = { x: O.x + rayLen * Math.cos(2 * thirdRad), y: O.y - rayLen * Math.sin(2 * thirdRad) };
+
+          svg.appendChild(createSVG('line', {
+            x1: O.x, y1: O.y, x2: Ray1.x, y2: Ray1.y,
+            stroke: '#059669', 'stroke-width': 2.5
+          }));
+          svg.appendChild(createSVG('line', {
+            x1: O.x, y1: O.y, x2: Ray2.x, y2: Ray2.y,
+            stroke: '#4f46e5', 'stroke-width': 2.5
+          }));
+
+          // Дуги кутів з підписами
+          drawAngleArc(O, 60, 0, thirdRad, '#059669', `α/3 = ${thirdDeg}°`);
+          drawAngleArc(O, 95, thirdRad, 2 * thirdRad, '#4f46e5', `α/3 = ${thirdDeg}°`);
+          drawAngleArc(O, 130, 2 * thirdRad, 3 * thirdRad, '#d97706', `α/3 = ${thirdDeg}°`);
+
+          const tSuccess = createSVG('text', {
+            x: 300, y: 345, 'font-size': 13, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          tSuccess.textContent = `✓ Успіх! Кут α = ${deg}° розділено на три рівні кути по ${thirdDeg}° згинами орігамі!`;
+          svg.appendChild(tSuccess);
+        }
+      }
+
+      function drawSector(center, radius, startAngle, endAngle, color) {
+        const x1 = center.x + radius * Math.cos(-startAngle);
+        const y1 = center.y + radius * Math.sin(-startAngle);
+        const x2 = center.x + radius * Math.cos(-endAngle);
+        const y2 = center.y + radius * Math.sin(-endAngle);
+        svg.appendChild(createSVG('path', {
+          d: `M ${center.x} ${center.y} L ${x1} ${y1} A ${radius} ${radius} 0 0 0 ${x2} ${y2} Z`,
+          fill: color, stroke: 'none'
+        }));
+      }
+
+      function drawAngleArc(center, radius, startAngle, endAngle, color, label) {
+        const midA = (startAngle + endAngle) / 2;
+        const tx = center.x + (radius + 20) * Math.cos(-midA);
+        const ty = center.y + (radius + 20) * Math.sin(-midA);
+        const t = createSVG('text', {
+          x: tx, y: ty, 'font-size': 11.5, 'font-weight': 'bold', fill: color, 'text-anchor': 'middle'
+        });
+        t.textContent = label;
+        svg.appendChild(t);
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 11.5, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      slider.addEventListener('input', () => render());
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1400);
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

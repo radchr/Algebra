@@ -1,0 +1,27 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=0.9, >=Stealth]
+    % Рис. 14
+    \draw[thick] (0,0) circle (1.5);
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-1.1,-1.0);
+    \coordinate (B) at (1.1,-1.0);
+    \draw[thick] (O) -- (A) node[below left] {$A$};
+    \draw[thick] (O) -- (B) node[below right] {$B$};
+    \filldraw (O) circle (1.5pt) node[above] {$O$};
+
+    % Рис. 15
+    \begin{scope}[xshift=6.5cm]
+        \draw[thick] (0,0) circle (1.5);
+        \coordinate (O2) at (0,0);
+        \coordinate (A2) at (-0.6,1.4);
+        \coordinate (B2) at (1.2,0.9);
+        \coordinate (C2) at (1.4,-0.4);
+        \coordinate (D2) at (0.2,-1.5);
+        \draw[thick] (O2) -- (A2) node[above left] {$A$};
+        \draw[thick] (O2) -- (B2) node[above right] {$B$};
+        \draw[thick] (O2) -- (C2) node[right] {$C$};
+        \draw[thick] (O2) -- (D2) node[below right] {$D$};
+        \draw[->, thick, color=mediapurple] (1.7,0.7) arc (20:-15:1.7);
+        \filldraw (O2) circle (1.5pt) node[left] {$O$};
+    \end{scope}
+\end{tikzpicture}

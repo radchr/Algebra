@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Індійська математика: Геометрія шнура і лука — Шульба-сутри та Аріабхата</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --vedic-saffron: #d97706;
+      --vedic-saffron-dark: #b45309;
+      --vedic-terracotta: #c2410c;
+      --vedic-bg: #fffbeb;
+      --vedic-card: #ffffff;
+      --vedic-dark: #0f172a;
+      --vedic-border: #fde68a;
+      --feynman-green: #15803d;
+      --feynman-green-light: #f0fdf4;
+      --breakdown-red: #b91c1c;
+      --breakdown-bg: #fef2f2;
+    }
+
+    body {
+      background-color: #fdfaf3;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.68;
+    }
+
+    .doc-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+
+    .doc-hero {
+      background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+      color: #ffffff;
+      padding: 42px 32px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 30px -6px rgba(180, 83, 9, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-hero::after {
+      content: "ॐ";
+      position: absolute;
+      right: 20px;
+      bottom: -20px;
+      font-size: 160px;
+      color: rgba(255, 255, 255, 0.08);
+      font-family: serif;
+      pointer-events: none;
+    }
+
+    .doc-hero .tag-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .doc-hero .badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    .doc-hero .badge.gold {
+      background: #fef3c7;
+      color: #78350f;
+    }
+
+    .doc-hero h1 {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      color: #ffffff;
+    }
+
+    .doc-hero p.subtitle {
+      font-size: 16px;
+      color: #fef3c7;
+      margin: 0;
+      max-width: 820px;
+    }
+
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #92400e;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .back-nav:hover {
+      transform: translateX(-4px);
+      color: #78350f;
+    }
+
+    /* Картки тем */
+    .concept-card {
+      background: var(--vedic-card);
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.05);
+    }
+
+    .concept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid #ffedd5;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    .concept-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #78350f;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sanskrit-badge {
+      font-size: 13px;
+      font-weight: 600;
+      background: #ffedd5;
+      color: #9a3412;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid #fed7aa;
+    }
+
+    /* Двосторонні бокси інтуїції Фейнмана */
+    .feynman-box {
+      background: var(--feynman-green-light);
+      border-left: 4px solid var(--feynman-green);
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+    }
+    .feynman-box h4 {
+      color: var(--feynman-green);
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .breakdown-box {
+      background: var(--breakdown-bg);
+      border-left: 4px solid var(--breakdown-red);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+    .breakdown-box h5 {
+      color: var(--breakdown-red);
+      margin: 0 0 4px;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .story-box {
+      background: #fdf6ec;
+      border: 1px dashed #f59e0b;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+    .story-box h4 {
+      color: #b45309;
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    /* Інтерактивні сцени */
+    .interactive-wrap {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 24px 0 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+    .interactive-wrap h3 {
+      font-size: 17px;
+      color: #78350f;
+      margin: 0 0 6px;
+      font-weight: 800;
+    }
+    .interactive-wrap p.hint {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0 0 14px;
+    }
+
+    .svg-stage {
+      width: 100%;
+      height: auto;
+      border: 1px solid #f1f5f9;
+      border-radius: 10px;
+      background: #fafaf9;
+      display: block;
+      margin-bottom: 14px;
+      user-select: none;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      background: #fdfaf3;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #fed7aa;
+      font-size: 13.5px;
+    }
+    .controls-row label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #475569;
+    }
+    .controls-row input[type="range"] {
+      cursor: pointer;
+      accent-color: #d97706;
+    }
+    .controls-row .val-badge {
+      background: #ffedd5;
+      color: #9a3412;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .btn-action {
+      background: #d97706;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-action:hover {
+      background: #b45309;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+    <a href="index.html" class="back-nav">← Повернутися до головного меню</a>
+
+    <header class="doc-hero">
+      <div class="tag-line">
+        <span class="badge gold">Шульба-сутри (~800 до н.е.)</span>
+        <span class="badge">Аріабхата (499 р.)</span>
+        <span class="badge">Фізична інтуїція</span>
+        <span class="badge">Педагогіка Фейнмана</span>
+      </div>
+      <h1>Індійська математика: Геометрія шнура і лука</h1>
+      <p class="subtitle">
+        Як за тисячу років до шкільних підручників мудреці Індії відкрили пряму лінію через натягнуту мотузку, 
+        створили ідеальний прямий кут за допомогою «Риби», і чому звичний шкільний синус — це всього лиш тятива мисливського лука.
+      </p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 1. ТОЧКА: БІНДУ — СІМ'Я ВСЕСВІТУ -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="bindu">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>1. Точка: Бінду (बिन्दु) — Зерно простору та походження Нуля</span>
+        </h2>
+        <span class="sanskrit-badge">बिन्दु · Bindu</span>
+      </div>
+
+      <p>
+        У шкільному підручнику точку часто визначають дуже сухо: <em>«це те, що не має частин»</em>. Але дитина дивується: якщо в точки немає розмірів, як із мільйонів точок може вирости довга лінія чи великий квадрат?
+      </p>
+
+      <p>
+        В індійській філософії та математиці точка називається <strong>Бінду (Bindu)</strong>, що буквально означає <strong>«крапля», «сім'я» або «центр сили»</strong>:
+      </p>
+      <ul>
+        <li><strong>Бінду — це насінина ($0D$):</strong> як із крихітного зернятка виростає велетенське дерево баньян, так із неподільної точки Бінду шляхом її <em>руху</em> проростає весь простір.</li>
+        <li><strong>Точка як символ Нуля (Шунья, शून्य):</strong> чи знаєш ти, що цифра «0» народилася в Індії саме як Бінду? Спочатку математики записували нуль просто <strong>жирною крапкою</strong>. Вона вказує на точне місце, але її власна величина дорівнює порожнечі.</li>
+      </ul>
+
+      <div class="feynman-box">
+        <h4>🧠 Інтуїція Фейнмана: Кінчик лазерної указки</h4>
+        Уяви краплю розпеченого воску або кінчик лазерної указки на темній стіні. Поки лазер нерухомий — це <strong>Бінду ($0D$)</strong>. У ньому немає довжини чи ширини. Але якщо рука здригнеться і поведе лазер — на стіні спалахне світловий слід: <strong>лінія ($1D$)</strong>!
+      </div>
+
+      <!-- Інтерактив 1: Бінду розгортає виміри -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 1: Проростання простору з зерна Бінду</h3>
+        <p class="hint">Потягни повзунок, щоб побачити, як точка Бінду рухається і народжує лінію, площину вівтаря та об'єм.</p>
+
+        <svg id="stage-bindu" class="svg-stage" viewBox="0 0 600 220"></svg>
+
+        <div class="controls-row">
+          <label>Фаза розгортання:
+            <input type="range" id="bindu-slider" min="0" max="3" step="0.01" value="1.5">
+            <span class="val-badge" id="bindu-badge">1.5D (Лінія → Площина)</span>
+          </label>
+          <div style="margin-left: auto; font-weight: bold; color: #b45309;" id="bindu-desc">
+            Рух точки креслить натягнутий шнур (Реха)
+          </div>
+        </div>
+      </div>
+
+      <div class="breakdown-box">
+        <h5>🔍 Де метафора ламається (Границя аналогії)</h5>
+        Будь-яка намальована на екрані чи папері крапка має мікроскопічні розміри (складається з трильйонів молекул чорнила). Математична точка Бінду не має навіть молекул — це <strong>чиста просторова координата</strong> без фізичної маси.
+      </div>
+    </article>
+
+
+    <!-- ========================================== -->
+    <!-- 2. ПРЯМА: РАДЖДУ — ГЕОМЕТРІЯ МОТУЗКИ -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="rajju">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>2. Пряма лінія: Раджду (रज्जु) — Геометрія натягнутої мотузки</span>
+        </h2>
+        <span class="sanskrit-badge">रज्जु-गणित · Rajju-Gaṇita</span>
+      </div>
+
+      <p>
+        Найдавніша геометрія Індії (трактати <strong>Шульба-сутри</strong>, близько 800 р. до н.е.) офіційно називалася <strong>«Раджду-ганіта»</strong> — тобто буквально <strong>«математика мотузки»</strong>!
+      </p>
+
+      <p>
+        Давні будівничі вівтарів не мали пластикових чи залізних лінійок. Як же вони креслили прямі лінії завдовжки в десятки метрів?
+      </p>
+      <ul>
+        <li>Брали міцну мотузку зі вузликами (<strong>Раджду</strong>) і вбивали в землю два дерев'яні кілки (<strong>Шанку</strong>, शङ्कु).</li>
+        <li>Поки мотузка вільна — вона провисає від власної ваги і утворює <strong>криву лінію</strong> (*вакра*).</li>
+        <li>Але якщо потягнути за кілок з усієї сили — мотузка натягується як струна і стає <strong>ідеальною прямою лінією (Сарала-реха, सरल रेखा)</strong>!</li>
+      </ul>
+
+      <div class="story-box">
+        <h4>✨ Чому одна мотузка замінює і лінійку, і циркуль?</h4>
+        Якщо тримати один кілок нерухомо в центрі, натягнути шнур і піти по колу — мотузка працює як <strong>циркуль</strong> і креслить коло (*мандалу*). Якщо закріпити обидва кінці — вона працює як <strong>лінійка</strong>. Мотузка — найперший універсальний геометричний комп'ютер людства!
+      </div>
+
+      <!-- Інтерактив 2: Мотузка Бодхаяни -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 2: Від провисання до ідеальної прямої</h3>
+        <p class="hint">Змінюй натяг шнура повзунком: коли сила слабка — гравітація викривляє лінію; коли натяг 100% — народжується абсолютна пряма лінія!</p>
+
+        <svg id="stage-rope" class="svg-stage" viewBox="0 0 600 230"></svg>
+
+        <div class="controls-row">
+          <label>Сила натягу шнура:
+            <input type="range" id="rope-tension" min="0" max="100" value="85">
+            <span class="val-badge" id="rope-badge">85% натягу</span>
+          </label>
+          <label style="margin-left: 10px;">
+            <input type="checkbox" id="rope-compass-mode"> Режим «Циркуль» (обертати кілок)
+          </label>
+          <div style="margin-left: auto; font-family: monospace; font-size: 13px;" id="rope-status">
+            Відхилення: 2.1 мм (майже пряма)
+          </div>
+        </div>
+      </div>
+
+      <div class="breakdown-box">
+        <h5>🔍 Де метафора ламається (Границя аналогії)</h5>
+        Справжня конопляна мотузка під власною вагою завжди має мікроскопічне провисання (ланцюгову лінію) і з часом розтягується від вологи. Геометрична пряма уявляється абсолютно невагомою, нескінченною і непідвладною земному тяжінню.
+      </div>
+    </article>
+
+
+    <!-- ========================================== -->
+    <!-- 3. ПРЯМИЙ КУТ: МАТСЬЯ — РИБА ШУЛЬБИ -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="matsya">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>3. Прямий кут: «Матсья» (मत्स्य) — Риба, що будує перпендикуляр</span>
+        </h2>
+        <span class="sanskrit-badge">मत्स्य विधि · Метод Риби</span>
+      </div>
+
+      <p>
+        Уяви, що ти опинився 2800 років тому серед дикого степу. Тобі потрібно побудувати квадратний храм із кутами рівно $90^\circ$. Косинця чи транспортира немає. Як отримати ідеальний прямий кут?
+      </p>
+
+      <p>
+        Індійські майстри в <em>«Бодхаяна Шульба-сутрі»</em> описали геніальний метод, який назвали <strong>Матсья (Риба)</strong>:
+      </p>
+      <ol>
+        <li>У землю вбивають два кілки $A$ та $B$ уздовж осі Схід–Захід (за тінню Сонця).</li>
+        <li>Беруть шнур, довший за відстань між ними, і креслять два однакових кола з центрами в $A$ та $B$.</li>
+        <li>Два кола перетинаються, утворюючи фігуру, схожу на рибу: спільну лінзу (в Європі її пізніше назвуть <em>Vesica Piscis</em>).</li>
+        <li>Якщо натягнути шнур через «рота» і «хвіст» цієї риби — миттєво виникає <strong>бездоганний перпендикуляр</strong> (вісь Північ–Південь), що ділить площину на чотири рівні прямі кути по $90^\circ$!</li>
+      </ol>
+
+      <div class="feynman-box">
+        <h4>💡 Чому цей кут гарантовано дорівнює 90°?</h4>
+        Тому що «хвіст» і «голова» риби розташовані на абсолютно однаковій відстані від лівого кілка і від правого! Симетрія настільки абсолютна, що лінія не має жодної причини нахилитися ліворуч чи праворуч. Рівність сил створює рівність кутів.
+      </div>
+
+      <!-- Інтерактив 3: Риба Шульби -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 3: Побудова прямого кута 90° методом «Риби»</h3>
+        <p class="hint">Змінюй радіус мотузки або відстань між кілками. Спостерігай, як перетин двох кіл формує «рибу» та ідеальний перпендикуляр.</p>
+
+        <svg id="stage-matsya" class="svg-stage" viewBox="0 0 600 280"></svg>
+
+        <div class="controls-row">
+          <label>Розхил шнура (радіус):
+            <input type="range" id="matsya-radius" min="95" max="170" value="130">
+            <span class="val-badge" id="matsya-r-badge">R = 130</span>
+          </label>
+          <label>Відстань між кілками:
+            <input type="range" id="matsya-dist" min="100" max="220" value="150">
+            <span class="val-badge" id="matsya-d-badge">AB = 150</span>
+          </label>
+          <div style="margin-left: auto; font-weight: bold; color: #15803d;">
+            Кут перетину: 90.0° (Ідеальний прямий кут)
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ========================================== -->
+    <!-- 4. КУТ: ЛУК І СТРІЛА АРІАБХАТИ — НАРОДЖЕННЯ СИНУСА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="bow-arrow">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>4. Кут як «Лук і Стріла»: як народився Синус</span>
+        </h2>
+        <span class="sanskrit-badge">चाप-ज्या-शर · Chāpa - Jyā - Śara</span>
+      </div>
+
+      <p>
+        У 7 класі на уроках геометрії кут зазвичай малюють як «два промені, що стирчать з однієї точки». Але в V столітті великий індійський математик <strong>Аріабхата (499 р. н.е.)</strong> уявив кут значно поетичніше та фізичніше — як <strong>справжній бойовий лук зі стрілою</strong>:
+      </p>
+
+      <ul>
+        <li><strong>Чапа (चाप, Chāpa) — дерево лука:</strong> це вигнута дуга кола. Чим ширше розкрито кут, тим більша дуга лука.</li>
+        <li><strong>Джіва (जीवा, Jīvā або Jyā) — тятива лука:</strong> це прямий шнурок, натягнутий між кінцями лука (хорда). Саме напівтятива стала основою тригонометрії!</li>
+        <li><strong>Шара (शर, Śara) — стріла:</strong> перпендикуляр від середини тятиви до вершини дуги. Це те, наскільки стріла відтягує лук (у геометрії це називається <em>версинус</em>, $1 - \cos\theta$).</li>
+      </ul>
+
+      <div class="story-box">
+        <h4>🏹 Неймовірна історична детективна історія: як «тятива» стала «синусом»</h4>
+        Коли арабські вчені перекладали праці Аріабхати, вони записали санскритське слово <em>джіва</em> (тятива) арабськими літерами як <strong>джиба (جيب)</strong>. Оскільки в арабському письмі короткі голосні не пишуться, слово виглядало як <em>«дж-б»</em>.<br><br>
+        У XII столітті в Іспанії європейський перекладач Герард Кремонський прочитав ці літери як інше арабське слово — <em>«джайб»</em>, що означає <strong>«кишеня», «пазуха» або «вигин одягу на грудях»</strong>. І переклав його латиною як <strong>SINUS</strong> (пазуха, затока)!<br><br>
+        Так грізна <strong>тятива індійського лука</strong> через випадкову помилку перекладача перетворилася на шкільний «синус»!
+      </div>
+
+      <!-- Інтерактив 4: Лук Аріабхати -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 4: Натягни лук Аріабхати</h3>
+        <p class="hint">Тягни повзунок, щоб розкрити кут лука. Дивись, як разом із кутом зростає тятива (синус) і наскільки натягується стріла!</p>
+
+        <svg id="stage-bow" class="svg-stage" viewBox="0 0 600 280"></svg>
+
+        <div class="controls-row">
+          <label>Кут розкриття лука:
+            <input type="range" id="bow-angle" min="20" max="170" value="70">
+            <span class="val-badge" id="bow-badge">70°</span>
+          </label>
+          <div style="margin-left: auto; font-family: monospace; font-size: 13.5px;" id="bow-readout">
+            Тятива Jyā (синус): 0.57 R | Стріла Śara: 0.18 R
+          </div>
+        </div>
+      </div>
+
+      <div class="breakdown-box">
+        <h5>🔍 Де метафора ламається (Границя аналогії)</h5>
+        У реальному дерев'яному луці дерево під час натягу стискається і змінює форму. У математичному луці Аріабхати дуга залишається <strong>частиною ідеального кола сталого радіуса $R$</strong>, змінюється лише розмах кута!
+      </div>
+    </article>
+
+
+    <!-- ========================================== -->
+    <!-- 5. ВЕРТИКАЛЬНІ КУТИ: ШИРШАБХІМУКХА -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="shirsha">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>5. Вертикальні кути: Ширшабхімукха (शीर्षाभिमुख) — «Кути, що дивляться лоб у лоб»</span>
+        </h2>
+        <span class="sanskrit-badge">शीर्षाभिमुख कोण</span>
+      </div>
+
+      <p>
+        Чому дітям важко уявити слово «вертикальні» кути? Бо в побуті слово «вертикальний» означає стіну чи стовп (вгору–вниз). А вертикальні кути можуть дивитися і вліво–вправо, і косо!
+      </p>
+
+      <p>
+        В індійській традиції назва куди точніша й зрозуміліша: <strong>Ширшабхімукха кона (Śīrṣābhimukha)</strong>:
+      </p>
+      <ul>
+        <li><strong>Ширша (Śīrṣa):</strong> верхівка, голова, вершина.</li>
+        <li><strong>Абхімукха (Abhimukha):</strong> звернені обличчям один до одного, лоб до лоба.</li>
+        <li>Буквально: <strong>«кути, які торкнулися верхівками»</strong> (дуже схоже на корейське <em>матккокдзігак</em>).</li>
+      </ul>
+
+      <p>
+        А суміжні кути на одній прямій називаються <strong>Райкхіка югма (Raikhīka yugma)</strong> — буквально <strong>«кути-близнюки однієї прямої»</strong>. Оскільки разом вони утворюють натягнутий прямий шнур, їхня сума завжди становить розгорнутий кут $180^\circ$.
+      </p>
+
+      <!-- Інтерактив 5: Схрещені шнури -->
+      <div class="interactive-wrap">
+        <h3>🕹️ Інтерактивна модель 5: Два схрещені шнури</h3>
+        <p class="hint">Обертай кут нахилу шнурів. Натисни кнопку «Напівповорот на 180°», щоб побачити, як кути міняються місцями лоб у лоб.</p>
+
+        <svg id="stage-cross" class="svg-stage" viewBox="0 0 600 240"></svg>
+
+        <div class="controls-row">
+          <label>Кут між шнурами:
+            <input type="range" id="cross-slider" min="25" max="155" value="55">
+            <span class="val-badge" id="cross-badge">55°</span>
+          </label>
+          <button class="btn-action" id="btn-spin-180">Поворот на 180° (Півоберт)</button>
+          <div style="margin-left: auto; font-family: monospace; font-size: 13px;" id="cross-readout">
+            Вертикальні: 55° = 55° | Суміжні: 55° + 125° = 180°
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // =============================================================
+      // 1. Інтерактив 1: Бінду розгортає виміри
+      // =============================================================
+      const binduSlider = document.getElementById("bindu-slider");
+      const binduBadge = document.getElementById("bindu-badge");
+      const binduDesc = document.getElementById("bindu-desc");
+      const binduSvg = document.getElementById("stage-bindu");
+
+      function renderBindu() {
+        const val = parseFloat(binduSlider.value);
+        binduSvg.innerHTML = "";
+
+        const cx = 300, cy = 110;
+
+        if (val <= 0.3) {
+          // 0D: Бінду (точка / насінина)
+          binduBadge.textContent = "0D (Бінду — Точка-сім'я)";
+          binduDesc.textContent = "Нерухома точка: немає вимірів, лише положення (Шунья / 0)";
+          binduSvg.innerHTML += `
+            <circle cx="${cx}" cy="${cy}" r="9" fill="#d97706"/>
+            <circle cx="${cx}" cy="${cy}" r="18" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="${cx + 18}" y="${cy - 12}" font-size="15" font-weight="bold" fill="#78350f">Бінду (बिन्दु)</text>
+            <text x="${cx - 100}" y="${cy + 50}" font-size="13" fill="#64748b">Первинне нерозмірне зерно, з якого все проростає</text>
+          `;
+        } else if (val <= 1.5) {
+          // 1D: Реха (лінія / натягнутий шнур)
+          const p = (val - 0.3) / 1.2;
+          const half = p * 190;
+          binduBadge.textContent = "1D (Реха — Пряма лінія)";
+          binduDesc.textContent = "Бінду біжить у просторі й креслить натягнутий шнур (1 вимір)";
+          binduSvg.innerHTML += `
+            <line x1="${cx - half}" y1="${cy}" x2="${cx + half}" y2="${cy}" stroke="#d97706" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="${cx - half}" cy="${cy}" r="6" fill="#78350f"/>
+            <circle cx="${cx + half}" cy="${cy}" r="7" fill="#b45309"/>
+            <text x="${cx - half - 15}" y="${cy - 12}" font-size="13" font-weight="bold">Початок</text>
+            <text x="${cx + half - 20}" y="${cy - 12}" font-size="13" font-weight="bold" fill="#b45309">Бінду в русі →</text>
+            <text x="${cx - 60}" y="${cy + 30}" font-size="14" font-weight="bold" fill="#78350f">Реха (रेखा) = Лінія</text>
+          `;
+        } else if (val <= 2.5) {
+          // 2D: Тканина / Вівтар (площина)
+          const p = (val - 1.5);
+          const w = 180;
+          const h = p * 80;
+          binduBadge.textContent = "2D (Веді — Площина вівтаря)";
+          binduDesc.textContent = "Шнур зсувається перпендикулярно і вистилає площину (2 виміри)";
+          binduSvg.innerHTML += `
+            <rect x="${cx - w}" y="${cy - h}" width="${w * 2}" height="${h * 2}" fill="#fed7aa" stroke="#c2410c" stroke-width="3" rx="4"/>
+            <line x1="${cx - w}" y1="${cy - h}" x2="${cx + w}" y2="${cy - h}" stroke="#78350f" stroke-width="3" stroke-dasharray="4,4"/>
+            <line x1="${cx - w}" y1="${cy + h}" x2="${cx + w}" y2="${cy + h}" stroke="#78350f" stroke-width="3"/>
+            <text x="${cx - 75}" y="${cy + 5}" font-size="15" font-weight="bold" fill="#78350f">Веді (Площина вівтаря)</text>
+          `;
+        } else {
+          // 3D: Об'ємне священне тіло
+          binduBadge.textContent = "3D (Тіло / Об'ємний вівтар Сокола)";
+          binduDesc.textContent = "Площина піднімається у 3-й вимір — виникає об'ємне тіло";
+          binduSvg.innerHTML += `
+            <!-- Ізометрична призма вівтаря -->
+            <polygon points="${cx-140},${cy+30} ${cx+60},${cy+30} ${cx+140},${cy-20} ${cx-60},${cy-20}" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+            <polygon points="${cx-140},${cy+30} ${cx-140},${cy-20} ${cx-60},${cy-70} ${cx-60},${cy-20}" fill="#fdba74" stroke="#c2410c" stroke-width="2"/>
+            <polygon points="${cx-140},${cy-20} ${cx+60},${cy-20} ${cx+140},${cy-70} ${cx-60},${cy-70}" fill="#fde68a" stroke="#c2410c" stroke-width="2.5"/>
+            <text x="${cx - 70}" y="${cy - 35}" font-size="14" font-weight="bold" fill="#78350f">Об'ємний вівтар (3D)</text>
+          `;
+        }
+      }
+      binduSlider.addEventListener("input", renderBindu);
+      renderBindu();
+
+
+      // =============================================================
+      // 2. Інтерактив 2: Мотузка Бодхаяни
+      // =============================================================
+      const ropeSlider = document.getElementById("rope-tension");
+      const ropeBadge = document.getElementById("rope-badge");
+      const ropeCompassMode = document.getElementById("rope-compass-mode");
+      const ropeStatus = document.getElementById("rope-status");
+      const ropeSvg = document.getElementById("stage-rope");
+
+      let compassAngle = 40;
+
+      function renderRope() {
+        const tension = parseFloat(ropeSlider.value);
+        ropeBadge.textContent = tension + "% натягу";
+        ropeSvg.innerHTML = "";
+
+        const x1 = 90, y1 = 110;
+        const x2 = 510, y2 = 110;
+
+        if (ropeCompassMode.checked) {
+          // Режим «Циркуль»
+          const r = 160;
+          const rad = (compassAngle * Math.PI) / 180;
+          const mx = 300, my = 120;
+          const px = mx + r * Math.cos(rad);
+          const py = my + r * Math.sin(rad);
+
+          ropeSvg.innerHTML += `
+            <!-- Намальоване коло -->
+            <circle cx="${mx}" cy="${my}" r="${r}" fill="none" stroke="#fed7aa" stroke-width="3" stroke-dasharray="6,4"/>
+            <!-- Центральний кілок -->
+            <circle cx="${mx}" cy="${my}" r="7" fill="#78350f"/>
+            <text x="${mx - 15}" y="${my - 14}" font-weight="bold" font-size="13">Кілок O</text>
+            <!-- Натягнута мотузка-радіус -->
+            <line x1="${mx}" y1="${my}" x2="${px}" y2="${py}" stroke="#d97706" stroke-width="4.5"/>
+            <!-- Рухомий кілок -->
+            <circle cx="${px}" cy="${py}" r="7" fill="#dc2626"/>
+            <text x="${px + 10}" y="${py + 4}" font-weight="bold" font-size="13" fill="#dc2626">Кілок-циркуль</text>
+            <text x="180" y="35" font-size="14" font-weight="bold" fill="#78350f">Мотузка як циркуль: креслить коло сталого радіуса R</text>
+          `;
+          ropeStatus.textContent = "Режим циркуля: креслить священне коло";
+          return;
+        }
+
+        // Режим натягу прямої
+        const sag = (100 - tension) * 0.75; // величина провисання
+        ropeStatus.textContent = sag < 2 ? "Абсолютна пряма (відхилення 0 мм)" : `Провисання: ${(sag * 0.4).toFixed(1)} мм`;
+
+        // Мотузка провисає у формі кривої (парабола/катеноіда)
+        const midY = 110 + sag;
+        ropeSvg.innerHTML += `
+          <!-- Пунктирна ідеальна пряма для порівняння -->
+          <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4"/>
+          
+          <!-- Провисла мотузка -->
+          <path d="M ${x1} ${y1} Q 300 ${midY + sag} ${x2} ${y2}" fill="none" stroke="#d97706" stroke-width="5" stroke-linecap="round"/>
+
+          <!-- Лівий кілок Шанку -->
+          <line x1="${x1}" y1="${y1 - 25}" x2="${x1}" y2="${y1 + 35}" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="${x1}" cy="${y1}" r="6" fill="#b45309"/>
+          <text x="${x1 - 40}" y="${y1 - 30}" font-weight="bold" font-size="13" fill="#78350f">Кілок A</text>
+
+          <!-- Правий кілок Шанку зі стрілкою натягу -->
+          <line x1="${x2}" y1="${y2 - 25}" x2="${x2}" y2="${y2 + 35}" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="${x2}" cy="${y2}" r="6" fill="#b45309"/>
+          <text x="${x2 - 10}" y="${y2 - 30}" font-weight="bold" font-size="13" fill="#78350f">Кілок B</text>
+
+          <!-- Вектор сили натягу -->
+          <line x1="${x2}" y1="${y2}" x2="${x2 + 50}" y2="${y2}" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="${x2 + 10}" y="${y2 + 25}" font-weight="bold" font-size="12" fill="#dc2626">Сила натягу →</text>
+        `;
+      }
+
+      ropeSlider.addEventListener("input", renderRope);
+      ropeCompassMode.addEventListener("change", () => {
+        renderRope();
+      });
+      renderRope();
+
+
+      // =============================================================
+      // 3. Інтерактив 3: Риба Шульби (Матсья)
+      // =============================================================
+      const matsyaRadius = document.getElementById("matsya-radius");
+      const matsyaDist = document.getElementById("matsya-dist");
+      const matsyaRBadge = document.getElementById("matsya-r-badge");
+      const matsyaDBadge = document.getElementById("matsya-d-badge");
+      const matsyaSvg = document.getElementById("stage-matsya");
+
+      function renderMatsya() {
+        const r = parseFloat(matsyaRadius.value);
+        let d = parseFloat(matsyaDist.value);
+        if (d >= 2 * r - 10) d = 2 * r - 10;
+        matsyaRBadge.textContent = "R = " + r;
+        matsyaDBadge.textContent = "AB = " + d;
+
+        matsyaSvg.innerHTML = "";
+        const cx = 300, cy = 140;
+        const xA = cx - d / 2;
+        const xB = cx + d / 2;
+
+        // Точки перетину двох кіл (Голова і хвіст риби)
+        const halfH = Math.sqrt(r * r - (d / 2) * (d / 2));
+        const yTop = cy - halfH;
+        const yBottom = cy + halfH;
+
+        // Базова вісь Схід-Захід (Прачі)
+        matsyaSvg.innerHTML += `<line x1="40" y1="${cy}" x2="560" y2="${cy}" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5,4"/>`;
+        matsyaSvg.innerHTML += `<text x="50" y="${cy - 8}" font-size="12" font-weight="bold" fill="#64748b">Схід (Prācī)</text>`;
+        matsyaSvg.innerHTML += `<text x="500" y="${cy - 8}" font-size="12" font-weight="bold" fill="#64748b">Захід</text>`;
+
+        // Коло 1 з A
+        matsyaSvg.innerHTML += `<circle cx="${xA}" cy="${cy}" r="${r}" fill="none" stroke="#f59e0b" stroke-width="2"/>`;
+        // Коло 2 з B
+        matsyaSvg.innerHTML += `<circle cx="${xB}" cy="${cy}" r="${r}" fill="none" stroke="#f59e0b" stroke-width="2"/>`;
+
+        // Лінза «Риби» (підсвічена)
+        matsyaSvg.innerHTML += `
+          <path d="M ${cx} ${yTop} A ${r} ${r} 0 0 1 ${cx} ${yBottom} A ${r} ${r} 0 0 1 ${cx} ${yTop}" 
+                fill="rgba(245, 158, 11, 0.18)" stroke="#d97706" stroke-width="2.5"/>
+        `;
+
+        // Перпендикулярна вісь Північ-Південь через голову і хвіст
+        matsyaSvg.innerHTML += `<line x1="${cx}" y1="20" x2="${cx}" y2="260" stroke="#15803d" stroke-width="3"/>`;
+        matsyaSvg.innerHTML += `<text x="${cx + 10}" y="32" font-size="12" font-weight="bold" fill="#15803d">Північ (Udīcī)</text>`;
+        matsyaSvg.innerHTML += `<text x="${cx + 10}" y="254" font-size="12" font-weight="bold" fill="#15803d">Південь</text>`;
+
+        // Квадратик прямого кута в центрі (90°)
+        matsyaSvg.innerHTML += `
+          <rect x="${cx}" y="${cy - 18}" width="18" height="18" fill="none" stroke="#15803d" stroke-width="2"/>
+          <circle cx="${cx + 9}" cy="${cy - 9}" r="2.5" fill="#15803d"/>
+        `;
+
+        // Точки кілків A і B
+        matsyaSvg.innerHTML += `<circle cx="${xA}" cy="${cy}" r="6" fill="#78350f"/>`;
+        matsyaSvg.innerHTML += `<text x="${xA - 8}" y="${cy + 22}" font-size="13" font-weight="bold">A</text>`;
+        matsyaSvg.innerHTML += `<circle cx="${xB}" cy="${cy}" r="6" fill="#78350f"/>`;
+        matsyaSvg.innerHTML += `<text x="${xB - 4}" y="${cy + 22}" font-size="13" font-weight="bold">B</text>`;
+
+        // Точки риби (Голова та хвіст)
+        matsyaSvg.innerHTML += `<circle cx="${cx}" cy="${yTop}" r="5" fill="#dc2626"/>`;
+        matsyaSvg.innerHTML += `<text x="${cx + 10}" y="${yTop + 5}" font-size="12" font-weight="bold" fill="#dc2626">«Голова риби»</text>`;
+        matsyaSvg.innerHTML += `<circle cx="${cx}" cy="${yBottom}" r="5" fill="#dc2626"/>`;
+        matsyaSvg.innerHTML += `<text x="${cx + 10}" y="${yBottom + 5}" font-size="12" font-weight="bold" fill="#dc2626">«Хвіст риби»</text>`;
+      }
+
+      matsyaRadius.addEventListener("input", renderMatsya);
+      matsyaDist.addEventListener("input", renderMatsya);
+      renderMatsya();
+
+
+      // =============================================================
+      // 4. Інтерактив 4: Лук і Стріла Аріабхати
+      // =============================================================
+      const bowAngle = document.getElementById("bow-angle");
+      const bowBadge = document.getElementById("bow-badge");
+      const bowReadout = document.getElementById("bow-readout");
+      const bowSvg = document.getElementById("stage-bow");
+
+      function renderBow() {
+        const deg = parseFloat(bowAngle.value);
+        bowBadge.textContent = deg + "°";
+
+        bowSvg.innerHTML = "";
+        const cx = 300, cy = 150;
+        const R = 110;
+        const halfRad = (deg * Math.PI) / 360;
+
+        // Кінці лука (дуги)
+        const x1 = cx - R * Math.sin(halfRad);
+        const y1 = cy - R * Math.cos(halfRad);
+        const x2 = cx + R * Math.sin(halfRad);
+        const y2 = cy - R * Math.cos(halfRad);
+
+        // Середина тятиви
+        const midY = y1; // бо симетрично
+
+        // Стріла (відстань від середини тятиви до вершини дуги)
+        const arrowLen = R - R * Math.cos(halfRad);
+        const chordLen = 2 * R * Math.sin(halfRad);
+
+        const sinVal = Math.sin(halfRad).toFixed(2);
+        const versinVal = (1 - Math.cos(halfRad)).toFixed(2);
+
+        bowReadout.innerHTML = `Тятива <strong>Jyā</strong>: ${sinVal} R | Стріла <strong>Śara</strong>: ${versinVal} R`;
+
+        // 1. Дерево лука (Дуга кола — Чапа)
+        bowSvg.innerHTML += `
+          <path d="M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}" 
+                fill="none" stroke="#78350f" stroke-width="7" stroke-linecap="round"/>
+        `;
+
+        // 2. Тятива (Шнурок — Джіва / Синус)
+        bowSvg.innerHTML += `
+          <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#d97706" stroke-width="3" stroke-dasharray="5,2"/>
+        `;
+
+        // 3. Стріла (Шара — версинус, натягнута перпендикулярно)
+        bowSvg.innerHTML += `
+          <line x1="${cx}" y1="${midY}" x2="${cx}" y2="${cy - R}" stroke="#dc2626" stroke-width="3.5" marker-end="url(#arrow)"/>
+          <circle cx="${cx}" cy="${midY}" r="4" fill="#dc2626"/>
+        `;
+
+        // Центр кола лука (рукоятка / стрілець)
+        bowSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="4" fill="#0f172a"/>`;
+        bowSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>`;
+        bowSvg.innerHTML += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>`;
+
+        // Текстові підписи
+        bowSvg.innerHTML += `<text x="${cx + 8}" y="${cy - R - 10}" font-size="13" font-weight="bold" fill="#78350f">Чапа (Дуга лука)</text>`;
+        bowSvg.innerHTML += `<text x="${cx + 10}" y="${midY + 20}" font-size="13" font-weight="bold" fill="#d97706">Джіва (Тятива = Синус)</text>`;
+        bowSvg.innerHTML += `<text x="${cx - 130}" y="${(midY + cy - R) / 2}" font-size="13" font-weight="bold" fill="#dc2626">← Шара (Стріла)</text>`;
+
+        // Кінчики лука
+        bowSvg.innerHTML += `<circle cx="${x1}" cy="${y1}" r="6" fill="#78350f"/>`;
+        bowSvg.innerHTML += `<circle cx="${x2}" cy="${y2}" r="6" fill="#78350f"/>`;
+      }
+
+      bowAngle.addEventListener("input", renderBow);
+      renderBow();
+
+
+      // =============================================================
+      // 5. Інтерактив 5: Схрещені шнури (Ширшабхімукха)
+      // =============================================================
+      const crossSlider = document.getElementById("cross-slider");
+      const crossBadge = document.getElementById("cross-badge");
+      const crossReadout = document.getElementById("cross-readout");
+      const btnSpin180 = document.getElementById("btn-spin-180");
+      const crossSvg = document.getElementById("stage-cross");
+
+      let currentSpin = 0;
+
+      function renderCross() {
+        const deg = parseFloat(crossSlider.value);
+        crossBadge.textContent = deg + "°";
+        const sup = 180 - deg;
+
+        crossReadout.innerHTML = `Вертикальні (Śīrṣa): <strong>${deg}° = ${deg}°</strong> | Суміжні (Yugma): <strong>${deg}° + ${sup}° = 180°</strong>`;
+        crossSvg.innerHTML = "";
+
+        const cx = 300, cy = 120;
+        const len = 150;
+        const rad = ((deg / 2) * Math.PI) / 180;
+        const spinRad = (currentSpin * Math.PI) / 180;
+
+        // Пряма 1 (шнур 1)
+        const x1 = cx - len * Math.cos(-rad + spinRad);
+        const y1 = cy - len * Math.sin(-rad + spinRad);
+        const x2 = cx + len * Math.cos(-rad + spinRad);
+        const y2 = cy + len * Math.sin(-rad + spinRad);
+
+        // Пряма 2 (шнур 2)
+        const x3 = cx - len * Math.cos(rad + spinRad);
+        const y3 = cy - len * Math.sin(rad + spinRad);
+        const x4 = cx + len * Math.cos(rad + spinRad);
+        const y4 = cy + len * Math.sin(rad + spinRad);
+
+        // Лінії шнурів
+        crossSvg.innerHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#0284c7" stroke-width="4"/>`;
+        crossSvg.innerHTML += `<line x1="${x3}" y1="${y3}" x2="${x4}" y2="${y4}" stroke="#b45309" stroke-width="4"/>`;
+
+        // Сектори вертикальних кутів
+        crossSvg.innerHTML += `<circle cx="${cx}" cy="${cy}" r="6" fill="#0f172a"/>`;
+
+        // Кути праворуч і ліворуч
+        crossSvg.innerHTML += `<text x="${cx + 45}" y="${cy + 5}" font-size="15" font-weight="bold" fill="#dc2626">${deg}°</text>`;
+        crossSvg.innerHTML += `<text x="${cx - 85}" y="${cy + 5}" font-size="15" font-weight="bold" fill="#dc2626">${deg}°</text>`;
+        
+        // Кути зверху і знизу (суміжні)
+        crossSvg.innerHTML += `<text x="${cx - 16}" y="${cy - 45}" font-size="15" font-weight="bold" fill="#15803d">${sup}°</text>`;
+        crossSvg.innerHTML += `<text x="${cx - 16}" y="${cy + 60}" font-size="15" font-weight="bold" fill="#15803d">${sup}°</text>`;
+
+        // Підпис
+        crossSvg.innerHTML += `
+          <text x="30" y="30" font-size="13" font-weight="bold" fill="#78350f">Ширшабхімукха (Вертикальні): зіткнулися верхівками в точці перетину</text>
+        `;
+      }
+
+      crossSlider.addEventListener("input", renderCross);
+      btnSpin180.addEventListener("click", () => {
+        currentSpin = (currentSpin === 0 ? 180 : 0);
+        renderCross();
+      });
+      renderCross();
+
+    });
+  </script>
+</body>
+</html>

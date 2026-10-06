@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p016.s21.angle-types",
+  "kind": "definition",
+  "ordinal": "21",
+  "title_uk": "Прямий, гострий і тупий кути",
+  "title_ru": "Прямой, острый и тупой углы",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 17,
+      "printed_page": 16,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_017_300dpi.png",
+      "image_sha256": "0a17bd1623a2acb7db6146756cc75953794c3019173e152e33a6ac6db4c7e6cf",
+      "bbox": null
+    },
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 18,
+      "printed_page": 17,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_018_300dpi.png",
+      "image_sha256": "c014a1b76a008b9a9b5c8683b1f948d36251b7c0c706247beb04d7f6e006217f",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Угол в $90^\\circ$ (составляющий, след., половину развернутого угла или четверть полного угла) называют **прямым углом**; угол, меньший прямого, называют **острым**, а угол, больший прямого, называют **тупым** (черт. 18).\nКонечно, все прямые углы, как содержащие одинаковое число градусов, равны между собою.\nВеличину прямого угла иногда обозначают буквою $d$ (начальная буква французского слова *droit*, что значит «прямой»).",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Кут у $90^\\circ$ (половина розгорнутого кута) називають **прямим кутом**; кут, менший від прямого, називають **гострим**, а більший за прямий (але менший від розгорнутого) — **тупим** (рис. 18).\n\nУсі прямі кути рівні між собою. Величину прямого кута в класичних підручниках іноді позначають буквою $d$ (від фр. *droit* — прямий).",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-018",
+      "source_number": 18,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-018.tex",
+      "alt_uk": "Прямий, гострий і тупий кути",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 304 символів."
+    ]
+  }
+}

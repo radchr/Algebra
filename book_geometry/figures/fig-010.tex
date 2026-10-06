@@ -1,0 +1,20 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    % Кут 1
+    \draw[->, thick] (0,0) node[left] {$O$} -- (2,1.5) node[above] {$B$};
+    \draw[->, thick] (0,0) -- (2.3,0) node[right] {$A$};
+    \draw (0.6,0) arc (0:37:0.6);
+
+    % Кут 2
+    \draw[->, thick] (3.5,0) node[left] {$O_1$} -- (5.5,1.0) node[above] {$B_1$};
+    \draw[->, thick] (3.5,0) -- (5.8,0) node[right] {$A_1$};
+    \draw (4.1,0) arc (0:26:0.6);
+
+    % Сума
+    \coordinate (N) at (7.5,0);
+    \draw[->, very thick, color=primaryblue] (N) node[below left] {$N$} -- (10.2,0) node[right] {$M$};
+    \draw[->, thick, dashed] (N) -- (9.8,1.6) node[above right] {$P$};
+    \draw[->, very thick, color=primaryblue] (N) -- (9.0,2.4) node[above] {$Q$};
+    \draw[color=primaryblue] (8.2,0) arc (0:58:0.7);
+
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (4,2.4);
+    \coordinate (B) at (4.5,0);
+    \coordinate (L) at (4.4,1.2);
+
+    \draw[->, thick] (O) -- (A) node[above right] {$A$};
+    \draw[->, thick] (O) -- (B) node[right] {$B$};
+    \draw[->, very thick, color=feynmangreen] (O) -- (L) node[right] {\textbf{Бісектриса $OL$}};
+
+    \draw[color=feynmangreen] (0.9,0) arc (0:15.5:0.9);
+    \draw[color=feynmangreen] (0.9,0.25) arc (15.5:31:0.9);
+    \filldraw[black] (O) circle (2pt) node[left] {$O$};
+\end{tikzpicture}

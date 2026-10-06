@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
+    "drawsvg>=2.4.2",
     "google-genai>=2.25.0",
     "marimo>=0.25.0",
     "mistralai>=2.10.1",
@@ -21,6 +22,7 @@ dependencies = [
 
 [project.scripts]
 algebra-kiselev = "algebra_kiselev:main"
+geometry-pipeline = "geometry_pipeline.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.18,<0.13.0"]
@@ -28,6 +30,8 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "hypothesis>=6.0",
+    "pytest>=8.0",
     "ruff>=0.16.9",
 ]
 
@@ -56,4 +60,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"app.py" = ["F841", "E402", "B018", "W293"]
+"app.py" = ["F841", "E402", "B018", "W291", "W293", "I001"]
+"app_geometry.py" = ["F841", "E402", "B018", "W291", "W293", "I001"]
+"src/geometry_engine/jsx_templates.py" = ["W293"]
+
+

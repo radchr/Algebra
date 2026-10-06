@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p011.s09.arc-equality",
+  "kind": "paragraph",
+  "ordinal": "9",
+  "title_uk": "Рівність і нерівність дуг",
+  "title_ru": "Равенство и неравенство дуг",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 12,
+      "printed_page": 11,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_012_300dpi.png",
+      "image_sha256": "f9d73221c767dae490912153606a35b50dbba9abba210fc564907ab6506cdc46",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Две дуги одной и той же окружности (или равных окружностей) считаются равными, если они при наложении могут быть совмещены. Положим, например, что мы накладываем дугу $AB$ на дугу $CD$ так, чтобы точка $A$ упала в точку $C$ и дуга $AB$ пошла по дуге $CD$; если при этом концы $B$ и $D$ совпадут, то дуги равны; в противном случае дуги не равны, причем меньшею считается та дуга, которая составит только часть другой.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Дві дуги одного кола або рівних кіл вважають рівними, якщо вони суміщаються накладанням. Якщо одна дуга становить частину іншої, то вона менша.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}

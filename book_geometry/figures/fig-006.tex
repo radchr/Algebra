@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1.0]
+  \coordinate (O) at (0,0);
+  \draw[thick] (O) circle (2.2);
+  \coordinate (A) at (0:2.2);
+  \coordinate (B) at (48:2.2);
+  \coordinate (C) at (90:2.2);
+  \coordinate (D) at (180:2.2);
+  \coordinate (E) at (235:2.2);
+  \coordinate (F) at (340:2.2);
+  \fill[feynmangreen,opacity=.16] (O) -- (A) arc (0:48:2.2) -- cycle;
+  \fill[mediapurple,opacity=.14] (E) arc (235:340:2.2) -- cycle;
+  \draw[thick] (D) -- (A);
+  \draw[thick] (O) -- (B);
+  \draw[thick] (O) -- (C);
+  \draw[thick] (E) -- (F);
+  \draw[dashed] ($(E)!-.35!(F)$) -- ($(E)!1.35!(F)$);
+  \fill (O) circle (2pt) node[below left] {$O$};
+  \foreach \p in {A,B,C,D,E,F} {\fill (\p) circle (1.6pt) node[above right] {$\p$};}
+  \node at (1.1,0.55) {сектор};
+  \node at (0,-1.75) {сегмент};
+\end{tikzpicture}

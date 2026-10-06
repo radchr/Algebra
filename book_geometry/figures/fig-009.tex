@@ -1,0 +1,21 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=0.95, >=Stealth]
+    % Перший кут AOB
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (2.4,2.1);
+    \coordinate (B) at (3.2,0);
+    \draw[->, very thick, color=primaryblue] (O) -- (A) node[above left] {$A$};
+    \draw[->, very thick, color=primaryblue] (O) -- (B) node[right] {$B$};
+    \filldraw (O) circle (2pt) node[left] {$O$};
+
+    % Другий кут A1O1B1 з накладанням
+    \coordinate (O1) at (5.5,0);
+    \coordinate (A1) at (7.9,2.1);
+    \coordinate (B1) at (8.7,0);
+    \coordinate (A_in) at (7.6,1.4);
+    \draw[->, very thick, color=primaryblue] (O1) -- (A1) node[above right] {$A_1$};
+    \draw[->, very thick, color=primaryblue] (O1) -- (B1) node[right] {$B_1$};
+    \draw[->, thick, dashed, color=warningred] (O1) -- (A_in) node[right] {\small $OA$ (всередині)};
+    \filldraw (O1) circle (2pt) node[below left] {$O_1$};
+
+\end{tikzpicture}

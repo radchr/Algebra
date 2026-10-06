@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p016.s20.protractor",
+  "kind": "paragraph",
+  "ordinal": "20",
+  "title_uk": "Транспортир",
+  "title_ru": "Транспортир",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 17,
+      "printed_page": 16,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_017_300dpi.png",
+      "image_sha256": "0a17bd1623a2acb7db6146756cc75953794c3019173e152e33a6ac6db4c7e6cf",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Этот прибор (черт. 17), употребляемый для измерения углов, представляет собою полукруг, дуга которого разделена на 180 градусов. Чтобы измерить угол $DCE$, накладывают на него прибор так, чтобы центр полукруга совпал с вершиною угла, а радиус $CB$ совпал со стороною $CE$. Тогда число градусов, содержащееся в дуге, заключенной между сторонами угла $DCE$, покажет величину его. При помощи транспортира можно также начертить угол, содержащий данное число градусов (напр., угол в $90^\\circ$, в $45^\\circ$, в $30^\\circ$ и т. п.).",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Прилад для вимірювання кутів (рис. 17) являє собою півкруг, шкала якого поділена на 180 градусів. Щоб виміряти кут $DCE$, центр півкруга суміщають із вершиною кута, а базовий промінь приладу — зі стороною $CE$. Позначка на шкалі навпроти другої сторони покаже величину кута. За допомогою транспортира можна також побудувати кут заданої градусної міри, наприклад $90^\\circ$, $45^\\circ$ або $30^\\circ$.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [
+    {
+      "id": "fig-017",
+      "source_number": 17,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-017.tex",
+      "alt_uk": "Вимірювання кута транспортиром",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 274 символів."
+    ]
+  }
+}

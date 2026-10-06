@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p015.s17.central-angle",
+  "kind": "theorem",
+  "ordinal": "17",
+  "title_uk": "Центральний кут і дві його властивості",
+  "title_ru": "Центральный угол и два его свойства",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 16,
+      "printed_page": 15,
+      "section": "I. Углы",
+      "source_image": "data/geometry/01_raw_pages/page_016_300dpi.png",
+      "image_sha256": "7936194f03a5e61e0da00865f46ee83b09af813852ee840e24b68947f299bf05",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Угол ($AOB$, черт. 14), образованный двумя радиусами, называется **центральным углом**; о таком угле и дуге, заключенной между его сторонами, говорят, что они соответствуют друг другу.\n\nЦентральные углы по отношению к соответствующим им дугам обладают следующими двумя свойствами:\n\nВ одном круге или в равных кругах:\n1. Если центральные углы равны, то и соответствующие им дуги равны.\n2. Обратно: если дуги равны, то и соответствующие им центральные углы равны.\n\nПусть $\\angle AOB = \\angle COD$ (черт. 15); требуется доказать, что дуги $AB$ и $CD$ также равны.\nВообразим, что сектор $AOB$ мы повернули вокруг центра $O$ в направлении, указанном стрелкой, настолько, чтобы радиус $OA$ совпал с $OC$. Тогда, вследствие равенства углов, радиус $OB$ совместится с $OD$; значит, совместятся и дуги $AB$ и $CD$, т. е. они будут равны.\nВторое свойство доказывается также наложением.",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "Кут ($AOB$, рис. 14), утворений двома радіусами, називається **центральним кутом**; про такий кут і дугу, укладену між його сторонами, кажуть, що вони відповідають один одному.\n\nЦентральні кути відносно відповідних їм дуг мають такі дві властивості:\n*В одному колі або в рівних колах:*\n1. **Якщо центральні кути рівні, то й відповідні їм дуги рівні.**\n2. **Обернено: якщо дуги рівні, то й відповідні їм центральні кути рівні.**\n\n*Доведення.* Нехай $\\angle AOB = \\angle COD$ (рис. 15); потрібно довести, що дуги $AB$ і $CD$ також рівні.\nУявімо, що сектор $AOB$ ми повернули навколо центра $O$ так, щоб радіус $OA$ сумістився з $OC$. Тоді внаслідок рівності кутів радіус $OB$ суміститься з $OD$; отже, сумістяться й дуги $AB$ та $CD$, тобто вони рівні. Друга властивість доводиться аналогічно способом накладання.",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "interactive_link",
+      "title_uk": "Побачити через рух: центральний кут і дуга",
+      "text_uk": "Змінюй два рівні центральні кути в рівних колах і спостерігай, чому відповідні їм дуги також рівні:\n[https://radchr.github.io/Algebra/geometry-central-angle-arc.html](https://radchr.github.io/Algebra/geometry-central-angle-arc.html)",
+      "citations": [
+        "https://radchr.github.io/Algebra/geometry-central-angle-arc.html"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-014",
+      "source_number": 14,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-014-015.tex",
+      "alt_uk": "Центральний кут",
+      "status": "needs_review"
+    },
+    {
+      "id": "fig-015",
+      "source_number": 15,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-014-015.tex",
+      "alt_uk": "Рівні центральні кути й відповідні дуги",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy OCR, draft і final Markdown.",
+      "Чернетка перекладу містила 810 символів."
+    ]
+  }
+}

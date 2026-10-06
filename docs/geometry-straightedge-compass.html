@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магія лінійки та циркуля: Теореми Понселе–Штейнера та Мора–Маскероні</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/geometry-motion.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --geo-blue: #2563eb;
+      --geo-blue-dark: #1d4ed8;
+      --geo-blue-light: #eff6ff;
+      --geo-purple: #7c3aed;
+      --geo-emerald: #059669;
+      --geo-amber: #d97706;
+      --geo-rose: #e11d48;
+      --geo-slate: #0f172a;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.68;
+    }
+
+    .doc-container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 30px 20px 90px;
+    }
+
+    .doc-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+      color: #ffffff;
+      padding: 40px 32px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 30px -6px rgba(49, 46, 129, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-hero::after {
+      content: "📐";
+      position: absolute;
+      right: 24px;
+      bottom: -15px;
+      font-size: 150px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .doc-hero .tag-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .doc-hero .badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    .doc-hero .badge.gold {
+      background: #fef08a;
+      color: #713f12;
+    }
+
+    .doc-hero h1 {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      color: #ffffff;
+    }
+
+    .doc-hero p.subtitle {
+      font-size: 16px;
+      color: #e0e7ff;
+      margin: 0;
+      max-width: 840px;
+    }
+
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4338ca;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .back-nav:hover {
+      transform: translateX(-4px);
+      color: #312e81;
+    }
+
+    /* Картки розділів */
+    .concept-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .concept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 16px;
+      gap: 16px;
+    }
+
+    .concept-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--geo-slate);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theorem-tag {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .feynman-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--geo-emerald);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 14.5px;
+    }
+    .feynman-box h4 {
+      color: #166534;
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .zetel-ref-box {
+      background: #fefce8;
+      border-left: 4px solid var(--geo-amber);
+      padding: 14px 18px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: #713f12;
+    }
+
+    /* Інтерактивна сцена */
+    .interactive-stage {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 22px 0 16px;
+    }
+
+    .stage-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1e293b;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stage-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0 0 14px;
+    }
+
+    .svg-canvas {
+      width: 100%;
+      height: 340px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      display: block;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+      cursor: crosshair;
+      user-select: none;
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .btn-step {
+      background: var(--geo-blue);
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-step:hover {
+      background: var(--geo-blue-dark);
+      transform: translateY(-1px);
+    }
+    .btn-step.secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-step.secondary:hover {
+      background: #cbd5e1;
+    }
+    .btn-step.play {
+      background: var(--geo-emerald);
+    }
+    .btn-step.play:hover {
+      background: #047857;
+    }
+
+    .step-indicator {
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-left: auto;
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .step-explanation {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border-left: 3px solid var(--geo-blue);
+      font-size: 13.5px;
+      color: #334155;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Анімовані елементи SVG */
+    .point-handle {
+      cursor: grab;
+      transition: r 0.15s;
+    }
+    .point-handle:hover {
+      r: 8;
+    }
+    .point-handle:active {
+      cursor: grabbing;
+    }
+
+    /* Таблиця порівняння */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .compare-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+    }
+    .compare-table td {
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .compare-table tr:nth-child(even) {
+      background: #fafaf9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+    <a href="index.html" class="back-nav">← Повернутися до головного меню</a>
+
+    <header class="doc-hero">
+      <div class="tag-line">
+        <span class="badge gold">Геометрія циркуля і лінійки</span>
+        <span class="badge">Зетель (1950)</span>
+        <span class="badge">Воронець (1934)</span>
+        <span class="badge">Костовський (1989)</span>
+      </div>
+      <h1>Магія лінійки та циркуля</h1>
+      <p class="subtitle">
+        Інтерактивні анімації великих геометричних парадоксів: чому лінійка без кола «сліпа» до кутів,
+        як 4 прямі лінії знаходять точну середину відрізка, як побудувати прямий кут $90^\circ$ без косинця і як циркуль крокує без жодної лінійки.
+      </p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 1. ЧОМУ ЛІНІЙКА СЛІПА (ПАРАДОКС ПРОЕКЦІЇ) -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="projective-blindness">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>1. Парадокс: Чому чиста лінійка «сліпа» до довжин і кутів?</span>
+        </h2>
+        <span class="theorem-tag">Проективна геометрія</span>
+      </div>
+
+      <p>
+        Уяви, що тобі дали дерев'яну рейку без жодної міліметрової позначки і попросили: 
+        <em>«Накресли ідеальний квадрат або прямий кут $90^\circ$»</em>. Виявляється, це <strong>математично неможливо</strong>!
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Пояснення Фейнмана: Тінь ліхтарика</h4>
+        Поклади на стіл ідеальний квадрат. Тепер посвіти на нього ліхтариком під нахилом на стіну.
+        Що з'явиться на стіні? Не квадрат, а перекошений чотирикутник!
+        <ul>
+          <li>Прямі сторони квадрата в тіні <strong>залишилися прямими</strong>.</li>
+          <li>Точки перетину ліній <strong>залишилися перетинами</strong>.</li>
+          <li>Але кути $90^\circ$ перетворилися на $45^\circ$ чи $130^\circ$, а середина сторони змістилася вбік!</li>
+        </ul>
+        <strong>Лінійка «бачить» світ точно як тінь:</strong> вона знає тільки, чи лежать точки на одній прямій, але поняття «довжина» і «прямий кут» для неї не існують.
+      </div>
+
+      <!-- Інтерактив 1: Деформація квадрата в перспективі -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 1: Проективна трансформація квадрата</div>
+        <div class="stage-desc">Потягни повзунок нахилу камери: подивись, як прямі лінії та перетини зберігаються, тоді як кут $90^\circ$ і рівність сторін безслідно зникають!</div>
+
+        <svg id="stage-perspective" class="svg-canvas" viewBox="0 0 600 320"></svg>
+
+        <div class="controls-bar">
+          <label style="font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+            Кут нахилу площини:
+            <input type="range" id="persp-slider" min="0" max="65" step="1" value="35">
+            <span id="persp-angle-val" style="font-weight: 800; color: var(--geo-blue); width: 35px;">35°</span>
+          </label>
+
+          <span class="step-indicator" id="persp-status">Кут при вершині: 68.4° (втрата 90°)</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 2. ПОДІЛ ВІДРІЗКА НАВПІЛ ОДНІЄЮ ЛІНІЙКОЮ -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="trapezoid-midpoint">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>2. Магія трапеції: Поділ відрізка навпіл 4 прямими лініями</span>
+        </h2>
+        <span class="theorem-tag">Зетель, с. 20 (Рис. 12)</span>
+      </div>
+
+      <p>
+        Якщо чиста лінійка не вміє вимірювати довжини, то невже нею не можна знайти середину відрізка?
+        Можна! Але за однієї умови: <strong>якщо поруч є хоча б одна пряма, паралельна нашому відрізку</strong>.
+      </p>
+
+      <div class="zetel-ref-box">
+        <strong>Із книги С. І. Зетеля:</strong>
+        «Нехай дано відрізок $AB$ і пряму $CD$, паралельну йому. Щоб знайти середину $AB$, достатньо взяти довільну точку $F$ поза прямими і провести лише 4 лінії лінійкою без вимірювання!»
+      </div>
+
+      <!-- Інтерактив 2: Покрокова побудова трапеції -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 2: Знаходження середини відрізка $AB$ однією лінійкою</div>
+        <div class="stage-desc">Натискай «Крок вперед» або «▶ Автоплей». <strong>Ти можеш перетягувати мишкою вершину $F$</strong> в будь-яке місце — і лінія завжди влучить точно в середину!</div>
+
+        <svg id="stage-trapezoid" class="svg-canvas" viewBox="0 0 600 340"></svg>
+
+        <div class="controls-bar">
+          <button class="btn-step secondary" id="trap-prev">◀ Назад</button>
+          <button class="btn-step" id="trap-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="trap-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="trap-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="trap-step-indicator">Крок 0 з 4</span>
+        </div>
+
+        <div class="step-explanation" id="trap-explanation">
+          Натисни «Крок вперед», щоб розпочати геометричну побудову.
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 3. ТЕОРЕМА ПОНСЕЛЕ-ШТЕЙНЕРА (ПРЯМИЙ КУТ І КОЛО) -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="steiner-perpendicular">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>3. Теорема Понселе–Штейнера: Побудова кута $90^\circ$ однією лінійкою</span>
+        </h2>
+        <span class="theorem-tag">Штейнер (1833) · Зетель, с. 41</span>
+      </div>
+
+      <p>
+        Ось відповідь на головну загадку: <strong>«Чи можна все побудувати однією лінійкою?»</strong>  
+        Якоб Штейнер довів: так, якщо на аркуші є <strong>хоча б одне коло з указаним центром $O$</strong>. 
+        Центр кола $O$ слугує універсальним геометричним «камертоном». Завдяки симетрії кола лінійка миттєво навчається будувати прямі кути!
+      </p>
+
+      <!-- Інтерактив 3: Побудова прямого кута Штейнера -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 3: Народження ідеального перпендикуляра ($90^\circ$)</div>
+        <div class="stage-desc">Простеж, як рівнобічна трапеція всередині кола породжує прямий кут. <strong>Перетягуй точку $C$ по колу</strong> — лінія $KO$ завжди лишається строго перпендикулярною!</div>
+
+        <svg id="stage-steiner" class="svg-canvas" viewBox="0 0 600 340"></svg>
+
+        <div class="controls-bar">
+          <button class="btn-step secondary" id="stein-prev">◀ Назад</button>
+          <button class="btn-step" id="stein-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="stein-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="stein-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="stein-step-indicator">Крок 0 з 4</span>
+        </div>
+
+        <div class="step-explanation" id="stein-explanation">
+          Натисни «Крок вперед», щоб покроково побудувати перпендикуляр Штейнера.
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 4. ТЕОРЕМА МОРА-МАСКЕРОНІ (ХОДА ЦИРКУЛЯ) -->
+    <!-- ========================================== -->
+    <article class="concept-card" id="mascheroni-compass">
+      <div class="concept-header">
+        <h2 class="concept-title">
+          <span>4. Теорема Мора–Маскероні: Як циркуль креслить без лінійки</span>
+        </h2>
+        <span class="theorem-tag">Мор (1672) · Воронець (1934)</span>
+      </div>
+
+      <p>
+        Дзеркальне диво: а що, якщо повністю <strong>заборонити лінійку</strong> і залишити лише циркуль?  
+        Георг Мор та Лоренцо Маскероні довели: <strong>одним лише циркулем можна розв'язати ВСІ евклідові задачі!</strong>
+      </p>
+
+      <div class="feynman-box">
+        <h4>🧠 Як циркуль знає пряму лінію? («Хода циркуля» кроками по 60°)</h4>
+        Як подвоїти відрізок $AB$ (знайти точку $C$ на тій же прямій так, що $AC = 2AB$), якщо проводити прямі лінії заборонено?  
+        Циркуль вміє <em>«ходити»</em> по колу! Радіус кола рівно 6 разів укладається по периметру (утворюючи правильний шестикутник із кроком $60^\circ$).  
+        Зробивши три такі кроки ($60^\circ + 60^\circ + 60^\circ = 180^\circ$), циркуль приходить рівно в протилежну точку діаметра!
+      </div>
+
+      <!-- Інтерактив 4: Хода циркуля -->
+      <div class="interactive-stage">
+        <div class="stage-title">🕹️ Жива анімація 4: «Хода циркуля» — подвоєння відрізка без лінійки</div>
+        <div class="stage-desc">Подивись, як циркуль ставить засічки розхилом радіуса і крокує рівно на $180^\circ$, продовжуючи відрізок у пряму лінію!</div>
+
+        <svg id="stage-mascheroni" class="svg-canvas" viewBox="0 0 600 320"></svg>
+
+        <div class="controls-bar">
+          <button class="btn-step secondary" id="masch-prev">◀ Назад</button>
+          <button class="btn-step" id="masch-next">Крок вперед ▶</button>
+          <button class="btn-step play" id="masch-play">▶ Автоплей</button>
+          <button class="btn-step secondary" id="masch-reset">↺ Скинути</button>
+
+          <span class="step-indicator" id="masch-step-indicator">Крок 0 з 3</span>
+        </div>
+
+        <div class="step-explanation" id="masch-explanation">
+          Натисни «Крок вперед», щоб спостерігати ходу циркуля Маскероні.
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- 5. ПІДСУМКОВА ТАБЛИЦЯ ДЛЯ УЧНЯ 7 КЛАСУ -->
+    <!-- ========================================== -->
+    <article class="concept-card">
+      <h2 class="concept-title" style="margin-bottom: 16px;">
+        <span>📊 Підсумок: Хто сильніший — Лінійка чи Циркуль?</span>
+      </h2>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Інструмент</th>
+            <th>Що вміє робити?</th>
+            <th>Чого НЕ вміє без допомоги?</th>
+            <th>Головна теорема</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Тільки Лінійка</strong></td>
+            <td>З'єднує точки прямою, знаходить перетин прямих</td>
+            <td>Не відчуває довжину і кути. Не може побудувати $90^\circ$ або поділити відрізок навпіл</td>
+            <td><em>Проективна геометрія</em> (зберігає лише прямолінійність)</td>
+          </tr>
+          <tr>
+            <td><strong>Лінійка + 1 коло з центром</strong></td>
+            <td>Будує будь-яку фігуру шкільної геометрії!</td>
+            <td>Потрібне хоча б одне готове коло з цяткою в центрі як орієнтир</td>
+            <td><strong>Теорема Понселе–Штейнера</strong> (1833)</td>
+          </tr>
+          <tr>
+            <td><strong>Тільки Циркуль</strong></td>
+            <td>Будує будь-яку точку евклідової геометрії, ділить відрізки, будує кути</td>
+            <td>Не може накреслити суцільну рівну лінію (але знаходить будь-які дві її точки!)</td>
+            <td><strong>Теорема Мора–Маскероні</strong> (1672 / 1797)</td>
+          </tr>
+          <tr>
+            <td><strong>Циркуль сталого розхилу</strong></td>
+            <td>Працює, навіть якщо «заіржавів» і розкривається лише на одну фіксовану відстань!</td>
+            <td>Потребує більше допоміжних засічок</td>
+            <td><strong>Школа Костовського</strong> (Львів, 1989)</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- СКРИПТИ ІНТЕРАКТИВНИХ АНІМАЦІЙ -->
+  <!-- ========================================== -->
+  <script>
+    // Допоміжні функції створення елементів SVG
+    function createSVG(tag, attrs) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (let k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    /* -------------------------------------------------------------
+       1. СЦЕНА ПЕРСПЕКТИВИ (ПАРАДОКС СЛІПОЇ ЛІНІЙКИ)
+       ------------------------------------------------------------- */
+    (function initPerspective() {
+      const svg = document.getElementById('stage-perspective');
+      const slider = document.getElementById('persp-slider');
+      const angleVal = document.getElementById('persp-angle-val');
+      const statusText = document.getElementById('persp-status');
+
+      function render(tiltDeg) {
+        svg.innerHTML = '';
+        angleVal.textContent = tiltDeg + '°';
+
+        const rad = (tiltDeg * Math.PI) / 180;
+        const cx = 300, cy = 160;
+        const size = 110;
+
+        // Початковий квадрат у просторі: [-size, -size], [size, -size], [size, size], [-size, size]
+        // Модель нахилу камери: z = y * sin(rad), y' = y * cos(rad)
+        // Проекція перспективи: factor = d / (d + z)
+        const d = 260;
+        const corners = [
+          { x: -size, y: -size },
+          { x: size, y: -size },
+          { x: size, y: size },
+          { x: -size, y: size }
+        ];
+
+        const projected = corners.map(pt => {
+          const yRot = pt.y * Math.cos(rad);
+          const zRot = pt.y * Math.sin(rad);
+          const f = d / (d + zRot);
+          return {
+            x: cx + pt.x * f,
+            y: cy + yRot * f
+          };
+        });
+
+        // Сітка столу (фонові лінії перспективи)
+        for (let gx = -200; gx <= 200; gx += 50) {
+          const f1 = d / (d - 130 * Math.sin(rad));
+          const f2 = d / (d + 130 * Math.sin(rad));
+          svg.appendChild(createSVG('line', {
+            x1: cx + gx * f1, y1: cy - 130 * Math.cos(rad) * f1,
+            x2: cx + gx * f2, y2: cy + 130 * Math.cos(rad) * f2,
+            stroke: '#f1f5f9', 'stroke-width': 1.5
+          }));
+        }
+
+        // Полігон проекції чотирикутника
+        const ptsStr = projected.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+        const poly = createSVG('polygon', {
+          points: ptsStr,
+          fill: tiltDeg === 0 ? 'rgba(37, 99, 235, 0.12)' : 'rgba(225, 29, 72, 0.12)',
+          stroke: tiltDeg === 0 ? '#2563eb' : '#e11d48',
+          'stroke-width': 2.5
+        });
+        svg.appendChild(poly);
+
+        // Діагоналі
+        svg.appendChild(createSVG('line', {
+          x1: projected[0].x, y1: projected[0].y,
+          x2: projected[2].x, y2: projected[2].y,
+          stroke: '#94a3b8', 'stroke-dasharray': '4,4', 'stroke-width': 1.5
+        }));
+        svg.appendChild(createSVG('line', {
+          x1: projected[1].x, y1: projected[1].y,
+          x2: projected[3].x, y2: projected[3].y,
+          stroke: '#94a3b8', 'stroke-dasharray': '4,4', 'stroke-width': 1.5
+        }));
+
+        // Точка перетину діагоналей
+        // Точний перетин ліній
+        const pDiag = {
+          x: (projected[0].x + projected[1].x + projected[2].x + projected[3].x) / 4,
+          y: (projected[0].y + projected[1].y + projected[2].y + projected[3].y) / 4
+        };
+        svg.appendChild(createSVG('circle', {
+          cx: pDiag.x, cy: pDiag.y, r: 4.5, fill: '#7c3aed'
+        }));
+        const tCenter = createSVG('text', {
+          x: pDiag.x + 8, y: pDiag.y + 4, 'font-size': 11, 'font-weight': 'bold', fill: '#7c3aed'
+        });
+        tCenter.textContent = 'Перетин (зберігається)';
+        svg.appendChild(tCenter);
+
+        // Обчислення кута при нижній лівій вершині
+        const v1 = { x: projected[1].x - projected[0].x, y: projected[1].y - projected[0].y };
+        const v2 = { x: projected[3].x - projected[0].x, y: projected[3].y - projected[0].y };
+        const dot = v1.x * v2.x + v1.y * v2.y;
+        const m1 = Math.hypot(v1.x, v1.y);
+        const m2 = Math.hypot(v2.x, v2.y);
+        const angleDegNow = (Math.acos(dot / (m1 * m2)) * 180 / Math.PI).toFixed(1);
+
+        // Вершини
+        const labels = ['A', 'B', 'C', 'D'];
+        projected.forEach((p, idx) => {
+          svg.appendChild(createSVG('circle', {
+            cx: p.x, cy: p.y, r: 5, fill: '#1e293b'
+          }));
+          const t = createSVG('text', {
+            x: p.x + (idx === 0 || idx === 3 ? -14 : 8),
+            y: p.y + (idx === 0 || idx === 1 ? -8 : 16),
+            'font-size': 13, 'font-weight': 'bold', fill: '#0f172a'
+          });
+          t.textContent = labels[idx];
+          svg.appendChild(t);
+        });
+
+        // Індикація кута біля A
+        statusText.textContent = `Кут ∠DAB: ${angleDegNow}° ${tiltDeg === 0 ? '(Ідеальний прямий 90°)' : '(Спотворено!)'}`;
+        statusText.style.color = tiltDeg === 0 ? '#059669' : '#e11d48';
+      }
+
+      slider.addEventListener('input', e => render(parseFloat(e.target.value)));
+      render(35);
+    })();
+
+
+    /* -------------------------------------------------------------
+       2. СЦЕНА ТРАПЕЦІЇ (ПОДІЛ ВІДРІЗКА НАВПІЛ ОДНІЄЮ ЛІНІЙКОЮ)
+       ------------------------------------------------------------- */
+    (function initTrapezoid() {
+      const svg = document.getElementById('stage-trapezoid');
+      const prevBtn = document.getElementById('trap-prev');
+      const nextBtn = document.getElementById('trap-next');
+      const playBtn = document.getElementById('trap-play');
+      const resetBtn = document.getElementById('trap-reset');
+      const indicator = document.getElementById('trap-step-indicator');
+      const explanation = document.getElementById('trap-explanation');
+
+      let step = 0;
+      const maxSteps = 4;
+      let playTimer = null;
+
+      // Координати базових відрізків
+      const A = { x: 130, y: 270 };
+      const B = { x: 470, y: 270 };
+      const parY = 160; // Пряма паралельна AB
+      let F = { x: 260, y: 55 }; // Вершина, яку можна тягати
+
+      // Тексти пояснень до кожного кроку
+      const stepTexts = [
+        "Початковий стан: дано відрізок AB та паралельну пряму вгорі. Натисни «Крок вперед».",
+        "Крок 1: Обираємо довільну точку F. Проводимо промені FA та FB. Вони перетинають паралельну пряму в точках D і C. Утворилася трапеція ABCD.",
+        "Крок 2: Проводимо діагоналі трапеції AC та BD. Вони перетинаються в точці E.",
+        "Крок 3: Проводимо пряму через вершину F та точку перетину діагоналей E.",
+        "Крок 4: Пряма FE розтинає відрізок AB рівно в точці G. Доведено: AG = GB! Відрізок поділено навпіл без жодної поділки!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        // 1. Малюємо паралельну пряму
+        svg.appendChild(createSVG('line', {
+          x1: 40, y1: parY, x2: 560, y2: parY,
+          stroke: '#94a3b8', 'stroke-width': 1.5, 'stroke-dasharray': '6,4'
+        }));
+        const tPar = createSVG('text', {
+          x: 45, y: parY - 8, 'font-size': 11, fill: '#64748b', 'font-style': 'italic'
+        });
+        tPar.textContent = 'пряма, паралельна до AB';
+        svg.appendChild(tPar);
+
+        // 2. Малюємо заданий відрізок AB
+        svg.appendChild(createSVG('line', {
+          x1: A.x, y1: A.y, x2: B.x, y2: B.y,
+          stroke: '#0f172a', 'stroke-width': 3
+        }));
+        drawPoint(A, 'A', -16, 16);
+        drawPoint(B, 'B', 10, 16);
+
+        // Розрахунок точок D і C: перетин ліній FA і FB з y = parY
+        // t = (parY - F.y) / (A.y - F.y)
+        const tA = (parY - F.y) / (A.y - F.y);
+        const D = { x: F.x + tA * (A.x - F.x), y: parY };
+
+        const tB = (parY - F.y) / (B.y - F.y);
+        const C = { x: F.x + tB * (B.x - F.x), y: parY };
+
+        // Розрахунок точки E: перетин діагоналей AC і BD
+        // Параметричне рівняння AC: P = A + u*(C-A)
+        // BD: P = B + v*(D-B)
+        const denom = (A.x - C.x) * (B.y - D.y) - (A.y - C.y) * (B.x - D.x);
+        let E = { x: 300, y: 215 };
+        if (Math.abs(denom) > 0.0001) {
+          const tE = ((A.x - B.x) * (B.y - D.y) - (A.y - B.y) * (B.x - D.x)) / denom;
+          E = { x: A.x + tE * (C.x - A.x), y: A.y + tE * (C.y - A.y) };
+        }
+
+        // Розрахунок точки G: перетин FE з y = A.y
+        const tG = (A.y - F.y) / (E.y - F.y);
+        const G = { x: F.x + tG * (E.x - F.x), y: A.y };
+
+        // КРОК 1: Точка F та бічні сторони FA, FB, точки D, C
+        if (step >= 1) {
+          svg.appendChild(createSVG('line', {
+            x1: F.x, y1: F.y, x2: A.x, y2: A.y,
+            stroke: '#2563eb', 'stroke-width': 1.8
+          }));
+          svg.appendChild(createSVG('line', {
+            x1: F.x, y1: F.y, x2: B.x, y2: B.y,
+            stroke: '#2563eb', 'stroke-width': 1.8
+          }));
+
+          drawPoint(D, 'D', -16, -6, '#2563eb');
+          drawPoint(C, 'C', 10, -6, '#2563eb');
+          drawHandle(F, 'F (тягни мене)', '#d97706');
+        }
+
+        // КРОК 2: Діагоналі AC і BD, точка E
+        if (step >= 2) {
+          svg.appendChild(createSVG('line', {
+            x1: A.x, y1: A.y, x2: C.x, y2: C.y,
+            stroke: '#7c3aed', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+          svg.appendChild(createSVG('line', {
+            x1: B.x, y1: B.y, x2: D.x, y2: D.y,
+            stroke: '#7c3aed', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+          drawPoint(E, 'E (перетин діагоналей)', 10, -4, '#7c3aed');
+        }
+
+        // КРОК 3: Проведення лінії через F та E
+        if (step >= 3) {
+          svg.appendChild(createSVG('line', {
+            x1: F.x, y1: F.y, x2: G.x, y2: G.y + 20,
+            stroke: '#059669', 'stroke-width': 2.5
+          }));
+        }
+
+        // КРОК 4: Точка G — точна середина!
+        if (step >= 4) {
+          drawPoint(G, 'G (СЕРЕДИНА!)', -20, 22, '#059669', 6);
+
+          // Позначки однакових відрізків (засічки на AG і GB)
+          const midAG = (A.x + G.x) / 2;
+          const midGB = (G.x + B.x) / 2;
+          drawTick(midAG, A.y);
+          drawTick(midGB, A.y);
+
+          const lenText = createSVG('text', {
+            x: 300, y: 310, 'font-size': 12, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          const dAG = (G.x - A.x).toFixed(1);
+          const dGB = (B.x - G.x).toFixed(1);
+          lenText.textContent = `✓ AG = ${dAG} px | GB = ${dGB} px (Точна рівність!)`;
+          svg.appendChild(lenText);
+        }
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      function drawHandle(pt, label, color) {
+        const c = createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: 7, fill: color, stroke: '#ffffff', 'stroke-width': 2, class: 'point-handle'
+        });
+        svg.appendChild(c);
+        const t = createSVG('text', {
+          x: pt.x - 30, y: pt.y - 12, 'font-size': 11, 'font-weight': 'bold', fill: color
+        });
+        t.textContent = label;
+        svg.appendChild(t);
+
+        // Перетягування точки F мишкою
+        let isDragging = false;
+        c.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          e.preventDefault();
+        });
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const rect = svg.getBoundingClientRect();
+          const scaleX = 600 / rect.width;
+          const scaleY = 340 / rect.height;
+          let nx = (e.clientX - rect.left) * scaleX;
+          let ny = (e.clientY - rect.top) * scaleY;
+
+          // Обмеження координат F
+          nx = Math.max(160, Math.min(440, nx));
+          ny = Math.max(30, Math.min(parY - 30, ny));
+          F.x = nx;
+          F.y = ny;
+          render();
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+      }
+
+      function drawTick(x, y) {
+        svg.appendChild(createSVG('line', {
+          x1: x, y1: y - 6, x2: x, y2: y + 6,
+          stroke: '#059669', 'stroke-width': 2
+        }));
+      }
+
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1300);
+      });
+
+      render();
+    })();
+
+
+    /* -------------------------------------------------------------
+       3. СЦЕНА ШТЕЙНЕРА (ПРЯМИЙ КУТ І ПЕРПЕНДИКУЛЯР ОДНІЄЮ ЛІНІЙКОЮ)
+       ------------------------------------------------------------- */
+    (function initSteiner() {
+      const svg = document.getElementById('stage-steiner');
+      const prevBtn = document.getElementById('stein-prev');
+      const nextBtn = document.getElementById('stein-next');
+      const playBtn = document.getElementById('stein-play');
+      const resetBtn = document.getElementById('stein-reset');
+      const indicator = document.getElementById('stein-step-indicator');
+      const explanation = document.getElementById('stein-explanation');
+
+      let step = 0;
+      const maxSteps = 4;
+      let playTimer = null;
+
+      const O = { x: 300, y: 170 };
+      const R = 110;
+      let angleC = 42 * Math.PI / 180; // Положення точки C на дузі
+
+      const stepTexts = [
+        "Початковий стан: дано коло з центром O та проведений діаметр AB. Натисни «Крок вперед».",
+        "Крок 1: Обираємо точку C на колі та проводимо хорду CD, паралельну діаметру AB. Утворилася рівнобічна трапеція ABDC.",
+        "Крок 2: Проводимо діагоналі трапеції AD та BC. Вони перетинаються в точці K.",
+        "Крок 3: Проводимо пряму через точку перетину діагоналей K та центр кола O.",
+        "Крок 4: Магія Штейнера: лінія KO падає на діаметр AB строго під кутом 90°! Прямий кут побудовано без косинця!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        // 1. Коло з центром O
+        svg.appendChild(createSVG('circle', {
+          cx: O.x, cy: O.y, r: R,
+          fill: 'none', stroke: '#cbd5e1', 'stroke-width': 2
+        }));
+
+        // 2. Центр кола O
+        drawPoint(O, 'O (центр кола)', -10, 18, '#0f172a', 4.5);
+
+        // 3. Діаметр AB
+        const A = { x: O.x - R, y: O.y };
+        const B = { x: O.x + R, y: O.y };
+        svg.appendChild(createSVG('line', {
+          x1: A.x - 30, y1: A.y, x2: B.x + 30, y2: B.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+        drawPoint(A, 'A', -16, -6);
+        drawPoint(B, 'B', 10, -6);
+
+        // Точки C і D: хорда, паралельна AB (тобто симетрична відносно вертикалі)
+        // C знаходиться у верхній лівій/правій частині
+        const h = R * Math.sin(angleC);
+        const w = R * Math.cos(angleC);
+        const C = { x: O.x - w, y: O.y - h };
+        const D = { x: O.x + w, y: O.y - h };
+
+        // КРОК 1: Хорда CD
+        if (step >= 1) {
+          svg.appendChild(createSVG('line', {
+            x1: C.x, y1: C.y, x2: D.x, y2: D.y,
+            stroke: '#2563eb', 'stroke-width': 2
+          }));
+          drawPoint(D, 'D', 10, -6, '#2563eb');
+
+          // Робимо точку C інтерактивною (ручкою на колі)
+          drawHandleC(C);
+        }
+
+        // КРОК 2: Діагоналі AD і BC, їх перетин K
+        // Оскільки ABDC рівнобічна трапеція, перетин K лежить строго на вертикалі центру O!
+        // Y перетину K:
+        // Рівняння AD: y - A.y = (D.y - A.y)/(D.x - A.x) * (x - A.x)
+        // При x = O.x:
+        const slopeAD = (D.y - A.y) / (D.x - A.x);
+        const Ky = A.y + slopeAD * (O.x - A.x);
+        const K = { x: O.x, y: Ky };
+
+        if (step >= 2) {
+          svg.appendChild(createSVG('line', {
+            x1: A.x, y1: A.y, x2: D.x, y2: D.y,
+            stroke: '#7c3aed', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+          svg.appendChild(createSVG('line', {
+            x1: B.x, y1: B.y, x2: C.x, y2: C.y,
+            stroke: '#7c3aed', 'stroke-width': 1.8, 'stroke-dasharray': '5,3'
+          }));
+          drawPoint(K, 'K (перетин діагоналей)', 10, -4, '#7c3aed');
+        }
+
+        // КРОК 3: Пряма KO
+        if (step >= 3) {
+          svg.appendChild(createSVG('line', {
+            x1: O.x, y1: Math.min(K.y - 25, 20), x2: O.x, y2: O.y + 45,
+            stroke: '#059669', 'stroke-width': 3
+          }));
+        }
+
+        // КРОК 4: Індикація прямого кута 90°
+        if (step >= 4) {
+          // Квадратик прямого кута біля O
+          const sqSize = 14;
+          svg.appendChild(createSVG('path', {
+            d: `M ${O.x - sqSize} ${O.y} L ${O.x - sqSize} ${O.y - sqSize} L ${O.x} ${O.y - sqSize}`,
+            fill: 'rgba(5, 150, 105, 0.15)', stroke: '#059669', 'stroke-width': 2
+          }));
+
+          const t90 = createSVG('text', {
+            x: O.x - 38, y: O.y - 8, 'font-size': 13, 'font-weight': 'bold', fill: '#059669'
+          });
+          t90.textContent = '90°';
+          svg.appendChild(t90);
+
+          const okText = createSVG('text', {
+            x: 300, y: 310, 'font-size': 13, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          okText.textContent = '✓ Пряма KO строго перпендикулярна до діаметра AB!';
+          svg.appendChild(okText);
+        }
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      function drawHandleC(pt) {
+        const c = createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: 7.5, fill: '#d97706', stroke: '#ffffff', 'stroke-width': 2, class: 'point-handle'
+        });
+        svg.appendChild(c);
+        const t = createSVG('text', {
+          x: pt.x - 45, y: pt.y - 10, 'font-size': 11, 'font-weight': 'bold', fill: '#d97706'
+        });
+        t.textContent = 'C (потягни)';
+        svg.appendChild(t);
+
+        let isDragging = false;
+        c.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          e.preventDefault();
+        });
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const rect = svg.getBoundingClientRect();
+          const scaleX = 600 / rect.width;
+          const scaleY = 340 / rect.height;
+          const mx = (e.clientX - rect.left) * scaleX - O.x;
+          const my = (e.clientY - rect.top) * scaleY - O.y;
+
+          // Кут у верхньому півколі
+          let rad = Math.atan2(-my, Math.abs(mx));
+          rad = Math.max(0.2, Math.min(Math.PI / 2 - 0.15, rad));
+          angleC = rad;
+          render();
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+      }
+
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1300);
+      });
+
+      render();
+    })();
+
+
+    /* -------------------------------------------------------------
+       4. СЦЕНА МАСКЕРОНІ (ХОДА ЦИРКУЛЯ ДЛЯ ПОДВОЄННЯ ВІДРІЗКА)
+       ------------------------------------------------------------- */
+    (function initMascheroni() {
+      const svg = document.getElementById('stage-mascheroni');
+      const prevBtn = document.getElementById('masch-prev');
+      const nextBtn = document.getElementById('masch-next');
+      const playBtn = document.getElementById('masch-play');
+      const resetBtn = document.getElementById('masch-reset');
+      const indicator = document.getElementById('masch-step-indicator');
+      const explanation = document.getElementById('masch-explanation');
+
+      let step = 0;
+      const maxSteps = 3;
+      let playTimer = null;
+
+      const B = { x: 250, y: 160 };
+      const R = 90;
+      const A = { x: B.x - R, y: B.y };
+
+      const stepTexts = [
+        "Початковий стан: маємо відрізок AB (радіус R). Ставимо ніжку циркуля в точку B і проводимо повне коло радіусом R.",
+        "Крок 1 (Засічка 60°): Не змінюючи розхилу циркуля (R), ставимо вістря в точку A і креслимо дугу. Отримуємо точку P1 (поворот на 60°).",
+        "Крок 2 (Засічка 120°): Переносимо вістря в точку P1 і знову робимо засічку розхилом R. Отримуємо точку P2 (поворот ще на 60°, разом 120°).",
+        "Крок 3 (Засічка 180° = Точка C): Переносимо вістря в P2 і робимо третю засічку. Отримуємо точку C! Кут 180° означає, що A, B і C лежать на одній прямій, а AC = 2·AB!"
+      ];
+
+      function render() {
+        svg.innerHTML = '';
+        indicator.textContent = `Крок ${step} з ${maxSteps}`;
+        explanation.textContent = stepTexts[step];
+
+        // 1. Початкове коло з центром B
+        svg.appendChild(createSVG('circle', {
+          cx: B.x, cy: B.y, r: R,
+          fill: 'none', stroke: '#cbd5e1', 'stroke-width': 1.8
+        }));
+
+        // Відрізок AB
+        svg.appendChild(createSVG('line', {
+          x1: A.x, y1: A.y, x2: B.x, y2: B.y,
+          stroke: '#0f172a', 'stroke-width': 2.5
+        }));
+        drawPoint(A, 'A', -16, 16);
+        drawPoint(B, 'B (центр кола)', -10, 18, '#0f172a');
+
+        // Кути поворотів для кроків шестикутника
+        const P1 = { x: B.x - R * Math.cos(Math.PI / 3), y: B.y - R * Math.sin(Math.PI / 3) };
+        const P2 = { x: B.x + R * Math.cos(Math.PI / 3), y: B.y - R * Math.sin(Math.PI / 3) };
+        const C = { x: B.x + R, y: B.y };
+
+        // КРОК 1: Засічка з A на 60° (дуга навколо A радіусом R)
+        if (step >= 1) {
+          drawArc(A, R, -Math.PI / 3 - 0.25, -Math.PI / 3 + 0.25, '#2563eb');
+          drawPoint(P1, 'P₁ (60°)', -14, -12, '#2563eb');
+        }
+
+        // КРОК 2: Засічка з P1 на 120°
+        if (step >= 2) {
+          drawArc(P1, R, -0.25, +0.25, '#7c3aed');
+          drawPoint(P2, 'P₂ (120°)', -6, -12, '#7c3aed');
+        }
+
+        // КРОК 3: Засічка з P2 на 180° (Точка C)
+        if (step >= 3) {
+          drawArc(P2, R, Math.PI / 3 - 0.25, Math.PI / 3 + 0.25, '#059669');
+          drawPoint(C, 'C (180°!)', 12, 16, '#059669', 5.5);
+
+          // Уявна пряма лінія через A, B, C (показана пунктиром, адже лінійкою ми не користувалися!)
+          svg.appendChild(createSVG('line', {
+            x1: A.x - 20, y1: A.y, x2: C.x + 30, y2: C.y,
+            stroke: '#059669', 'stroke-width': 2, 'stroke-dasharray': '6,4'
+          }));
+
+          const finText = createSVG('text', {
+            x: 300, y: 300, 'font-size': 13, 'font-weight': 'bold', fill: '#059669', 'text-anchor': 'middle'
+          });
+          finText.textContent = '✓ Без жодної лінійки отримано пряму лінію і подвоєно відрізок: AC = 2 · AB!';
+          svg.appendChild(finText);
+        }
+      }
+
+      function drawPoint(pt, label, dx, dy, color = '#0f172a', r = 4.5) {
+        svg.appendChild(createSVG('circle', {
+          cx: pt.x, cy: pt.y, r: r, fill: color
+        }));
+        if (label) {
+          const t = createSVG('text', {
+            x: pt.x + dx, y: pt.y + dy, 'font-size': 12, 'font-weight': 'bold', fill: color
+          });
+          t.textContent = label;
+          svg.appendChild(t);
+        }
+      }
+
+      function drawArc(center, radius, startAngle, endAngle, color) {
+        const x1 = center.x + radius * Math.cos(startAngle);
+        const y1 = center.y + radius * Math.sin(startAngle);
+        const x2 = center.x + radius * Math.cos(endAngle);
+        const y2 = center.y + radius * Math.sin(endAngle);
+        svg.appendChild(createSVG('path', {
+          d: `M ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2}`,
+          fill: 'none', stroke: color, 'stroke-width': 2.5
+        }));
+      }
+
+      nextBtn.addEventListener('click', () => { if (step < maxSteps) { step++; render(); } });
+      prevBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      resetBtn.addEventListener('click', () => { step = 0; clearInterval(playTimer); render(); });
+      playBtn.addEventListener('click', () => {
+        clearInterval(playTimer);
+        step = 0;
+        render();
+        playTimer = setInterval(() => {
+          if (step < maxSteps) {
+            step++;
+            render();
+          } else {
+            clearInterval(playTimer);
+          }
+        }, 1300);
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

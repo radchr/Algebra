@@ -1,0 +1,15 @@
+% Extracted from the reviewed manual pilot; edit the source reference first.
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) -- (4,2.2) node[right] {$A$};
+    \draw[thick] (O) -- (4.2,0) node[right] {$B$};
+    \draw[very thick, color=primaryblue] (2.8,0) arc (0:29:2.8) node[midway, right=2pt] {\small $CD$};
+    \node at (2.9, 1.6) {$C$};
+    \node at (2.9, -0.3) {$D$};
+
+    % Радіальні поділки
+    \foreach \a in {3, 6, 9, 12, 15, 18, 21, 24, 27} {
+        \draw[thin, color=gray] (O) -- (\a:2.8);
+    }
+    \filldraw (O) circle (2pt) node[left] {$O$};
+\end{tikzpicture}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p020.ex07.two-intersecting-lines",
+  "kind": "exercise",
+  "ordinal": "7",
+  "title_uk": "Вправа 7",
+  "title_ru": "Упражнение 7",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 21,
+      "printed_page": 20,
+      "section": "I. Углы — упражнения",
+      "source_image": "data/geometry/01_raw_pages/page_021_300dpi.png",
+      "image_sha256": "e9bf9807ac3a8a8eba0f04bde0dadc2a28609279213995e41e64d14f804d6f39",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Если из точки $O$ (черт. 24) проведем полупрямые $OA, OD, OB, OC$ так, что $\\angle AOC = \\angle DOB$ и $\\angle AOD = \\angle COB$, то $OB$ есть продолжение $OA$ и $OD$ — продолжение $OC$. (*Указание:* Надо применить § 26, 2 и 3).",
+    "engine": "legacy-markdown-import",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "approved"
+  },
+  "translation": {
+    "text_uk": "На рис. 24 з точки $O$ проведено промені $OA$, $OD$, $OB$, $OC$. Доведіть, що коли $\\angle AOC = \\angle DOB$ та $\\angle AOD = \\angle COB$, то промені $OA$ і $OB$, а також $OD$ і $OC$ є доповняльними променями (утворюють дві прямі лінії, що перетинаються в точці $O$).",
+    "model": null,
+    "prompt_version": "legacy-untracked",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [
+    {
+      "kind": "worked_solution",
+      "title_uk": null,
+      "text_uk": "*Доведення:*\nУсі чотири кути мають спільну вершину $O$ і заповнюють усю площину навколо точки $O$. Їхня загальна сума дорівнює повному куту ($360^\\circ$):\n$$\\angle AOC + \\angle DOB + \\angle AOD + \\angle COB = 360^\\circ.$$\nВраховуючи рівності умов $\\angle AOC = \\angle DOB$ та $\\angle AOD = \\angle COB$, маємо:\n$$2 \\cdot \\angle AOC + 2 \\cdot \\angle AOD = 360^\\circ \\implies 2(\\angle AOC + \\angle AOD) = 360^\\circ \\implies \\angle AOC + \\angle AOD = 180^\\circ.$$\nОскільки сума кутів $\\angle AOC$ та $\\angle AOD$ зі спільною стороною $OA$ дорівнює $180^\\circ$, сторони $OC$ і $OD$ є доповняльними променями і утворюють пряму лінію $CD$.\nАналогічно, $\\angle AOC + \\angle COB = 180^\\circ$, тому $OA$ і $OB$ є доповняльними променями та утворюють пряму лінію $AB$.\nОтже, обидві пари променів утворюють дві прямі $AB$ і $CD$, що перетинаються в точці $O$. Доведено!",
+      "citations": [],
+      "status": "needs_review"
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig-024",
+      "source_number": 24,
+      "source_crop": null,
+      "vector_source": "book_geometry/figures/fig-024.tex",
+      "alt_uk": "Вертикальні кути при перетині двох прямих",
+      "status": "needs_review"
+    }
+  ],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Мігровано автоматично з legacy Markdown."
+    ]
+  }
+}

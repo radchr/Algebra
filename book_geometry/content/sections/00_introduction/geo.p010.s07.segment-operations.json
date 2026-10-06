@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "geo.p010.s07.segment-operations",
+  "kind": "paragraph",
+  "ordinal": "7",
+  "title_uk": "Дії над відрізками",
+  "title_ru": "Действия над отрезками",
+  "sources": [
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 11,
+      "printed_page": 10,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_011_300dpi.png",
+      "image_sha256": "a84299774015fe96593799fb513c03f6df66865d11038c8c76a007f16dea1b84",
+      "bbox": null
+    },
+    {
+      "pdf_path": "Kisieliev A.P. - Eliemientarnai - 1931.pdf",
+      "pdf_page": 12,
+      "printed_page": 11,
+      "section": "Введение",
+      "source_image": "data/geometry/01_raw_pages/page_012_300dpi.png",
+      "image_sha256": "f9d73221c767dae490912153606a35b50dbba9abba210fc564907ab6506cdc46",
+      "bbox": null
+    }
+  ],
+  "ocr": {
+    "text_ru": "Из понятия о сумме выводятся понятия о разности, произведении и частном отрезков. Так, разность отрезков $AB$ и $CD$ (если $AB>CD$) есть такой третий отрезок, которого сумма с $CD$ образует $AB$; произведение отрезка $AB$ на число 3 есть сумма трех отрезков, из которых каждый равен $AB$; частное от деления отрезка $AB$ на число 3 есть третья часть $AB$ и т. п.\n\nКогда данные отрезки измерены какою-нибудь линейною единицею (например, сантиметром), то они выразятся числами (целыми или дробными); в таком случае сумма отрезков выразится суммою чисел, измеряющих эти отрезки, разность выразится разностью чисел и т. д.",
+    "engine": "manual-scan-transcription",
+    "model": null,
+    "prompt_version": "intro-transcription-v1",
+    "run_id": "pilot-2026-09-28",
+    "confidence": null,
+    "status": "needs_review"
+  },
+  "translation": {
+    "text_uk": "Різницею відрізків $AB$ і $CD$, де $AB>CD$, називають такий відрізок, який разом із $CD$ дає $AB$. Добуток довжини відрізка на натуральне число означає суму відповідної кількості рівних відрізків; ділення на натуральне число — поділ відрізка на рівні частини.\n\nКоли відрізки виміряно в однакових одиницях, геометричним діям відповідають дії над їхніми числовими довжинами.",
+    "model": null,
+    "prompt_version": "intro-adaptation-v1",
+    "glossary_version": "1.0",
+    "omissions": [],
+    "status": "needs_review"
+  },
+  "adaptations": [],
+  "figures": [],
+  "math_checks": [],
+  "qa": {
+    "terminology": "pending",
+    "mathematical": "pending",
+    "human_review": "needs_review",
+    "notes": [
+      "Вручну транскрибовано зі скану друкованих сторінок 9–12.",
+      "Потребує звірки другим редактором."
+    ]
+  }
+}
