@@ -145,6 +145,27 @@ def test_jsx_templates():
     assert "jxgbox_triangles" in h2
 
 
+def test_jsx_scissors_uses_initial_angle_and_has_network_fallback():
+    from geometry_engine.jsx_templates import get_scissors_widget_html
+
+    angle_30 = get_scissors_widget_html(initial_angle=30)
+    angle_80 = get_scissors_widget_html(initial_angle=80)
+    assert angle_30 != angle_80
+    assert 'data-initial-angle="30"' in angle_30
+    assert 'data-initial-angle="80"' in angle_80
+    assert "Не вдалося завантажити JSXGraph" in angle_30
+
+
+def test_all_jsx_widgets_have_visible_network_fallback():
+    from geometry_engine.jsx_templates import (
+        get_scissors_widget_html,
+        get_triangle_congruence_html,
+    )
+
+    for widget_html in (get_scissors_widget_html(), get_triangle_congruence_html()):
+        assert "Не вдалося завантажити JSXGraph" in widget_html
+
+
 def test_book_database_figures():
     from geometry_engine.db import BookDatabase
 

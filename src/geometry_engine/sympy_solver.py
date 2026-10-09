@@ -1,23 +1,75 @@
 """SymPy analytical geometry brain and answer verification engine.
 
 Uses sympy.geometry for exact calculations, theorem proofs, and verifying student solutions.
+
+Відповіді учня порівнюються точно: введений вираз і очікуване значення
+переводяться у раціональні числа SymPy, а рівність перевіряється як
+``simplify(user - expected) == 0``. Довільний текст ніколи не передається
+у ``sympify`` — спочатку він проходить білий список символів.
 """
 
 from __future__ import annotations
 
+import re
+
 import sympy as sp
 from sympy.geometry import Point, Triangle
 
+# Дозволені символи після нормалізації: цифри, крапка, дужки, пробіли та + - * /
+_ALLOWED_RE = re.compile(r"[0-9.+\-*/()\s]+")
+# Одиниці виміру, які учень може дописати до відповіді («7,2 см», «138°»)
+_UNIT_RE = re.compile(r"(градус\w*|град|см|мм|дм|м|°)", re.IGNORECASE)
+_REPLACEMENTS = {
+    ",": ".",
+    "−": "-",  # типографський мінус
+    "–": "-",
+    "×": "*",
+    "·": "*",
+    ":": "/",
+    "÷": "/",
+    "^": "**",
+}
+
+
+def _exact(value: float | int | str | sp.Expr) -> sp.Rational:
+    """Точне раціональне подання числа: 3.2 -> 16/5 (без двійкових похибок float)."""
+    return sp.Rational(str(value))
+
+
+def _fmt(value: sp.Expr | float) -> str:
+    """Число для дитини: 138 -> «138», 10.5 -> «10,5», 1/3 -> «0,33»."""
+    number = float(value)
+    if number.is_integer():
+        return str(int(number))
+    return f"{number:.2f}".rstrip("0").rstrip(".").replace(".", ",")
+
 
 def parse_math_input(expr_str: str) -> sp.Expr | None:
-    """Safely parse user mathematical input using SymPy."""
-    cleaned = expr_str.strip().replace(",", ".").replace("°", "")
-    if not cleaned:
+    """Безпечно розбирає числовий вираз учня; повертає точне скінченне число або None."""
+    if not isinstance(expr_str, str):
+        return None
+    cleaned = expr_str.strip()
+    for old, new in _REPLACEMENTS.items():
+        cleaned = cleaned.replace(old, new)
+    cleaned = _UNIT_RE.sub("", cleaned).strip()
+    if not cleaned or not _ALLOWED_RE.fullmatch(cleaned):
         return None
     try:
-        return sp.sympify(cleaned)
-    except Exception:
+        value = sp.sympify(cleaned, rational=True)
+    except (sp.SympifyError, SyntaxError, TypeError, ZeroDivisionError):
         return None
+    if (
+        not isinstance(value, sp.Expr)
+        or not value.is_number
+        or value.is_finite is not True
+        or value.is_real is not True
+    ):
+        return None
+    return value
+
+
+def _equals(user_value: sp.Expr, expected: sp.Expr) -> bool:
+    return sp.simplify(user_value - expected) == 0
 
 
 def verify_adjacent_angle(given_alpha_deg: float, user_answer_str: str) -> dict:
@@ -29,24 +81,22 @@ def verify_adjacent_angle(given_alpha_deg: float, user_answer_str: str) -> dict:
             "message": "⚠️ Введи число або математичний вираз (наприклад, 180 - 65 або 115).",
         }
 
-    expected = 180 - given_alpha_deg
-    try:
-        user_val = float(parsed.evalf())
-        is_correct = abs(user_val - expected) < 1e-4
-        if is_correct:
-            return {
-                "correct": True,
-                "message": f"🎉 Точно! Сума суміжних кутів {given_alpha_deg:.0f}° + {user_val:.0f}° = 180°.",
-                "expected": expected,
-            }
-        else:
-            return {
-                "correct": False,
-                "message": f"❌ Не зовсім. Твоя відповідь {user_val:.0f}°. Пам'ятай: сума суміжних кутів завжди дорівнює 180° (тобто 180° - {given_alpha_deg:.0f}°).",
-                "expected": expected,
-            }
-    except Exception:
-        return {"correct": False, "message": "⚠️ Помилка обчислення виразу."}
+    alpha = _exact(given_alpha_deg)
+    expected = 180 - alpha
+    if _equals(parsed, expected):
+        return {
+            "correct": True,
+            "message": f"🎉 Точно! Сума суміжних кутів {_fmt(alpha)}° + {_fmt(parsed)}° = 180°.",
+            "expected": float(expected),
+        }
+    return {
+        "correct": False,
+        "message": (
+            f"❌ Не зовсім. Твоя відповідь {_fmt(parsed)}°. Пам'ятай: сума суміжних кутів "
+            f"завжди дорівнює 180° (тобто 180° - {_fmt(alpha)}°)."
+        ),
+        "expected": float(expected),
+    }
 
 
 def verify_vertical_angles(given_angle_1: float, user_angle_3: str, user_angle_2: str) -> dict:
@@ -55,35 +105,29 @@ def verify_vertical_angles(given_angle_1: float, user_angle_3: str, user_angle_2
     p2 = parse_math_input(user_angle_2)
 
     if p3 is None or p2 is None:
-        return {"correct": False, "message": "⚠️ Заповни обидва поля для кутів."}
+        return {"correct": False, "message": "⚠️ Заповни обидва поля для кутів числами."}
 
-    exp_3 = given_angle_1
-    exp_2 = 180 - given_angle_1
+    angle_1 = _exact(given_angle_1)
+    exp_3 = angle_1
+    exp_2 = 180 - angle_1
 
-    try:
-        val_3 = float(p3.evalf())
-        val_2 = float(p2.evalf())
+    c3 = _equals(p3, exp_3)
+    c2 = _equals(p2, exp_2)
 
-        c3 = abs(val_3 - exp_3) < 1e-4
-        c2 = abs(val_2 - exp_2) < 1e-4
-
-        if c3 and c2:
-            return {
-                "correct": True,
-                "message": f"🎉 Бездоганно! Вертикальний кут ∠3 = {val_3:.0f}°, а суміжний ∠2 = {val_2:.0f}°.",
-            }
-        elif not c3:
-            return {
-                "correct": False,
-                "message": f"❌ Помилка в ∠3: вертикальні кути рівні між собою! ∠3 має дорівнювати ∠1 ({given_angle_1:.0f}°).",
-            }
-        else:
-            return {
-                "correct": False,
-                "message": f"❌ Помилка в ∠2: кут ∠2 є суміжним до ∠1, його градусна міра 180° - {given_angle_1:.0f}° = {exp_2:.0f}°.",
-            }
-    except Exception:
-        return {"correct": False, "message": "⚠️ Помилка обчислення виразів."}
+    if c3 and c2:
+        return {
+            "correct": True,
+            "message": f"🎉 Бездоганно! Вертикальний кут ∠3 = {_fmt(p3)}°, а суміжний ∠2 = {_fmt(p2)}°.",
+        }
+    if not c3:
+        return {
+            "correct": False,
+            "message": f"❌ Помилка в ∠3: вертикальні кути рівні між собою! ∠3 має дорівнювати ∠1 ({_fmt(angle_1)}°).",
+        }
+    return {
+        "correct": False,
+        "message": f"❌ Помилка в ∠2: кут ∠2 є суміжним до ∠1, його градусна міра 180° - {_fmt(angle_1)}° = {_fmt(exp_2)}°.",
+    }
 
 
 def analyze_triangle_by_points(
@@ -127,16 +171,15 @@ def verify_congruence_criterion(selected_criterion: str, target_criterion: str =
             "SSS": "🎉 Правильно! Це Третя ознака (ССС): три відповідні сторони (жорсткість фігури).",
         }
         return {"correct": True, "message": descriptions.get(target_criterion, "🎉 Правильно!")}
-    else:
-        return {
-            "correct": False,
-            "message": "❌ Ні, тут діє інша ознака. Зверни увагу на те, чи кут лежить саме між даними сторонами, чи кути прилеглі до сторони!",
-        }
+    return {
+        "correct": False,
+        "message": "❌ Ні, тут діє інша ознака. Зверни увагу на те, чи кут лежить саме між даними сторонами, чи кути прилеглі до сторони!",
+    }
 
 
 def verify_congruence_mission(
     target_side_name: str,
-    expected_length: float,
+    expected_length: float | int | str | sp.Expr,
     user_answer_str: str,
     target_angle_name: str | None = None,
     expected_angle: float | None = None,
@@ -147,45 +190,43 @@ def verify_congruence_mission(
     if p_side is None:
         return {
             "correct": False,
-            "message": "⚠️ Введи довжину сторони у числовому або формульному вигляді.",
+            "message": "⚠️ Введи довжину сторони числом або виразом (наприклад, 7,2).",
         }
 
-    side_val = float(p_side.evalf())
-    side_ok = abs(side_val - expected_length) < 1e-4
+    length = _exact(expected_length)
+    side_ok = _equals(p_side, length)
 
     if target_angle_name and expected_angle is not None and user_angle_str:
         p_ang = parse_math_input(user_angle_str)
         if p_ang is None:
-            return {"correct": False, "message": "⚠️ Введи градусну міру кута."}
-        ang_val = float(p_ang.evalf())
-        ang_ok = abs(ang_val - expected_angle) < 1e-4
+            return {"correct": False, "message": "⚠️ Введи градусну міру кута числом."}
+        angle = _exact(expected_angle)
+        ang_ok = _equals(p_ang, angle)
 
         if side_ok and ang_ok:
             return {
                 "correct": True,
-                "message": f"🎉 Блискуче! Оскільки △ABC = △A₁B₁C₁, то {target_side_name} = {expected_length:.1f} та {target_angle_name} = {expected_angle:.0f}°.",
+                "message": f"🎉 Блискуче! Оскільки △ABC = △A₁B₁C₁, то {target_side_name} = {_fmt(length)} та {target_angle_name} = {_fmt(angle)}°.",
             }
-        elif not side_ok:
+        if not side_ok:
             return {
                 "correct": False,
-                "message": f"❌ Помилка у стороні {target_side_name}. Відповідна сторона дорівнює {expected_length:.1f}.",
+                "message": f"❌ Помилка у стороні {target_side_name}. Відповідна сторона дорівнює {_fmt(length)}.",
             }
-        else:
-            return {
-                "correct": False,
-                "message": f"❌ Помилка у куті {target_angle_name}. Відповідний кут дорівнює {expected_angle:.0f}°.",
-            }
+        return {
+            "correct": False,
+            "message": f"❌ Помилка у куті {target_angle_name}. Відповідний кут дорівнює {_fmt(angle)}°.",
+        }
 
     if side_ok:
         return {
             "correct": True,
-            "message": f"🎉 Точно! {target_side_name} = {expected_length:.1f} за ознакою рівності.",
+            "message": f"🎉 Точно! {target_side_name} = {_fmt(length)}: у рівних трикутниках відповідні сторони рівні.",
         }
-    else:
-        return {
-            "correct": False,
-            "message": f"❌ Невірно. За рівністю трикутників {target_side_name} має дорівнювати {expected_length:.1f}.",
-        }
+    return {
+        "correct": False,
+        "message": f"❌ Ні. У рівних трикутниках відповідні сторони рівні, тож {target_side_name} = {_fmt(length)}.",
+    }
 
 
 def verify_segment_addition(ab: float, cd: float, ef: float, user_answer_str: str) -> dict:
@@ -194,22 +235,21 @@ def verify_segment_addition(ab: float, cd: float, ef: float, user_answer_str: st
     if parsed is None:
         return {
             "correct": False,
-            "message": "⚠️ Введи число або математичний вираз (наприклад, 4.5 + 3.2 + 2.8).",
+            "message": "⚠️ Введи число або математичний вираз (наприклад, 4,5 + 3,2 + 2,8).",
         }
-    expected = ab + cd + ef
-    try:
-        user_val = float(parsed.evalf())
-        if abs(user_val - expected) < 1e-4:
-            return {
-                "correct": True,
-                "message": f"🎉 Чудово! Довжина суми відрізків MQ = {ab} + {cd} + {ef} = {expected:.1f} см.",
-                "expected": expected,
-            }
-        else:
-            return {
-                "correct": False,
-                "message": f"❌ Неправильно. Твоя відповідь {user_val:.1f} см. Пам'ятай: MQ = AB + CD + EF = {ab} + {cd} + {ef} = {expected:.1f} см.",
-                "expected": expected,
-            }
-    except Exception:
-        return {"correct": False, "message": "⚠️ Помилка обчислення виразу."}
+    a, c, e = _exact(ab), _exact(cd), _exact(ef)
+    expected = a + c + e
+    if _equals(parsed, expected):
+        return {
+            "correct": True,
+            "message": f"🎉 Чудово! Довжина суми відрізків MQ = {_fmt(a)} + {_fmt(c)} + {_fmt(e)} = {_fmt(expected)} см.",
+            "expected": float(expected),
+        }
+    return {
+        "correct": False,
+        "message": (
+            f"❌ Неправильно. Твоя відповідь {_fmt(parsed)} см. Пам'ятай: MQ = AB + CD + EF = "
+            f"{_fmt(a)} + {_fmt(c)} + {_fmt(e)} = {_fmt(expected)} см."
+        ),
+        "expected": float(expected),
+    }

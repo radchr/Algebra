@@ -1,7 +1,7 @@
 [project]
 name = "algebra-kiselev"
 version = "0.1.0"
-description = "Add your description here"
+description = "Приватний інтерактивний курс планіметрії 7 класу в Marimo"
 readme = "README.md"
 authors = [
     { name = "Roman", email = "pochta.roman.r.git@gmail.com" }

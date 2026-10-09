@@ -7,25 +7,39 @@ reliably using isolated sandboxed iframes.
 from __future__ import annotations
 
 import html
+import math
 
 
 def get_scissors_widget_html(box_id: str = "jxgbox_scissors", initial_angle: float = 55.0) -> str:
     """Генерує інтерактивну модель ножиць на JSXGraph з перетягуванням лез."""
+    if not 0 < initial_angle < 180:
+        raise ValueError("initial_angle має бути між 0° і 180°")
+    half_angle = math.radians(initial_angle / 2)
+    initial_x = 3.8 * math.cos(half_angle)
+    initial_y = 3.8 * math.sin(half_angle)
     iframe_content = f"""<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js" onerror="window.__jsxLoadFailed = true"></script>
   <style>
     html, body {{ margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #f8fafc; }}
     #{box_id} {{ width: 100%; height: 100%; }}
+    .jsx-fallback {{ display: none; align-items: center; justify-content: center; height: 100%; padding: 24px;
+                     box-sizing: border-box; text-align: center; color: #991b1b; background: #fff7ed; font: 600 15px/1.5 sans-serif; }}
   </style>
 </head>
 <body>
   <div id="{box_id}" class="jxgbox"></div>
+  <div id="{box_id}_fallback" class="jsx-fallback">Не вдалося завантажити JSXGraph. Перевір з’єднання з інтернетом; текст уроку, рисунки та задачі залишаються доступними.</div>
   <script>
     window.addEventListener('load', function() {{
+      if (window.__jsxLoadFailed || typeof JXG === 'undefined') {{
+        document.getElementById('{box_id}').style.display = 'none';
+        document.getElementById('{box_id}_fallback').style.display = 'flex';
+        return;
+      }}
       var board = JXG.JSXGraph.initBoard('{box_id}', {{
         boundingbox: [-5, 5, 5, -5],
         axis: false,
@@ -34,8 +48,8 @@ def get_scissors_widget_html(box_id: str = "jxgbox_scissors", initial_angle: flo
       }});
       
       var O = board.create('point', [0, 0], {{name: 'O', fixed: true, size: 4, color: '#0f172a'}});
-      var A = board.create('point', [3.5, 2.0], {{name: 'A', size: 6, color: '#2563eb'}});
-      var B = board.create('point', [3.5, -2.0], {{name: 'B', size: 6, color: '#2563eb'}});
+      var A = board.create('point', [{initial_x:.6f}, {initial_y:.6f}], {{name: 'A', size: 6, color: '#2563eb'}});
+      var B = board.create('point', [{initial_x:.6f}, {-initial_y:.6f}], {{name: 'B', size: 6, color: '#2563eb'}});
       
       var A_opp = board.create('point', [
         function() {{ return -A.X(); }},
@@ -60,7 +74,7 @@ def get_scissors_widget_html(box_id: str = "jxgbox_scissors", initial_angle: flo
     escaped_doc = html.escape(iframe_content, quote=True)
     return f"""
     <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 580px; margin: 0 auto;">
-      <iframe srcdoc="{escaped_doc}" style="width: 100%; height: 320px; border: none; border-radius: 8px;"></iframe>
+      <iframe data-initial-angle="{initial_angle:g}" srcdoc="{escaped_doc}" style="width: 100%; height: 320px; border: none; border-radius: 8px;"></iframe>
       <p style="text-align: center; font-size: 13px; color: #64748b; margin: 8px 0 0 0;">
         💡 <em>Потягни пальцем або мишкою за синю точку <strong>A</strong> і спостерігай: розкриття протилежних лез завжди однакове!</em>
       </p>
@@ -75,16 +89,24 @@ def get_triangle_congruence_html(box_id: str = "jxgbox_triangles") -> str:
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js" onerror="window.__jsxLoadFailed = true"></script>
   <style>
     html, body {{ margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #f8fafc; }}
     #{box_id} {{ width: 100%; height: 100%; }}
+    .jsx-fallback {{ display: none; align-items: center; justify-content: center; height: 100%; padding: 24px;
+                     box-sizing: border-box; text-align: center; color: #991b1b; background: #fff7ed; font: 600 15px/1.5 sans-serif; }}
   </style>
 </head>
 <body>
   <div id="{box_id}" class="jxgbox"></div>
+  <div id="{box_id}_fallback" class="jsx-fallback">Не вдалося завантажити JSXGraph. Перевір з’єднання з інтернетом; текст уроку, рисунки та задачі залишаються доступними.</div>
   <script>
     window.addEventListener('load', function() {{
+      if (window.__jsxLoadFailed || typeof JXG === 'undefined') {{
+        document.getElementById('{box_id}').style.display = 'none';
+        document.getElementById('{box_id}_fallback').style.display = 'flex';
+        return;
+      }}
       var board = JXG.JSXGraph.initBoard('{box_id}', {{
         boundingbox: [-4, 5, 8, -3],
         axis: false,

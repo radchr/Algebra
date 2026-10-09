@@ -9,12 +9,15 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-DB_PATH = Path("data/geometry/book_kb.db")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DB_PATH = PROJECT_ROOT / "data" / "geometry" / "book_kb.db"
 
 
 @dataclass
@@ -28,7 +31,7 @@ class BookPage:
     feynman_notes: str = ""
     misconceptions: str = ""
     figures_json: str = "[]"
-    status: str = "verified"  # raw | translated | verified
+    status: str = "translated"  # raw | translated | verified
     sha256: str = ""
     updated_at: str = ""
 
@@ -55,10 +58,15 @@ class BookDatabase:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._init_db()
 
-    def _get_conn(self) -> sqlite3.Connection:
+    @contextmanager
+    def _get_conn(self) -> Iterator[sqlite3.Connection]:
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
-        return conn
+        try:
+            with conn:  # commit on success, rollback on error
+                yield conn
+        finally:
+            conn.close()
 
     def _init_db(self) -> None:
         with self._get_conn() as conn:
@@ -196,6 +204,34 @@ class BookDatabase:
             )
             return cur.fetchone()["cnt"]
 
+    def page_readiness(
+        self, book_id: str, page_nums: list[int] | tuple[int, ...]
+    ) -> dict[int, str]:
+        """Return ``verified``, the stored status, or ``missing`` for every requested page."""
+        ordered_pages = tuple(dict.fromkeys(page_nums))
+        if not ordered_pages:
+            return {}
+        placeholders = ", ".join("?" for _ in ordered_pages)
+        with self._get_conn() as conn:
+            rows = conn.execute(
+                f"SELECT page_num, status FROM book_pages "
+                f"WHERE book_id = ? AND page_num IN ({placeholders})",
+                (book_id, *ordered_pages),
+            ).fetchall()
+        stored = {row["page_num"]: row["status"] or "translated" for row in rows}
+        return {page_num: stored.get(page_num, "missing") for page_num in ordered_pages}
+
+    def require_verified_pages(self, book_id: str, page_nums: list[int] | tuple[int, ...]) -> None:
+        """Reject lesson composition until every source page is present and verified."""
+        readiness = self.page_readiness(book_id, page_nums)
+        problems = [
+            f"{page_num} ({status})"
+            for page_num, status in readiness.items()
+            if status != "verified"
+        ]
+        if problems:
+            raise ValueError(f"Кеш не готовий: {', '.join(problems)}")
+
     def save_figure(self, figure: BookFigure) -> None:
         now = datetime.now().isoformat()
         with self._get_conn() as conn:
@@ -236,101 +272,49 @@ class BookDatabase:
             )
             conn.commit()
 
-    def get_figure(self, fig_id: str) -> BookFigure | None:
+    @staticmethod
+    def _row_to_figure(row: sqlite3.Row) -> BookFigure:
+        return BookFigure(
+            fig_id=row["fig_id"],
+            fig_num=row["fig_num"],
+            book_id=row["book_id"],
+            page_num=row["page_num"],
+            title=row["title"],
+            section_ref=row["section_ref"] or "",
+            caption_original=row["caption_original"] or "",
+            didactic_notes=row["didactic_notes"] or "",
+            svg_content=row["svg_content"],
+            width=row["width"],
+            height=row["height"],
+            created_at=row["created_at"] or "",
+        )
+
+    def _query_figures(self, sql: str, params: tuple[Any, ...]) -> list[BookFigure]:
         with self._get_conn() as conn:
-            cur = conn.execute(
-                "SELECT * FROM book_figures WHERE fig_id = ?",
-                (fig_id,),
-            )
-            row = cur.fetchone()
-            if not row:
-                return None
-            return BookFigure(
-                fig_id=row["fig_id"],
-                fig_num=row["fig_num"],
-                book_id=row["book_id"],
-                page_num=row["page_num"],
-                title=row["title"],
-                section_ref=row["section_ref"] or "",
-                caption_original=row["caption_original"] or "",
-                didactic_notes=row["didactic_notes"] or "",
-                svg_content=row["svg_content"],
-                width=row["width"],
-                height=row["height"],
-                created_at=row["created_at"] or "",
-            )
+            return [self._row_to_figure(row) for row in conn.execute(sql, params).fetchall()]
+
+    def get_figure(self, fig_id: str) -> BookFigure | None:
+        found = self._query_figures("SELECT * FROM book_figures WHERE fig_id = ?", (fig_id,))
+        return found[0] if found else None
 
     def get_figure_by_num(self, book_id: str, fig_num: int) -> BookFigure | None:
-        with self._get_conn() as conn:
-            cur = conn.execute(
-                "SELECT * FROM book_figures WHERE book_id = ? AND fig_num = ?",
-                (book_id, fig_num),
-            )
-            row = cur.fetchone()
-            if not row:
-                return None
-            return BookFigure(
-                fig_id=row["fig_id"],
-                fig_num=row["fig_num"],
-                book_id=row["book_id"],
-                page_num=row["page_num"],
-                title=row["title"],
-                section_ref=row["section_ref"] or "",
-                caption_original=row["caption_original"] or "",
-                didactic_notes=row["didactic_notes"] or "",
-                svg_content=row["svg_content"],
-                width=row["width"],
-                height=row["height"],
-                created_at=row["created_at"] or "",
-            )
+        found = self._query_figures(
+            "SELECT * FROM book_figures WHERE book_id = ? AND fig_num = ?",
+            (book_id, fig_num),
+        )
+        return found[0] if found else None
 
     def get_figures_for_page(self, book_id: str, page_num: int) -> list[BookFigure]:
-        with self._get_conn() as conn:
-            cur = conn.execute(
-                "SELECT * FROM book_figures WHERE book_id = ? AND page_num = ? ORDER BY fig_num ASC",
-                (book_id, page_num),
-            )
-            return [
-                BookFigure(
-                    fig_id=row["fig_id"],
-                    fig_num=row["fig_num"],
-                    book_id=row["book_id"],
-                    page_num=row["page_num"],
-                    title=row["title"],
-                    section_ref=row["section_ref"] or "",
-                    caption_original=row["caption_original"] or "",
-                    didactic_notes=row["didactic_notes"] or "",
-                    svg_content=row["svg_content"],
-                    width=row["width"],
-                    height=row["height"],
-                    created_at=row["created_at"] or "",
-                )
-                for row in cur.fetchall()
-            ]
+        return self._query_figures(
+            "SELECT * FROM book_figures WHERE book_id = ? AND page_num = ? ORDER BY fig_num ASC",
+            (book_id, page_num),
+        )
 
     def list_figures(self, book_id: str = "kiselev_geometry_1931") -> list[BookFigure]:
-        with self._get_conn() as conn:
-            cur = conn.execute(
-                "SELECT * FROM book_figures WHERE book_id = ? ORDER BY fig_num ASC",
-                (book_id,),
-            )
-            return [
-                BookFigure(
-                    fig_id=row["fig_id"],
-                    fig_num=row["fig_num"],
-                    book_id=row["book_id"],
-                    page_num=row["page_num"],
-                    title=row["title"],
-                    section_ref=row["section_ref"] or "",
-                    caption_original=row["caption_original"] or "",
-                    didactic_notes=row["didactic_notes"] or "",
-                    svg_content=row["svg_content"],
-                    width=row["width"],
-                    height=row["height"],
-                    created_at=row["created_at"] or "",
-                )
-                for row in cur.fetchall()
-            ]
+        return self._query_figures(
+            "SELECT * FROM book_figures WHERE book_id = ? ORDER BY fig_num ASC",
+            (book_id,),
+        )
 
     def count_figures(self, book_id: str = "kiselev_geometry_1931") -> int:
         with self._get_conn() as conn:

@@ -7,6 +7,7 @@ Built specifically for 7th grade planimetry in Marimo.
 from __future__ import annotations
 
 import math
+from functools import lru_cache
 
 import drawsvg as draw
 
@@ -636,8 +637,13 @@ def draw_circle_elements(width: int = 560, height: int = 320) -> draw.Drawing:
     return d
 
 
+@lru_cache(maxsize=512)
 def get_book_figure(fig_num: int, book_id: str = "kiselev_geometry_1931") -> BookFigure | None:
-    """Отримує об'єкт BookFigure з бази даних за номером рисунка."""
+    """Отримує об'єкт BookFigure з бази даних за номером рисунка.
+
+    Результат кешується в пам'яті (Zero Recomputation). Після зміни book_kb.db
+    у тому самому процесі викличте ``get_book_figure.cache_clear()``.
+    """
     db = BookDatabase()
     return db.get_figure_by_num(book_id, fig_num)
 
